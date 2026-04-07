@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
 :root {
   --black: #0A0A0A;
   --black2: #111111;
@@ -22,7 +22,7 @@
   --warning: #F59E0B;
   --danger: #EF4444;
 }
-
+ 
 html, body {
   height: 100%;
   background: var(--black);
@@ -31,7 +31,7 @@ html, body {
   font-size: 15px;
   line-height: 1.6;
 }
-
+ 
 /* ── INTRO SCREEN ── */
 #intro {
   min-height: 100vh;
@@ -43,7 +43,7 @@ html, body {
   text-align: center;
   animation: fadeIn 0.8s ease;
 }
-
+ 
 .intro-logo {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 13px;
@@ -51,7 +51,7 @@ html, body {
   color: var(--gray);
   margin-bottom: 40px;
 }
-
+ 
 .archie-intro {
   width: 100px; height: 100px;
   border-radius: 50%;
@@ -60,12 +60,12 @@ html, body {
   margin-bottom: 24px;
   animation: archieFloat 3s ease-in-out infinite;
 }
-
+ 
 @keyframes archieFloat {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
 }
-
+ 
 .intro-title {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 42px;
@@ -73,9 +73,9 @@ html, body {
   line-height: 1;
   margin-bottom: 8px;
 }
-
+ 
 .intro-title span { color: var(--blue); }
-
+ 
 .intro-sub {
   font-size: 14px;
   color: var(--gray);
@@ -83,13 +83,13 @@ html, body {
   margin: 12px auto 0;
   line-height: 1.7;
 }
-
+ 
 .intro-divider {
   width: 40px; height: 2px;
   background: var(--blue);
   margin: 24px auto;
 }
-
+ 
 .intro-bullets {
   display: flex;
   flex-direction: column;
@@ -98,7 +98,7 @@ html, body {
   max-width: 320px;
   text-align: left;
 }
-
+ 
 .intro-bullet {
   display: flex;
   align-items: flex-start;
@@ -106,7 +106,7 @@ html, body {
   font-size: 13px;
   color: #BBBBBB;
 }
-
+ 
 .bullet-dot {
   width: 6px; height: 6px;
   border-radius: 50%;
@@ -114,7 +114,7 @@ html, body {
   flex-shrink: 0;
   margin-top: 6px;
 }
-
+ 
 .start-btn {
   background: var(--blue);
   color: var(--white);
@@ -127,24 +127,24 @@ html, body {
   cursor: pointer;
   transition: background 0.2s, transform 0.1s;
 }
-
+ 
 .start-btn:hover { background: var(--blue-dim); }
 .start-btn:active { transform: scale(0.97); }
-
+ 
 .powered-by {
   margin-top: 20px;
   font-size: 11px;
   color: #444;
   letter-spacing: 1px;
 }
-
+ 
 /* ── CHAT SCREEN ── */
 #chat-screen {
   display: none;
   flex-direction: column;
   height: 100vh;
 }
-
+ 
 .chat-header {
   display: flex;
   align-items: center;
@@ -154,7 +154,7 @@ html, body {
   background: var(--black2);
   flex-shrink: 0;
 }
-
+ 
 .archie-sm {
   width: 40px; height: 40px;
   border-radius: 50%;
@@ -162,7 +162,7 @@ html, body {
   object-position: center 10%;
   animation: archieFloat 3s ease-in-out infinite;
 }
-
+ 
 .chat-header-info {}
 .chat-header-name {
   font-family: 'Bebas Neue', sans-serif;
@@ -183,7 +183,7 @@ html, body {
   background: var(--success);
   animation: pulse 2s infinite;
 }
-
+ 
 .progress-bar-wrap {
   margin-left: auto;
   display: flex;
@@ -205,7 +205,7 @@ html, body {
   transition: width 0.5s ease;
   width: 0%;
 }
-
+ 
 .messages {
   flex: 1;
   overflow-y: auto;
@@ -214,45 +214,45 @@ html, body {
 }
 .messages::-webkit-scrollbar { width: 3px; }
 .messages::-webkit-scrollbar-thumb { background: var(--gray-light); border-radius: 2px; }
-
+ 
 .message {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
   animation: slideUp 0.3s ease;
 }
-
+ 
 @keyframes slideUp {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
+ 
 .message.user { flex-direction: row-reverse; }
-
+ 
 .msg-av {
   width: 34px; height: 34px;
   border-radius: 50%;
   flex-shrink: 0;
   margin-top: 2px;
 }
-
+ 
 .msg-av.archie-av {
   object-fit: cover;
   object-position: center 10%;
   animation: archieFloat 3s ease-in-out infinite;
 }
-
+ 
 .msg-av.user-av {
   background: var(--gray-light);
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
+ 
 .msg-av.user-av svg { width: 16px; height: 16px; fill: var(--gray); }
-
+ 
 .msg-body { max-width: 580px; }
-
+ 
 .msg-name {
   font-size: 10px;
   font-weight: 600;
@@ -262,7 +262,7 @@ html, body {
   color: var(--gray);
 }
 .message.assistant .msg-name { color: var(--blue); }
-
+ 
 .msg-bubble {
   padding: 12px 16px;
   border-radius: 4px 14px 14px 14px;
@@ -272,21 +272,21 @@ html, body {
   background: var(--black3);
   border: 1px solid var(--gray-light);
 }
-
+ 
 .message.user .msg-bubble {
   background: var(--blue);
   border-color: var(--blue);
   color: var(--white);
   border-radius: 14px 4px 14px 14px;
 }
-
+ 
 .typing {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
   animation: fadeIn 0.3s ease;
 }
-
+ 
 .typing-bubble {
   background: var(--black3);
   border: 1px solid var(--gray-light);
@@ -296,7 +296,7 @@ html, body {
   gap: 5px;
   align-items: center;
 }
-
+ 
 .typing-dot {
   width: 6px; height: 6px;
   border-radius: 50%;
@@ -305,18 +305,18 @@ html, body {
 }
 .typing-dot:nth-child(2) { animation-delay: 0.2s; }
 .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-
+ 
 @keyframes bounce {
   0%, 80%, 100% { transform: scale(1); opacity: 0.4; }
   40% { transform: scale(1.4); opacity: 1; }
 }
-
+ 
 .input-area {
   padding: 16px 20px 24px;
   border-top: 1px solid var(--gray-light);
   flex-shrink: 0;
 }
-
+ 
 .input-wrap {
   display: flex;
   gap: 10px;
@@ -328,7 +328,7 @@ html, body {
   transition: border-color 0.2s;
 }
 .input-wrap:focus-within { border-color: var(--blue); }
-
+ 
 #userInput {
   flex: 1;
   background: transparent;
@@ -342,7 +342,7 @@ html, body {
   min-height: 22px;
 }
 #userInput::placeholder { color: #444; }
-
+ 
 .send-btn {
   background: var(--blue);
   border: none;
@@ -358,7 +358,7 @@ html, body {
 .send-btn:hover { background: var(--blue-dim); }
 .send-btn:disabled { background: var(--gray-light); cursor: not-allowed; }
 .send-btn svg { width: 15px; height: 15px; fill: white; }
-
+ 
 /* ── REPORT SCREEN ── */
 #report-screen {
   display: none;
@@ -368,12 +368,12 @@ html, body {
   max-width: 680px;
   margin: 0 auto;
 }
-
+ 
 .report-header {
   text-align: center;
   margin-bottom: 40px;
 }
-
+ 
 .report-logo {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 12px;
@@ -381,7 +381,7 @@ html, body {
   color: var(--gray);
   margin-bottom: 24px;
 }
-
+ 
 .report-archie {
   width: 64px; height: 64px;
   border-radius: 50%;
@@ -389,7 +389,7 @@ html, body {
   object-position: center 10%;
   margin-bottom: 16px;
 }
-
+ 
 .report-title {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 13px;
@@ -397,20 +397,20 @@ html, body {
   color: var(--blue);
   margin-bottom: 6px;
 }
-
+ 
 .report-company {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 28px;
   letter-spacing: 2px;
   margin-bottom: 4px;
 }
-
+ 
 .report-date {
   font-size: 11px;
   color: var(--gray);
   letter-spacing: 1px;
 }
-
+ 
 /* Score */
 .score-block {
   background: var(--black2);
@@ -422,7 +422,7 @@ html, body {
   position: relative;
   overflow: hidden;
 }
-
+ 
 .score-block::before {
   content: '';
   position: absolute;
@@ -430,7 +430,7 @@ html, body {
   height: 3px;
   background: var(--blue);
 }
-
+ 
 .score-label {
   font-size: 10px;
   letter-spacing: 3px;
@@ -438,7 +438,7 @@ html, body {
   color: var(--gray);
   margin-bottom: 12px;
 }
-
+ 
 .score-number {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 80px;
@@ -446,7 +446,7 @@ html, body {
   letter-spacing: -2px;
   margin-bottom: 6px;
 }
-
+ 
 .score-nivel {
   display: inline-block;
   padding: 4px 16px;
@@ -457,12 +457,12 @@ html, body {
   text-transform: uppercase;
   margin-bottom: 16px;
 }
-
+ 
 .nivel-critico { background: rgba(239,68,68,0.15); color: #EF4444; border: 1px solid rgba(239,68,68,0.3); }
 .nivel-desenvolvimento { background: rgba(245,158,11,0.15); color: #F59E0B; border: 1px solid rgba(245,158,11,0.3); }
 .nivel-estruturado { background: rgba(45,91,227,0.15); color: #2D5BE3; border: 1px solid rgba(45,91,227,0.3); }
 .nivel-escalavel { background: rgba(34,197,94,0.15); color: #22C55E; border: 1px solid rgba(34,197,94,0.3); }
-
+ 
 .score-parecer {
   font-size: 14px;
   color: #BBBBBB;
@@ -470,7 +470,7 @@ html, body {
   max-width: 480px;
   margin: 0 auto;
 }
-
+ 
 /* Dimensoes */
 .section-title {
   font-family: 'Bebas Neue', sans-serif;
@@ -480,28 +480,28 @@ html, body {
   text-transform: uppercase;
   margin-bottom: 14px;
 }
-
+ 
 .dimensoes {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-bottom: 24px;
 }
-
+ 
 .dim-row {
   background: var(--black2);
   border: 1px solid var(--gray-light);
   border-radius: 10px;
   padding: 16px 20px;
 }
-
+ 
 .dim-top {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 8px;
 }
-
+ 
 .dim-letter {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 20px;
@@ -510,7 +510,7 @@ html, body {
   width: 24px;
   flex-shrink: 0;
 }
-
+ 
 .dim-name {
   font-size: 12px;
   font-weight: 600;
@@ -519,13 +519,13 @@ html, body {
   color: #AAAAAA;
   flex: 1;
 }
-
+ 
 .dim-score {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 22px;
   letter-spacing: 1px;
 }
-
+ 
 .dim-bar-wrap {
   height: 4px;
   background: var(--gray-light);
@@ -533,18 +533,18 @@ html, body {
   margin-bottom: 8px;
   overflow: hidden;
 }
-
+ 
 .dim-bar-fill {
   height: 100%;
   border-radius: 2px;
   transition: width 1s ease;
 }
-
+ 
 .dim-status {
   font-size: 13px;
   color: #CCCCCC;
 }
-
+ 
 .dim-gargalo {
   font-size: 12px;
   color: var(--danger);
@@ -553,7 +553,7 @@ html, body {
   align-items: center;
   gap: 6px;
 }
-
+ 
 /* Gargalo crítico */
 .gargalo-block {
   background: rgba(239,68,68,0.08);
@@ -562,7 +562,7 @@ html, body {
   padding: 20px;
   margin-bottom: 24px;
 }
-
+ 
 .gargalo-label {
   font-size: 10px;
   letter-spacing: 3px;
@@ -570,14 +570,14 @@ html, body {
   color: var(--danger);
   margin-bottom: 8px;
 }
-
+ 
 .gargalo-text {
   font-size: 15px;
   font-weight: 500;
   color: var(--white);
   line-height: 1.5;
 }
-
+ 
 /* Prioridades */
 .prioridades {
   display: flex;
@@ -585,7 +585,7 @@ html, body {
   gap: 10px;
   margin-bottom: 32px;
 }
-
+ 
 .prio-item {
   display: flex;
   align-items: flex-start;
@@ -595,7 +595,7 @@ html, body {
   border-radius: 10px;
   padding: 14px 18px;
 }
-
+ 
 .prio-num {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 22px;
@@ -603,14 +603,14 @@ html, body {
   line-height: 1;
   flex-shrink: 0;
 }
-
+ 
 .prio-text {
   font-size: 14px;
   color: #CCCCCC;
   line-height: 1.5;
   padding-top: 2px;
 }
-
+ 
 /* CTA */
 .cta-block {
   background: var(--black2);
@@ -620,7 +620,7 @@ html, body {
   text-align: center;
   margin-bottom: 24px;
 }
-
+ 
 .cta-archie {
   width: 56px; height: 56px;
   border-radius: 50%;
@@ -629,14 +629,14 @@ html, body {
   margin-bottom: 14px;
   animation: archieFloat 3s ease-in-out infinite;
 }
-
+ 
 .cta-title {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 22px;
   letter-spacing: 2px;
   margin-bottom: 8px;
 }
-
+ 
 .cta-sub {
   font-size: 13px;
   color: var(--gray);
@@ -646,7 +646,7 @@ html, body {
   margin-left: auto;
   margin-right: auto;
 }
-
+ 
 .cta-btn {
   display: inline-block;
   background: var(--blue);
@@ -664,7 +664,7 @@ html, body {
   display: block;
 }
 .cta-btn:hover { background: var(--blue-dim); }
-
+ 
 .cta-btn-sec {
   display: block;
   background: transparent;
@@ -678,18 +678,18 @@ html, body {
   transition: border-color 0.2s, color 0.2s;
 }
 .cta-btn-sec:hover { border-color: var(--blue); color: var(--white); }
-
+ 
 .email-note {
   font-size: 11px;
   color: #444;
   text-align: center;
   margin-top: 16px;
 }
-
+ 
 /* Utils */
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-
+ 
 @media (max-width: 600px) {
   #report-screen { padding: 24px 16px 60px; }
   .score-number { font-size: 60px; }
@@ -697,7 +697,7 @@ html, body {
 </style>
 </head>
 <body>
-
+ 
 <!-- INTRO -->
 <div id="intro">
   <div class="intro-logo">SCALECO · SCALE DIAGNOSTIC™</div>
@@ -705,18 +705,18 @@ html, body {
   <div class="intro-title">DIAGNÓSTICO DE<br><span>ARQUITETURA</span></div>
   <div class="intro-divider"></div>
   <div class="intro-sub">Responda algumas perguntas. Archie mapeia sua maturidade comercial e entrega um diagnóstico estruturado.</div>
-
+ 
   <div class="intro-bullets" style="margin-top:28px;">
     <div class="intro-bullet"><div class="bullet-dot"></div><span>Qualificação das 5 dimensões do SCALE Method™</span></div>
     <div class="intro-bullet"><div class="bullet-dot"></div><span>Score de maturidade e gargalos identificados</span></div>
     <div class="intro-bullet"><div class="bullet-dot"></div><span>Prioridades de ação e próximo passo</span></div>
     <div class="intro-bullet"><div class="bullet-dot"></div><span>Relatório enviado para seu email</span></div>
   </div>
-
+ 
   <button class="start-btn" onclick="startChat()">INICIAR DIAGNÓSTICO</button>
   <div class="powered-by">👉 Powered by Archie · ScaleCo</div>
 </div>
-
+ 
 <!-- CHAT -->
 <div id="chat-screen">
   <div class="chat-header">
@@ -733,9 +733,9 @@ html, body {
       <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
     </div>
   </div>
-
+ 
   <div class="messages" id="messages"></div>
-
+ 
   <div class="input-area">
     <div class="input-wrap">
       <textarea id="userInput" rows="1"
@@ -748,48 +748,48 @@ html, body {
     </div>
   </div>
 </div>
-
+ 
 <!-- REPORT -->
 <div id="report-screen"></div>
-
+ 
 <script>
 let history = [];
 let isLoading = false;
 let msgCount = 0;
 const MAX_MSGS = 14;
-
+ 
 function autoResize(el) {
   el.style.height = 'auto';
   el.style.height = Math.min(el.scrollHeight, 100) + 'px';
 }
-
+ 
 function handleKey(e) {
   if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
 }
-
+ 
 function startChat() {
   document.getElementById('intro').style.display = 'none';
   const cs = document.getElementById('chat-screen');
   cs.style.display = 'flex';
   sendFirst();
 }
-
+ 
 function updateProgress() {
   const pct = Math.min((msgCount / MAX_MSGS) * 100, 95);
   document.getElementById('progressFill').style.width = pct + '%';
 }
-
+ 
 function appendMessage(role, text) {
   const wrap = document.getElementById('messages');
   const div = document.createElement('div');
   div.className = `message ${role}`;
-
+ 
   const avHTML = role === 'assistant'
     ? `<img src="archie.jpeg" class="msg-av archie-av" alt="Archie">`
     : `<div class="msg-av user-av"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div>`;
-
+ 
   const sender = role === 'assistant' ? 'Archie · Scale Diagnostic™' : 'Você';
-
+ 
   div.innerHTML = `
     ${avHTML}
     <div class="msg-body">
@@ -799,7 +799,7 @@ function appendMessage(role, text) {
   wrap.appendChild(div);
   wrap.scrollTop = wrap.scrollHeight;
 }
-
+ 
 function showTyping() {
   const wrap = document.getElementById('messages');
   const div = document.createElement('div');
@@ -815,12 +815,12 @@ function showTyping() {
   wrap.appendChild(div);
   wrap.scrollTop = wrap.scrollHeight;
 }
-
+ 
 function removeTyping() {
   const t = document.getElementById('typing');
   if (t) t.remove();
 }
-
+ 
 async function callAgent(messages) {
   const res = await fetch('/api/diagnostic', {
     method: 'POST',
@@ -830,7 +830,7 @@ async function callAgent(messages) {
   const data = await res.json();
   return data.reply;
 }
-
+ 
 async function sendFirst() {
   isLoading = true;
   document.getElementById('sendBtn').disabled = true;
@@ -846,24 +846,24 @@ async function sendFirst() {
   document.getElementById('sendBtn').disabled = false;
   document.getElementById('userInput').focus();
 }
-
+ 
 async function sendMessage() {
   if (isLoading) return;
   const input = document.getElementById('userInput');
   const text = input.value.trim();
   if (!text) return;
-
+ 
   input.value = '';
   input.style.height = 'auto';
   isLoading = true;
   document.getElementById('sendBtn').disabled = true;
-
+ 
   appendMessage('user', text);
   history.push({ role: 'user', content: text });
   msgCount++;
   updateProgress();
   showTyping();
-
+ 
   try {
     const reply = await callAgent(history);
     removeTyping();
@@ -875,18 +875,17 @@ async function sendMessage() {
     removeTyping();
     appendMessage('assistant', 'Erro de conexão. Tente novamente.');
   }
-
+ 
   isLoading = false;
   document.getElementById('sendBtn').disabled = false;
   input.focus();
 }
-
+ 
 function checkForReport(reply) {
-  // Try to parse JSON report
   try {
-    const trimmed = reply.trim();
-    if (trimmed.startsWith('{')) {
-      const data = JSON.parse(trimmed);
+    const jsonMatch = reply.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      const data = JSON.parse(jsonMatch[0]);
       if (data.tipo === 'relatorio') {
         renderReport(data);
         return;
@@ -895,14 +894,14 @@ function checkForReport(reply) {
   } catch (e) {}
   appendMessage('assistant', reply);
 }
-
+ 
 function getScoreColor(score) {
   if (score >= 80) return '#22C55E';
   if (score >= 60) return '#2D5BE3';
   if (score >= 40) return '#F59E0B';
   return '#EF4444';
 }
-
+ 
 function getNivelClass(nivel) {
   const map = {
     'Crítico': 'nivel-critico',
@@ -912,7 +911,7 @@ function getNivelClass(nivel) {
   };
   return map[nivel] || 'nivel-desenvolvimento';
 }
-
+ 
 const DIM_NAMES = {
   S: 'Strategic Architecture',
   C: 'Commercial Engine',
@@ -920,19 +919,19 @@ const DIM_NAMES = {
   L: 'Leadership Institutionalization',
   E: 'Execution Cadence',
 };
-
+ 
 function renderReport(data) {
   // Hide chat
   document.getElementById('chat-screen').style.display = 'none';
   document.getElementById('progressFill').style.width = '100%';
-
+ 
   const rs = document.getElementById('report-screen');
   rs.style.display = 'block';
-
+ 
   const scoreColor = getScoreColor(data.score_geral);
   const nivelClass = getNivelClass(data.nivel);
   const today = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
-
+ 
   let dimensoesHTML = '';
   for (const [key, dim] of Object.entries(data.dimensoes)) {
     const c = getScoreColor(dim.score);
@@ -950,13 +949,13 @@ function renderReport(data) {
         ${dim.gargalo ? `<div class="dim-gargalo">↳ ${dim.gargalo}</div>` : ''}
       </div>`;
   }
-
+ 
   let priosHTML = data.prioridades.map((p, i) => `
     <div class="prio-item">
       <div class="prio-num">${String(i + 1).padStart(2, '0')}</div>
       <div class="prio-text">${p}</div>
     </div>`).join('');
-
+ 
   rs.innerHTML = `
     <div class="report-header">
       <div class="report-logo">SCALECO · SCALE DIAGNOSTIC™</div>
@@ -965,36 +964,37 @@ function renderReport(data) {
       <div class="report-company">${data.empresa.toUpperCase()}</div>
       <div class="report-date">${today} · ${data.nome}</div>
     </div>
-
+ 
     <div class="score-block">
       <div class="score-label">SCORE GERAL · SCALE METHOD™</div>
       <div class="score-number" style="color:${scoreColor}">${data.score_geral}</div>
       <div><span class="score-nivel ${nivelClass}">${data.nivel}</span></div>
       <p class="score-parecer">${data.parecer}</p>
     </div>
-
+ 
     <div class="section-title">DIMENSÕES SCALE</div>
     <div class="dimensoes">${dimensoesHTML}</div>
-
+ 
     <div class="gargalo-block">
       <div class="gargalo-label">⚠ Gargalo Crítico</div>
       <div class="gargalo-text">${data.gargalo_critico}</div>
     </div>
-
+ 
     <div class="section-title">PRIORIDADES DE AÇÃO</div>
     <div class="prioridades">${priosHTML}</div>
-
+ 
     <div class="cta-block">
       <img src="archie.jpeg" class="cta-archie" alt="Archie">
       <div class="cta-title">PRÓXIMO PASSO</div>
-      <div class="cta-sub">O diagnóstico identifica onde está o gargalo. A arquitetura define como resolver. Esse é o trabalho de Fábio Couto.</div>
-     <a class="cta-btn" href="https://wa.me/5511974270077?text=Ol%C3%A1%20F%C3%A1bio%2C%20acabei%20de%20fazer%20o%20diagn%C3%B3stico%20da%20ScaleCo%20e%20gostaria%20de%20conversar." target="_blank">FALAR COM FÁBIO NO WHATSAPP</a>
+      <div class="cta-sub">O diagnóstico identifica onde está o gargalo. A arquitetura define como resolver. Esse é o trabalho da ScaleCo.</div>
+<a class="cta-btn" href="https://wa.me/5511974270077?text=Ol%C3%A1%20F%C3%A1bio%2C%20acabei%20de%20fazer%20o%20diagn%C3%B3stico%20da%20ScaleCo%20e%20gostaria%20de%20conversar." target="_blank">FALAR COM FÁBIO NO WHATSAPP</a>
+      
       <a class="cta-btn-sec" href="https://scaleco.ai" target="_blank">Conhecer a ScaleCo</a>
     </div>
-
+ 
     <div class="email-note">📩 Relatório enviado para ${data.email}</div>
   `;
-
+ 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
