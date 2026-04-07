@@ -1,0 +1,16 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  included_files = ["archie.jpeg"]
+
+[[functions.environment]]
+
+[functions."diagnostic"]
+  timeout = 26
+
+[[redirects]]
+  from = "/api/diagnostic"
+  to = "/.netlify/functions/diagnostic"
+  status = 200
