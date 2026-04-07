@@ -76,9 +76,9 @@ TOM: Direto, frases curtas, sem elogios. Nunca use "mentoria" ou "consultoria".`
 
     // Try to send email if it's a report
     try {
-      const trimmed = reply.trim().replace(/^```json\s*/i, "").replace(/```$/, "").trim();
-      if (trimmed.startsWith("{")) {
-        const report = JSON.parse(trimmed);
+      const jsonMatch = reply.match(/\{[\s\S]*\}/);
+      if (jsonMatch) {
+        const report = JSON.parse(jsonMatch[0]);
         if (report.tipo === "relatorio" && report.email) {
           await sendEmails(report);
         }
