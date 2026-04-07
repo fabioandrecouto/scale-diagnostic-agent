@@ -148,7 +148,5 @@ async function sendEmails(report) {
     headers: {"Content-Type":"application/json","Authorization":`Bearer ${RESEND_KEY}`},
     body: JSON.stringify({from:"Archie · ScaleCo <onboarding@resend.dev>", to:[to], subject, html}),
   });
-
-  await send(report.email, `Seu diagnóstico Scale Diagnostic™ — ${report.empresa}`, makeHTML(false));
   await send("fabio@scaleco.ai", `[Novo Lead] ${report.nome} · ${report.empresa} · Score ${report.score_geral}`, makeHTML(true));
 }
