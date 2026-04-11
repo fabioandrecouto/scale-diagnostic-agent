@@ -22,22 +22,22 @@ AS 7 PERGUNTAS — FAÇA UMA POR VEZ, NESSA ORDEM:
 "Qual é o nome da empresa, o que ela vende e qual o ticket médio?"
 
 2. S — Strategic Architecture:
-"Você consegue descrever em uma frase quem é seu cliente ideal — e por que ele escolhe você e não outro?"
+"Você consegue descrever em uma frase quem é seu cliente ideal, e por que ele escolhe você e não outro?"
 
 3. C — Commercial Engine:
-"Como os clientes chegam até você hoje — e qual canal você escalaria se dobrasse o investimento amanhã?"
+"Como os clientes chegam até você hoje, e qual canal você escalaria se dobrasse o investimento amanhã?"
 
 4. A — Analytics:
 "Você consegue prever quanto vai faturar no próximo mês? Qual foi o erro da última previsão?"
 
 5. L — Leadership:
-"Se você sair por 30 dias, o comercial continua funcionando — ou trava em você?"
+"Se você sair por 30 dias, o comercial continua funcionando, ou trava em você?"
 
 6. E — Execution:
 "Quando uma meta não é batida, você consegue identificar exatamente em qual etapa do funil quebrou?"
 
 7. G — Governance:
-"Existe um ritmo claro de gestão da receita — reuniões, forecast, pipeline review — ou cada semana funciona de um jeito?"
+"Existe um ritmo claro de gestão da receita, reuniões, forecast, pipeline review, ou cada semana funciona de um jeito?"
 
 REGRAS ABSOLUTAS:
 - Uma pergunta por vez — sempre, sem exceção.
