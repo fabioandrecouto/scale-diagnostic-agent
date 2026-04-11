@@ -137,6 +137,131 @@ html, body {
   color: #444;
   letter-spacing: 1px;
 }
+
+/* ── PRE-CHAT FORM SCREEN ── */
+#form-screen {
+  display: none;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  animation: fadeIn 0.5s ease;
+}
+
+.form-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  letter-spacing: 5px;
+  color: var(--gray);
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.form-card {
+  background: var(--black2);
+  border: 1px solid var(--gray-light);
+  border-radius: 14px;
+  padding: 36px 32px;
+  width: 100%;
+  max-width: 440px;
+}
+
+.form-card-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 3px;
+  color: var(--white);
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.form-card-sub {
+  font-size: 13px;
+  color: var(--gray);
+  text-align: center;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.form-field {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 7px;
+}
+
+.form-input {
+  width: 100%;
+  background: var(--black3);
+  border: 1px solid var(--gray-light);
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.form-input:focus { border-color: var(--blue); }
+.form-input::placeholder { color: #444; }
+
+.form-input option {
+  background: var(--black3);
+  color: var(--white);
+}
+
+.form-select-wrap {
+  position: relative;
+}
+
+.form-select-wrap::after {
+  content: '▾';
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray);
+  pointer-events: none;
+  font-size: 12px;
+}
+
+.form-submit {
+  width: 100%;
+  background: var(--blue);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  padding: 15px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 17px;
+  letter-spacing: 3px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.form-submit:hover { background: var(--blue-dim); }
+.form-submit:active { transform: scale(0.98); }
+.form-submit:disabled { background: var(--gray-light); cursor: not-allowed; }
+
+.form-privacy {
+  font-size: 11px;
+  color: #444;
+  text-align: center;
+  margin-top: 14px;
+  line-height: 1.5;
+}
  
 /* ── CHAT SCREEN ── */
 #chat-screen {
@@ -648,7 +773,7 @@ html, body {
 }
  
 .cta-btn {
-  display: inline-block;
+  display: block;
   background: var(--blue);
   color: var(--white);
   text-decoration: none;
@@ -661,7 +786,6 @@ html, body {
   border: none;
   transition: background 0.2s;
   margin-bottom: 12px;
-  display: block;
 }
 .cta-btn:hover { background: var(--blue-dim); }
  
@@ -693,6 +817,7 @@ html, body {
 @media (max-width: 600px) {
   #report-screen { padding: 24px 16px 60px; }
   .score-number { font-size: 60px; }
+  .form-card { padding: 28px 20px; }
 }
 </style>
 </head>
@@ -713,8 +838,48 @@ html, body {
     <div class="intro-bullet"><div class="bullet-dot"></div><span>Relatório enviado para seu email</span></div>
   </div>
  
-  <button class="start-btn" onclick="startChat()">INICIAR DIAGNÓSTICO</button>
+  <button class="start-btn" onclick="showForm()">INICIAR DIAGNÓSTICO</button>
   <div class="powered-by">👉 Powered by Archie · ScaleCo</div>
+</div>
+
+<!-- PRE-CHAT FORM -->
+<div id="form-screen" style="display:none;min-height:100vh;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;animation:fadeIn 0.5s ease;">
+  <div class="form-logo">SCALECO · SCALE DIAGNOSTIC™</div>
+  <div class="form-card">
+    <div class="form-card-title">ANTES DE COMEÇAR</div>
+    <div class="form-card-sub">Algumas informações para personalizar seu diagnóstico.</div>
+
+    <div class="form-field">
+      <label class="form-label">Nome completo</label>
+      <input type="text" id="f-nome" class="form-input" placeholder="Seu nome">
+    </div>
+
+    <div class="form-field">
+      <label class="form-label">Email</label>
+      <input type="email" id="f-email" class="form-input" placeholder="seu@email.com">
+    </div>
+
+    <div class="form-field">
+      <label class="form-label">WhatsApp</label>
+      <input type="tel" id="f-whatsapp" class="form-input" placeholder="(11) 99999-9999">
+    </div>
+
+    <div class="form-field">
+      <label class="form-label">Faturamento anual aproximado</label>
+      <div class="form-select-wrap">
+        <select id="f-faturamento" class="form-input">
+          <option value="" disabled selected>Selecione uma faixa</option>
+          <option value="Até R$1M/ano">Até R$1M/ano</option>
+          <option value="R$1M–R$5M/ano">R$1M – R$5M/ano</option>
+          <option value="R$5M–R$20M/ano">R$5M – R$20M/ano</option>
+          <option value="Acima de R$20M/ano">Acima de R$20M/ano</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="form-submit" id="form-submit-btn" onclick="submitForm()">INICIAR DIAGNÓSTICO</button>
+    <div class="form-privacy">Seus dados são usados apenas para envio do relatório.</div>
+  </div>
 </div>
  
 <!-- CHAT -->
@@ -756,6 +921,7 @@ html, body {
 let history = [];
 let isLoading = false;
 let msgCount = 0;
+let formData = {};
 const MAX_MSGS = 14;
  
 function autoResize(el) {
@@ -766,14 +932,36 @@ function autoResize(el) {
 function handleKey(e) {
   if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
 }
- 
-function startChat() {
+
+function showForm() {
   document.getElementById('intro').style.display = 'none';
+  const fs = document.getElementById('form-screen');
+  fs.style.display = 'flex';
+}
+
+function submitForm() {
+  const nome = document.getElementById('f-nome').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const whatsapp = document.getElementById('f-whatsapp').value.trim();
+  const faturamento = document.getElementById('f-faturamento').value;
+
+  if (!nome || !email || !whatsapp || !faturamento) {
+    alert('Por favor, preencha todos os campos.');
+    return;
+  }
+
+  formData = { nome, email, whatsapp, faturamento };
+
+  document.getElementById('form-screen').style.display = 'none';
   const cs = document.getElementById('chat-screen');
   cs.style.display = 'flex';
-  sendFirst();
+  startChat();
 }
  
+function startChat() {
+  sendFirst();
+}
+
 function updateProgress() {
   const pct = Math.min((msgCount / MAX_MSGS) * 100, 95);
   document.getElementById('progressFill').style.width = pct + '%';
@@ -825,7 +1013,7 @@ async function callAgent(messages) {
   const res = await fetch('/api/diagnostic', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ messages }),
+    body: JSON.stringify({ messages, formData }),
   });
   const data = await res.json();
   return data.reply;
@@ -835,7 +1023,8 @@ async function sendFirst() {
   isLoading = true;
   document.getElementById('sendBtn').disabled = true;
   showTyping();
-  const reply = await callAgent([{ role: 'user', content: 'olá' }]);
+  const firstMsg = [{ role: 'user', content: 'olá' }];
+  const reply = await callAgent(firstMsg);
   removeTyping();
   history.push({ role: 'user', content: 'olá' });
   history.push({ role: 'assistant', content: reply });
@@ -921,7 +1110,6 @@ const DIM_NAMES = {
 };
  
 function renderReport(data) {
-  // Hide chat
   document.getElementById('chat-screen').style.display = 'none';
   document.getElementById('progressFill').style.width = '100%';
  
@@ -955,6 +1143,8 @@ function renderReport(data) {
       <div class="prio-num">${String(i + 1).padStart(2, '0')}</div>
       <div class="prio-text">${p}</div>
     </div>`).join('');
+
+  const waText = encodeURIComponent(`Olá Fábio, acabei de fazer o diagnóstico da ScaleCo. Meu score foi ${data.score_geral} (${data.nivel}) e gostaria de conversar sobre o resultado.`);
  
   rs.innerHTML = `
     <div class="report-header">
@@ -986,9 +1176,8 @@ function renderReport(data) {
     <div class="cta-block">
       <img src="archie.jpeg" class="cta-archie" alt="Archie">
       <div class="cta-title">PRÓXIMO PASSO</div>
-      <div class="cta-sub">O diagnóstico identifica onde está o gargalo. A arquitetura define como resolver. Esse é o trabalho da ScaleCo.</div>
-<a class="cta-btn" href="https://wa.me/5511974270077?text=Ol%C3%A1%20F%C3%A1bio%2C%20acabei%20de%20fazer%20o%20diagn%C3%B3stico%20da%20ScaleCo%20e%20gostaria%20de%20conversar." target="_blank">FALAR COM FÁBIO NO WHATSAPP</a>
-      
+      <div class="cta-sub">O diagnóstico mostra onde a escala está quebrando.<br>A próxima conversa define o que precisa ser construído.</div>
+      <a class="cta-btn" href="https://wa.me/5511974270077?text=${waText}" target="_blank">CONVERSAR SOBRE O DIAGNÓSTICO</a>
       <a class="cta-btn-sec" href="https://scaleco.ai" target="_blank">Conhecer a ScaleCo</a>
     </div>
  
