@@ -104,6 +104,18 @@ TOM: Direto, frases curtas, sem elogios. Nunca use "mentoria" ou "consultoria".`
     const body = JSON.parse(event.body);
     const { messages, formData } = body;
 
+    // Handle lead capture (form submitted, chat not started)
+    if (messages && messages.length === 1 && messages[0].content === '__lead_capture__') {
+      if (formData && formData.email) {
+        await sendLeadCapture(formData);
+      }
+      return {
+        statusCode: 200,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reply: 'ok' }),
+      };
+    }
+
     // Build context message from form data if present
     let messagesWithContext = [...messages];
     if (formData && messages.length === 1 && messages[0].content === 'olá') {
@@ -140,18 +152,6 @@ TOM: Direto, frases curtas, sem elogios. Nunca use "mentoria" ou "consultoria".`
     });
 
     const data = await response.json();
-    // Handle lead capture (form submitted, chat not started)
-    if (messages.length === 1 && messages[0].content === '__lead_capture__') {
-      if (formData && formData.email) {
-        await sendLeadCapture(formData);
-      }
-      return {
-        statusCode: 200,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ reply: 'ok' }),
-      };
-    }
-
     const reply = data.content?.map((b) => b.text || "").join("") || "Erro ao processar resposta.";
 
     // Try to send email if it's a report
@@ -159,13 +159,16 @@ TOM: Direto, frases curtas, sem elogios. Nunca use "mentoria" ou "consultoria".`
       const jsonMatch = reply.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
         const report = JSON.parse(jsonMatch[0]);
-        if (report.tipo === 'relatorio' && report.email) {
-          // Build conversation history from messages
+        if (report.tipo === 'relatorio') {
+          // CORREÇÃO: garantir email via formData se não veio no JSON
+          if (!report.email && formData?.email) report.email = formData.email;
+          if (!report.whatsapp && formData?.whatsapp) report.whatsapp = formData.whatsapp;
+          if (!report.faturamento && formData?.faturamento) report.faturamento = formData.faturamento;
+
           const conversation = messages
             .filter(m => m.role === 'user' || m.role === 'assistant')
             .map(m => {
               const prefix = m.role === 'user' ? 'Lead' : 'Archie';
-              // Skip the form context injection message
               if (m.content.startsWith('[DADOS DO FORMULÁRIO')) return null;
               return `${prefix}: ${m.content}`;
             })
@@ -177,18 +180,15 @@ TOM: Direto, frases curtas, sem elogios. Nunca use "mentoria" ou "consultoria".`
             .map(m => m.content)
             .join('\n\n');
 
-          // Add form data and conversation to report
           report.conversation = conversation;
           report.answers = answers;
-          if (formData) {
-            report.whatsapp = report.whatsapp || formData.whatsapp || null;
-            report.faturamento = report.faturamento || formData.faturamento || null;
-          }
 
           await sendEmails(report);
         }
       }
-    } catch (e) {}
+    } catch (e) {
+      console.error('Erro ao processar relatório:', e.message);
+    }
 
     return {
       statusCode: 200,
@@ -196,6 +196,7 @@ TOM: Direto, frases curtas, sem elogios. Nunca use "mentoria" ou "consultoria".`
       body: JSON.stringify({ reply }),
     };
   } catch (err) {
+    console.error('Erro geral:', err.message);
     return {
       statusCode: 500,
       body: JSON.stringify({ reply: "Erro interno. Tente novamente." }),
@@ -234,7 +235,7 @@ async function sendLeadCapture(data) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${RESEND_KEY}` },
     body: JSON.stringify({
-      from: 'Archie · ScaleCo <onboarding@resend.dev>',
+      from: 'Archie · ScaleCo <noreply@scaleco.ai>',
       to: ['fabio@scaleco.ai'],
       subject: `[Lead Cadastrado] ${data.nome} · ${data.faturamento}`,
       html
@@ -258,80 +259,76 @@ async function sendEmails(report) {
     C: "Commercial Engine",
     A: "Analytics & Governance",
     L: "Leadership Institutionalization",
-    E: "Execution Cadence"
+    E: "Execution Cadence",
+    G: "Governance & Rhythm"
   };
 
   const dimsHTML = Object.entries(report.dimensoes).map(([k, d]) =>
-    `<tr><td style="padding:8px 12px;font-weight:700;color:#2D5BE3;">${k}</td><td style="padding:8px 12px;color:#555;font-size:13px;">${dimNames[k]}</td><td style="padding:8px 12px;font-weight:700;text-align:right;">${d.score}</td></tr>${d.gargalo ? `<tr><td colspan="3" style="padding:2px 12px 10px;font-size:12px;color:#EF4444;">↳ ${d.gargalo}</td></tr>` : ""}`
+    `<tr><td style="padding:8px 12px;font-weight:700;color:#2D5BE3;">${k}</td><td style="padding:8px 12px;color:#555;font-size:13px;">${dimNames[k] || k}</td><td style="padding:8px 12px;font-weight:700;text-align:right;">${d.score}</td></tr>${d.gargalo ? `<tr><td colspan="3" style="padding:2px 12px 10px;font-size:12px;color:#EF4444;">↳ ${d.gargalo}</td></tr>` : ""}`
   ).join("");
 
   const priosHTML = report.prioridades.map((p, i) =>
     `<tr><td style="padding:8px 12px;font-weight:700;color:#2D5BE3;font-size:18px;">${String(i + 1).padStart(2, "0")}</td><td style="padding:8px 12px;color:#333;font-size:14px;">${p}</td></tr>`
   ).join("");
 
-  // Conversation history HTML (admin only)
   const conversationHTML = report.conversation
     ? `<div style="margin-top:24px;border-top:1px solid #eee;padding-top:20px;">
         <div style="font-size:10px;letter-spacing:3px;color:#888;text-transform:uppercase;margin-bottom:12px;">HISTÓRICO DA CONVERSA</div>
         <div style="background:#f9f9f9;border-radius:8px;padding:16px;font-size:12px;color:#444;line-height:2;white-space:pre-wrap;">${report.conversation.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
-      </div>`
-    : '';
+      </div>` : '';
 
-  // Answers only HTML (admin only)
   const answersHTML = report.answers
     ? `<div style="margin-top:16px;">
         <div style="font-size:10px;letter-spacing:3px;color:#888;text-transform:uppercase;margin-bottom:12px;">RESPOSTAS DO LEAD</div>
         <div style="background:#fff8f0;border:1px solid #fde;border-radius:8px;padding:16px;font-size:13px;color:#333;line-height:2;white-space:pre-wrap;">${report.answers.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
-      </div>`
-    : '';
+      </div>` : '';
 
-  const makeHTML = (isAdmin) => `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#f5f5f5;font-family:Arial,sans-serif;">
+  const adminHTML = `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#f5f5f5;font-family:Arial,sans-serif;">
 <div style="max-width:600px;margin:24px auto;background:#fff;border-radius:12px;overflow:hidden;">
   <div style="background:#0A0A0A;padding:32px;text-align:center;">
     <div style="font-size:11px;letter-spacing:4px;color:#888;">SCALECO · SCALE DIAGNOSTIC™</div>
-    <div style="font-size:24px;font-weight:700;color:#fff;margin-top:8px;">DIAGNÓSTICO DE ARQUITETURA</div>
-    <div style="font-size:13px;color:#888;margin-top:6px;">${report.empresa} · ${report.nome}</div>
+    <div style="font-size:24px;font-weight:700;color:#fff;margin-top:8px;">DIAGNÓSTICO CONCLUÍDO</div>
+    <div style="font-size:13px;color:#888;margin-top:6px;">${report.empresa || '—'} · ${report.nome}</div>
   </div>
   <div style="padding:32px;">
     <div style="text-align:center;background:#f9f9f9;border-radius:12px;padding:24px;margin-bottom:24px;border-top:4px solid #2D5BE3;">
       <div style="font-size:10px;letter-spacing:3px;color:#888;text-transform:uppercase;">SCORE GERAL</div>
       <div style="font-size:64px;font-weight:700;color:${nivelColor};line-height:1;margin:8px 0;">${report.score_geral}</div>
       <span style="padding:4px 14px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;background:${nivelColor}22;color:${nivelColor};border:1px solid ${nivelColor}44;">${report.nivel}</span>
-      <div style="font-size:14px;color:#555;line-height:1.7;margin-top:12px;">${report.parecer}</div>
+      <div style="font-size:14px;color:#555;line-height:1.7;margin-top:12px;">${report.parecer || ''}</div>
     </div>
     <div style="font-size:10px;letter-spacing:3px;color:#888;text-transform:uppercase;margin-bottom:10px;">DIMENSÕES SCALE</div>
     <table style="width:100%;border-collapse:collapse;background:#f9f9f9;border-radius:8px;margin-bottom:20px;">${dimsHTML}</table>
     <div style="background:#fff0f0;border:1px solid #fcc;border-radius:8px;padding:16px;margin-bottom:20px;">
       <div style="font-size:10px;letter-spacing:2px;color:#EF4444;text-transform:uppercase;margin-bottom:6px;">⚠ GARGALO CRÍTICO</div>
-      <div style="font-size:14px;color:#333;font-weight:500;">${report.gargalo_critico}</div>
+      <div style="font-size:14px;color:#333;font-weight:500;">${report.gargalo_critico || '—'}</div>
     </div>
     <div style="font-size:10px;letter-spacing:3px;color:#888;text-transform:uppercase;margin-bottom:10px;">PRIORIDADES DE AÇÃO</div>
     <table style="width:100%;border-collapse:collapse;margin-bottom:28px;">${priosHTML}</table>
-    ${!isAdmin
-      ? `<div style="text-align:center;background:#0A0A0A;border-radius:12px;padding:24px;"><div style="font-size:16px;font-weight:700;color:#fff;margin-bottom:8px;">PRÓXIMO PASSO</div><div style="font-size:13px;color:#888;margin-bottom:16px;line-height:1.6;">O diagnóstico mostra onde a escala está quebrando. A próxima conversa define o que precisa ser construído.</div><a href="https://wa.me/5511974270077?text=Olá%20Fábio%2C%20acabei%20de%20fazer%20o%20diagnóstico%20da%20ScaleCo%20e%20gostaria%20de%20conversar%20sobre%20o%20resultado." style="display:inline-block;background:#25D366;color:#fff;text-decoration:none;border-radius:8px;padding:12px 32px;font-weight:700;font-size:14px;">CONVERSAR SOBRE O DIAGNÓSTICO</a></div>`
-      : `<div style="background:#f0f4ff;border-radius:8px;padding:16px;font-size:13px;color:#333;">
-          <strong>Lead:</strong> ${report.nome} · ${report.email}<br>
-          ${report.whatsapp ? `<strong>WhatsApp:</strong> ${report.whatsapp}<br>` : ''}
-          ${report.faturamento ? `<strong>Faturamento:</strong> ${report.faturamento}<br>` : ''}
-          <strong>Empresa:</strong> ${report.empresa}<br>
-          <strong>Score:</strong> ${report.score_geral} · ${report.nivel}
-        </div>
-        ${conversationHTML}
-        ${answersHTML}`
-    }
+    <div style="background:#f0f4ff;border-radius:8px;padding:16px;font-size:13px;color:#333;">
+      <strong>Lead:</strong> ${report.nome} · ${report.email || '—'}<br>
+      ${report.whatsapp ? `<strong>WhatsApp:</strong> <a href="https://wa.me/55${report.whatsapp.replace(/\D/g,'')}">${report.whatsapp}</a><br>` : ''}
+      ${report.faturamento ? `<strong>Faturamento:</strong> ${report.faturamento}<br>` : ''}
+      ${report.empresa ? `<strong>Empresa:</strong> ${report.empresa}` : ''}
+    </div>
+    ${conversationHTML}
+    ${answersHTML}
   </div>
   <div style="padding:16px;border-top:1px solid #eee;text-align:center;font-size:11px;color:#aaa;">ScaleCo · diagnostic.scaleco.ai · Powered by Archie</div>
 </div></body></html>`;
 
-  const send = (to, subject, html) => fetch("https://api.resend.com/emails", {
+  const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { "Content-Type": "application/json", "Authorization": `Bearer ${RESEND_KEY}` },
-    body: JSON.stringify({ from: "Archie · ScaleCo <onboarding@resend.dev>", to: [to], subject, html }),
+    body: JSON.stringify({
+      from: "Archie · ScaleCo <noreply@scaleco.ai>",
+      to: ["fabio@scaleco.ai"],
+      subject: `[Diagnóstico] ${report.nome} · ${report.empresa || '—'} · Score ${report.score_geral}`,
+      html: adminHTML
+    }),
   });
 
-  await send(
-    "fabio@scaleco.ai",
-    `[Novo Lead] ${report.nome} · ${report.empresa} · Score ${report.score_geral}`,
-    makeHTML(true)
-  );
+  const result = await res.json();
+  if (!res.ok) console.error('Resend error:', JSON.stringify(result));
+  else console.log('E-mail enviado:', result.id);
 }
