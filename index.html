@@ -965,10 +965,12 @@ html, body {
     color: rgba(255,255,255,0.25);
   }
   @media (max-width: 680px) {
-    .capa-page { grid-template-columns: 1fr; grid-template-rows: 45vh auto; }
-    .capa-photo { order: 1; height: 45vh; }
-    .capa-photo::before { background: linear-gradient(to bottom, transparent 40%, #0A0A0A 100%); }
-    .capa-content { order: 2; padding: 2rem 1.5rem 3rem; justify-content: flex-start; }
+    .capa-page { display: block; position: relative; min-height: 100vh; }
+    .capa-photo { position: absolute; inset: 0; height: 100%; order: 1; }
+    .capa-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .capa-photo::before { background: rgba(10,10,10,0.72); }
+    .capa-photo::after { display: none; }
+    .capa-content { position: relative; z-index: 2; order: 2; min-height: 100vh; padding: 3rem 1.5rem 3rem; justify-content: center; box-sizing: border-box; }
     .capa-logo { margin-bottom: 1.5rem; }
     .capa-btn { width: 100%; justify-content: center; }
     .capa-author { margin-top: 2rem; }
