@@ -139,11 +139,15 @@ html, body {
 /* ── PRE-CHAT FORM SCREEN ── */
 #form-screen {
   display: none;
-  min-height: 100vh;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #0A0A0A;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 40px 24px;
+  overflow-y: auto;
   animation: fadeIn 0.5s ease;
 }
 
@@ -1015,7 +1019,7 @@ html, body {
 }
 </style>
   <!-- SINTOMAS -->
-  <div style="background:#0A0A0A;padding:4rem 1.5rem 5rem;max-width:680px;margin:0 auto;">
+  <div id="sintomas-section" style="background:#0A0A0A;padding:4rem 1.5rem 5rem;max-width:680px;margin:0 auto;">
 
     <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:2rem;display:flex;align-items:center;gap:10px;">
       <span style="display:block;width:24px;height:1px;background:rgba(255,255,255,0.15);"></span>
@@ -1165,6 +1169,9 @@ function handleKey(e) {
 
 function showForm() {
   document.getElementById('intro').style.display = 'none';
+  const sintomas = document.getElementById('sintomas-section');
+  if (sintomas) sintomas.style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'instant' });
   const fs = document.getElementById('form-screen');
   fs.style.display = 'flex';
 }
