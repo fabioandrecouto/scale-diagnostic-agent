@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScaleCo — Revenue Architecture™</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #2D5BE3;
+    --blue-light: #4A74FF;
+    --blue-dim: rgba(45, 91, 227, 0.15);
+    --blue-border: rgba(45, 91, 227, 0.35);
+    --white: #FFFFFF;
+    --gray: #A0A8B8;
+    --bg: #080810;
+    --card-bg: #0D0D1C;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #080810 !important;
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0 60px;
+    overflow-x: hidden;
+  }
+
+  /* Subtle grid texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(45,91,227,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(45,91,227,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 480px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    padding: 52px 0 36px;
+    position: relative;
+  }
+
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 38px;
+    letter-spacing: 6px;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .logo span {
+    color: var(--blue);
+  }
+
+  .tagline {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--gray);
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .divider {
+    width: 40px;
+    height: 1px;
+    background: var(--blue);
+    margin: 20px auto 0;
+    opacity: 0.6;
+  }
+
+  /* HEADLINE */
+  .headline {
+    text-align: center;
+    padding: 0 0 40px;
+  }
+
+  .headline h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    line-height: 1.05;
+    letter-spacing: 1px;
+    color: #FFFFFF !important;
+    margin-bottom: 4px;
+  }
+
+  .headline h1 em {
+    font-style: normal;
+    color: #2D5BE3 !important;
+  }
+
+  .headline p {
+    font-size: 13px;
+    color: #A0A8B8 !important;
+    font-weight: 300;
+    margin-top: 12px;
+    line-height: 1.6;
+  }
+
+  /* CARDS */
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--blue-border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-decoration: none;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.2s;
+    cursor: pointer;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--blue), transparent);
+    opacity: 0.6;
+  }
+
+  .card:hover {
+    border-color: var(--blue);
+    transform: translateY(-2px);
+  }
+
+  .card-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--blue-light);
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .card-label::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--blue);
+    border-radius: 50%;
+  }
+
+  .card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+    letter-spacing: 1px;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .card-title span {
+    color: var(--blue);
+  }
+
+  .card-desc {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .card-meta {
+    font-size: 11px;
+    color: var(--gray);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0.8;
+  }
+
+  .card-meta svg {
+    opacity: 0.7;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--blue);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 22px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, gap 0.2s;
+  }
+
+  .btn:hover {
+    background: var(--blue-light);
+    gap: 12px;
+  }
+
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid var(--blue-border);
+    color: var(--blue-light);
+  }
+
+  .btn-ghost:hover {
+    background: var(--blue-dim);
+    border-color: var(--blue);
+  }
+
+  /* Card icon area */
+  .card-icon {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    opacity: 0.15;
+  }
+
+  /* PILLS ROW */
+  .pills {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 36px;
+    padding: 0 4px;
+  }
+
+  .pill {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gray);
+    border: 1px solid rgba(160,168,184,0.2);
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-weight: 400;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(45,91,227,0.1);
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 6px;
+    color: rgba(255,255,255,0.2);
+  }
+
+  /* Animations */
+  .card, .headline, .header {
+    animation: fadeUp 0.5s ease both;
+  }
+  .header { animation-delay: 0s; }
+  .headline { animation-delay: 0.1s; }
+  .card:nth-child(1) { animation-delay: 0.15s; }
+  .card:nth-child(2) { animation-delay: 0.25s; }
+  .card:nth-child(3) { animation-delay: 0.35s; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Glow on hover */
+  .card:hover::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(45,91,227,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo">SCALE<span>CO</span></div>
+    <div class="tagline">Método Scale™</div>
+    <div class="divider"></div>
+  </div>
+
+  <!-- HEADLINE -->
+  <div class="headline">
+    <h1>Sua empresa cresce.<br><em>Mas não escala.</em></h1>
+    <p>Escolha por onde começar.</p>
+  </div>
+
+  <!-- CARDS -->
+  <div class="cards">
+
+    <!-- Card 1: Diagnóstico -->
+    <a href="https://diagnostic.scaleco.ai" class="card">
+      <svg class="card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="28" width="8" height="16" rx="2" fill="#2D5BE3"/>
+        <rect x="16" y="18" width="8" height="26" rx="2" fill="#2D5BE3"/>
+        <rect x="28" y="8" width="8" height="36" rx="2" fill="#2D5BE3"/>
+        <rect x="40" y="14" width="8" height="30" rx="2" fill="#2D5BE3"/>
+      </svg>
+      <div class="card-label">Diagnóstico Gratuito</div>
+      <div class="card-title">Scale <span>Diagnostic™</span></div>
+      <div class="card-desc">Descubra exatamente onde sua arquitetura de receita está travada.</div>
+      <div class="card-meta">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+        Leva apenas 2 minutos
+      </div>
+      <span class="btn">Fazer Diagnóstico →</span>
+    </a>
+
+    <!-- Card 2: Call Review -->
+    <a href="/call-review.html" class="card">
+      <svg class="card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="20" stroke="#2D5BE3" stroke-width="2"/>
+        <path d="M16 20 Q24 14 32 20 Q32 28 24 32 Q16 28 16 20Z" fill="#2D5BE3"/>
+      </svg>
+      <div class="card-label">Scale Call Review™</div>
+      <div class="card-title">Você não perde na <span>call.</span></div>
+      <div class="card-desc">Cole a transcrição. A IA identifica em segundos onde você perde conversão — e por quê.</div>
+      <span class="btn btn-ghost">Analisar Minha Call →</span>
+    </a>
+
+    <!-- Card 3: Advisory -->
+    <a href="/advisory.html" class="card">
+      <svg class="card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="20" stroke="#2D5BE3" stroke-width="2"/>
+        <circle cx="24" cy="24" r="12" stroke="#2D5BE3" stroke-width="1.5"/>
+        <circle cx="24" cy="24" r="4" fill="#2D5BE3"/>
+      </svg>
+      <div class="card-label">Advisory Executivo</div>
+      <div class="card-title">Scale <span>Advisory™</span></div>
+      <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#A0A8B8;font-weight:400;margin-bottom:10px;">Arquitetura de Receita</div>
+      <div class="card-desc">Atuo ao lado do CEO para construir a arquitetura que sustenta uma empresa que escala com previsibilidade.</div>
+      <span class="btn">Aplicar para Advisory →</span>
+    </a>
+
+  </div>
+
+  <!-- PILLS -->
+  <div class="pills">
+    <span class="pill">Diagnóstico</span>
+    <span class="pill">Arquitetura</span>
+    <span class="pill">Implementação</span>
+    <span class="pill">Acompanhamento</span>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-logo">S C A L E C O</div>
+  </div>
+
+</div>
+</body>
+</html>
