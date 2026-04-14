@@ -973,6 +973,12 @@ html, body {
     .capa-author { margin-top: 1.5rem; }
   }
 
+
+  @media (max-width:680px){
+    #intro>div:first-child{order:1;height:40vh;}
+    #intro>div:last-child{order:2;padding:1.5rem 1.5rem 3rem;justify-content:flex-start;}
+    #intro>div:last-child button{width:100%;justify-content:center;}
+  }
 </style>
 </head>
 <body>
@@ -1010,15 +1016,7 @@ html, body {
   </div>
 
 </div>
-<style>
-@media (max-width:680px){
-  #intro{grid-template-columns:1fr !important;grid-template-rows:45vh auto;}
-  #intro>div:first-child{order:1 !important;height:45vh;}
-  #intro>div:last-child{order:2 !important;padding:2rem 1.5rem 3rem !important;justify-content:flex-start !important;}
-  #intro>div:last-child button{width:100%;justify-content:center;}
-}
-</style>
-  <!-- SINTOMAS -->
+ <!-- SINTOMAS -->
   <div id="sintomas-section" style="background:#0A0A0A;padding:4rem 1.5rem 5rem;max-width:680px;margin:0 auto;">
 
     <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:2rem;display:flex;align-items:center;gap:10px;">
