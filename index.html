@@ -973,12 +973,6 @@ html, body {
     .capa-author { margin-top: 1.5rem; }
   }
 
-
-  @media (max-width:680px){
-    #intro>div:first-child{order:1;height:40vh;}
-    #intro>div:last-child{order:2;padding:1.5rem 1.5rem 3rem;justify-content:flex-start;}
-    #intro>div:last-child button{width:100%;justify-content:center;}
-  }
 </style>
 </head>
 <body>
@@ -995,13 +989,17 @@ html, body {
   </div>
 
   <div style="order:1;display:flex;flex-direction:column;justify-content:center;padding:4rem 3rem 4rem 4rem;">
-    <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:2.5rem;">SCALECO · SCALE DIAGNOSTIC™</div>
+    <div style="margin-bottom:2rem;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.08em;color:#FFFFFF;margin-bottom:4px;">FÁBIO COUTO</div>
+      <div style="font-size:12px;font-weight:300;color:rgba(255,255,255,0.72);letter-spacing:0.02em;margin-bottom:1.5rem;">25+ anos construindo motores de receita em empresas globais de tecnologia</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.25);">SCALECO · SCALE DIAGNOSTIC™</div>
+    </div>
     <h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,4.5vw,60px);line-height:0.97;letter-spacing:0.01em;color:#FFFFFF;margin-bottom:1.25rem;">
       Se sua empresa depende de você para crescer,<br>
       <span style="color:#2D5BE3;">ela ainda não escala.</span>
     </h1>
-    <p style="font-size:18px;font-weight:400;color:rgba(255,255,255,0.85);line-height:1.5;margin-bottom:0.5rem;">Descubra onde está o gargalo.</p>
-    <p style="font-size:14px;font-weight:300;color:rgba(255,255,255,0.4);line-height:1.5;margin-bottom:2.5rem;">Leva menos de 5 minutos.</p>
+    <p style="font-size:18px;font-weight:400;color:rgba(255,255,255,0.85);line-height:1.5;margin-bottom:0.5rem;">Descubra onde sua operação trava — e o que mudar nos próximos 90 dias.</p>
+    <p style="font-size:14px;font-weight:300;color:rgba(255,255,255,0.4);line-height:1.5;margin-bottom:2.5rem;">Leva 3 minutos.</p>
     <div>
       <button onclick="showForm()" style="display:inline-flex;align-items:center;gap:10px;background:#2D5BE3;color:#fff;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.1em;padding:16px 32px;border:none;cursor:pointer;transition:background 0.2s,transform 0.15s;-webkit-tap-highlight-color:transparent;">
         DESCOBRIR AGORA
@@ -1009,14 +1007,19 @@ html, body {
       </button>
       <p style="margin-top:10px;font-size:11px;color:rgba(255,255,255,0.2);letter-spacing:0.04em;">Direto ao ponto. Sem teoria.</p>
     </div>
-    <div style="margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.08);">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.05em;color:rgba(255,255,255,0.6);margin-bottom:4px;">Fábio Couto</div>
-      <div style="font-size:11px;color:rgba(255,255,255,0.22);letter-spacing:0.08em;text-transform:uppercase;">Founder, ScaleCo · Former Salesforce · Microsoft · SAP · HP</div>
-    </div>
+
   </div>
 
 </div>
- <!-- SINTOMAS -->
+<style>
+@media (max-width:680px){
+  #intro{grid-template-columns:1fr !important;grid-template-rows:45vh auto;}
+  #intro>div:first-child{order:1 !important;height:45vh;}
+  #intro>div:last-child{order:2 !important;padding:2rem 1.5rem 3rem !important;justify-content:flex-start !important;}
+  #intro>div:last-child button{width:100%;justify-content:center;}
+}
+</style>
+  <!-- SINTOMAS -->
   <div id="sintomas-section" style="background:#0A0A0A;padding:4rem 1.5rem 5rem;max-width:680px;margin:0 auto;">
 
     <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:2rem;display:flex;align-items:center;gap:10px;">
@@ -1064,7 +1067,7 @@ html, body {
 
     <div style="margin-top:2.5rem;">
       <button onclick="showForm()" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#2D5BE3;color:#fff;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.1em;padding:16px 32px;border:none;cursor:pointer;width:100%;-webkit-tap-highlight-color:transparent;">
-        ISSO ESTÁ ACONTECENDO COMIGO
+        VER MEU DIAGNÓSTICO
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
       <p style="margin-top:10px;font-size:11px;color:rgba(255,255,255,0.2);letter-spacing:0.04em;text-align:center;">Direto ao ponto. Sem teoria.</p>
@@ -1072,6 +1075,21 @@ html, body {
 
   </div>
 
+
+
+  <!-- TELA INTERMEDIÁRIA -->
+  <div id="tela-intermediaria" style="display:none;position:fixed;inset:0;z-index:99;background:#0A0A0A;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;animation:fadeIn 0.5s ease;">
+    <div style="max-width:440px;width:100%;text-align:center;">
+      <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:2.5rem;">SCALECO · SCALE DIAGNOSTIC™</div>
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,6vw,42px);line-height:1.05;letter-spacing:0.01em;color:#FFFFFF;margin-bottom:1.5rem;">Antes de começar, preciso entender como sua operação de receita funciona hoje.</h2>
+      <p style="font-size:15px;font-weight:300;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:0.75rem;">Em poucos minutos, você vai ver onde sua escala está travando — e por quê.</p>
+      <p style="font-size:13px;font-weight:400;color:rgba(255,255,255,0.35);margin-bottom:2.5rem;letter-spacing:0.04em;">Leva 3 minutos.</p>
+      <button onclick="showFormFromIntermediate()" style="display:flex;align-items:center;justify-content:center;gap:10px;background:#2D5BE3;color:#fff;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.1em;padding:16px 32px;border:none;cursor:pointer;width:100%;-webkit-tap-highlight-color:transparent;">
+        COMEÇAR DIAGNÓSTICO
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
 
 <!-- PRE-CHAT FORM -->
 <div id="form-screen">
@@ -1170,6 +1188,15 @@ function showForm() {
   const sintomas = document.getElementById('sintomas-section');
   if (sintomas) sintomas.style.display = 'none';
   window.scrollTo({ top: 0, behavior: 'instant' });
+  const ti = document.getElementById('tela-intermediaria');
+  if (ti) { ti.style.display = 'flex'; return; }
+  const fs = document.getElementById('form-screen');
+  fs.style.display = 'flex';
+}
+
+function showFormFromIntermediate() {
+  const ti = document.getElementById('tela-intermediaria');
+  if (ti) ti.style.display = 'none';
   const fs = document.getElementById('form-screen');
   fs.style.display = 'flex';
 }
