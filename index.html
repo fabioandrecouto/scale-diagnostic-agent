@@ -1494,9 +1494,10 @@ function renderReport(data) {
   const params = new URLSearchParams(window.location.search);
   if (params.get('start') === '1') {
     document.getElementById('intro').style.display = 'none';
+    const sintomas = document.getElementById('sintomas-section');
+    if (sintomas) sintomas.style.display = 'none';
+    const ti = document.getElementById('tela-intermediaria');
+    if (ti) ti.style.display = 'none';
     document.getElementById('form-screen').style.display = 'flex';
   }
 })();
-</script>
-</body>
-</html>
