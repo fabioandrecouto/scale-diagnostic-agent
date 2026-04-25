@@ -1487,16 +1487,9 @@ function renderReport(data) {
  
     <div class="email-note">📩 Relatório enviado para ${data.email}</div>
   `;
- window.scrollTo({ top: 0, behavior: 'smooth' });
+ 
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
-(function() {
-  const params = new URLSearchParams(window.location.search);
-  if (params.get('start') === '1') {
-    document.getElementById('intro').style.display = 'none';
-    document.getElementById('form-screen').style.display = 'flex';
-  }
-})();
 </script>
 </body>
 </html>
