@@ -1194,11 +1194,12 @@ function showForm() {
   fs.style.display = 'flex';
 }
 
-function showFormFromIntermediate() {
-  const ti = document.getElementById('tela-intermediaria');
-  if (ti) ti.style.display = 'none';
-  const fs = document.getElementById('form-screen');
-  fs.style.display = 'flex';
+function showForm() {
+  document.getElementById('intro').style.display = 'none';
+  const sintomas = document.getElementById('sintomas-section');
+  if (sintomas) sintomas.style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  document.getElementById('form-screen').style.display = 'flex';
 }
 
 function maskPhone(e) {
