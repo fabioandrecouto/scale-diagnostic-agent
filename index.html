@@ -1469,10 +1469,11 @@ function submitForm() {
 
   formData = { nome, email, whatsapp, faturamento };
 
-  captureLead(formData);
-
+  // Abre nova aba ANTES de qualquer async — evita bloqueio do browser
   const params = new URLSearchParams({ nome, email, whatsapp, faturamento, start: '1' });
   window.open('/?' + params.toString(), '_blank');
+
+  captureLead(formData);
 }
  
 async function captureLead(data) {
