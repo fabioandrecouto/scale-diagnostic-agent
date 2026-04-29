@@ -1191,6 +1191,61 @@ html, body {
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
+
+@media (min-width: 768px) {
+  #intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    align-items: stretch;
+  }
+
+  .intro-photo-wrap {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+  }
+
+  .intro-photo-wrap img {
+    object-position: center 20%;
+    filter: brightness(0.65);
+  }
+
+  .intro-content {
+    padding: 5rem 3.5rem 4rem;
+    align-items: flex-start;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .intro-headline {
+    font-size: clamp(42px, 4vw, 64px);
+    text-align: left;
+  }
+
+  .intro-subline {
+    text-align: left;
+    max-width: 440px;
+  }
+
+  .intro-cta {
+    max-width: 400px;
+  }
+
+  .intro-credibility {
+    text-align: left;
+  }
+
+  .intro-logos {
+    justify-content: flex-start;
+  }
+
+  .intro-trust {
+    justify-content: flex-start;
+  }
+}
 </style>
 
 <div id="intro">
