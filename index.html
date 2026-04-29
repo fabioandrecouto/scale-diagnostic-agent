@@ -1196,14 +1196,12 @@ html, body {
   #intro {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 100vh;
-    align-items: stretch;
+    height: 100vh;
+    overflow: hidden;
   }
 
   .intro-photo-wrap {
     height: 100vh;
-    position: sticky;
-    top: 0;
   }
 
   .intro-photo-wrap img {
@@ -1212,26 +1210,28 @@ html, body {
   }
 
   .intro-content {
-    padding: 5rem 3.5rem 4rem;
+    padding: 3rem 3.5rem;
     align-items: flex-start;
     justify-content: center;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    height: 100vh;
+    overflow-y: auto;
+    box-sizing: border-box;
   }
 
   .intro-headline {
-    font-size: clamp(42px, 4vw, 64px);
+    font-size: clamp(38px, 3.5vw, 58px);
     text-align: left;
   }
 
   .intro-subline {
     text-align: left;
-    max-width: 440px;
+    max-width: 420px;
   }
 
   .intro-cta {
-    max-width: 400px;
+    max-width: 380px;
   }
 
   .intro-credibility {
