@@ -980,8 +980,8 @@ html, body {
 <!-- INTRO -->
 <style>
 #intro {
-  display: grid !important;
-  grid-template-columns: 1fr !important;
+  display: grid;
+  grid-template-columns: 1fr;
   min-height: 100vh;
   background: linear-gradient(to bottom, #0D1B3E 0%, #0A1628 40%, #0A0A0A 100%);
 }
@@ -1196,12 +1196,13 @@ html, body {
   #intro {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
   }
 
   .intro-photo-wrap {
     height: 100vh;
+    position: sticky;
+    top: 0;
   }
 
   .intro-photo-wrap img {
@@ -1215,9 +1216,8 @@ html, body {
     justify-content: center;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    overflow-y: auto;
     box-sizing: border-box;
+    background: #0A0A0A;
   }
 
   .intro-headline {
