@@ -1715,40 +1715,23 @@ const DIM_NAMES = {
 function renderReport(data) {
   document.getElementById('chat-screen').style.display = 'none';
   document.getElementById('progressFill').style.width = '100%';
- 
+
   const rs = document.getElementById('report-screen');
   rs.style.display = 'block';
- 
+
   const scoreColor = getScoreColor(data.score_geral);
   const nivelClass = getNivelClass(data.nivel);
   const today = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
- 
-  let dimensoesHTML = '';
-  for (const [key, dim] of Object.entries(data.dimensoes)) {
-    const c = getScoreColor(dim.score);
-    dimensoesHTML += `
-      <div class="dim-row">
-        <div class="dim-top">
-          <div class="dim-letter">${key}</div>
-          <div class="dim-name">${DIM_NAMES[key]}</div>
-          <div class="dim-score" style="color:${c}">${dim.score}</div>
-        </div>
-        <div class="dim-bar-wrap">
-          <div class="dim-bar-fill" style="width:${dim.score}%;background:${c}"></div>
-        </div>
-        <div class="dim-status">${dim.status}</div>
-        ${dim.gargalo ? `<div class="dim-gargalo">↳ ${dim.gargalo}</div>` : ''}
-      </div>`;
-  }
- 
-  let priosHTML = data.prioridades.map((p, i) => `
-    <div class="prio-item">
-      <div class="prio-num">${String(i + 1).padStart(2, '0')}</div>
-      <div class="prio-text">${p}</div>
-    </div>`).join('');
+
+  // Dimensão mais crítica (menor score)
+  const dimCritica = Object.entries(data.dimensoes)
+    .sort((a, b) => a[1].score - b[1].score)[0];
+  const dimKey = dimCritica[0];
+  const dimData = dimCritica[1];
+  const dimColor = getScoreColor(dimData.score);
 
   const waText = encodeURIComponent(`Olá Fábio, acabei de fazer o diagnóstico da ScaleCo. Meu score foi ${data.score_geral} (${data.nivel}) e gostaria de conversar sobre o resultado.`);
- 
+
   rs.innerHTML = `
     <div class="report-header">
       <div class="report-logo">SCALECO · SCALE DIAGNOSTIC™</div>
@@ -1757,35 +1740,44 @@ function renderReport(data) {
       <div class="report-company">${data.empresa.toUpperCase()}</div>
       <div class="report-date">${today} · ${data.nome}</div>
     </div>
- 
+
     <div class="score-block">
       <div class="score-label">SCORE GERAL · SCALE METHOD™</div>
       <div class="score-number" style="color:${scoreColor}">${data.score_geral}</div>
       <div><span class="score-nivel ${nivelClass}">${data.nivel}</span></div>
       <p class="score-parecer">${data.parecer}</p>
     </div>
- 
-    <div class="section-title">DIMENSÕES SCALE</div>
-    <div class="dimensoes">${dimensoesHTML}</div>
- 
+
     <div class="gargalo-block">
-      <div class="gargalo-label">⚠ Gargalo Crítico</div>
+      <div class="gargalo-label">⚠ Principal ponto de atenção</div>
       <div class="gargalo-text">${data.gargalo_critico}</div>
     </div>
- 
-    <div class="section-title">PRIORIDADES DE AÇÃO</div>
-    <div class="prioridades">${priosHTML}</div>
- 
+
+    <div class="section-title">DIMENSÃO MAIS CRÍTICA</div>
+    <div class="dimensoes">
+      <div class="dim-row">
+        <div class="dim-top">
+          <div class="dim-letter">${dimKey}</div>
+          <div class="dim-name">${DIM_NAMES[dimKey]}</div>
+          <div class="dim-score" style="color:${dimColor}">${dimData.score}</div>
+        </div>
+        <div class="dim-bar-wrap">
+          <div class="dim-bar-fill" style="width:${dimData.score}%;background:${dimColor}"></div>
+        </div>
+        <div class="dim-status">${dimData.status}</div>
+      </div>
+    </div>
+
     <div class="cta-block">
       <img src="archie.jpeg" class="cta-archie" alt="Archie">
       <div class="cta-title">PRÓXIMO PASSO</div>
-      <div class="cta-sub">O diagnóstico mostra onde a escala está quebrando.<br>A próxima conversa define o que precisa ser construído.</div>
+      <div class="cta-sub">O diagnóstico completo — com todas as dimensões, gargalos e prioridades de arquitetura — é entregue na conversa com Fábio.<br><br>Você receberá o relatório detalhado por e-mail.</div>
       <a class="cta-btn" href="https://wa.me/5511974270077?text=${waText}" target="_blank">CONVERSAR SOBRE O DIAGNÓSTICO</a>
     </div>
- 
-    <div class="email-note">📩 Relatório enviado para ${data.email}</div>
+
+    <div class="email-note">📩 Relatório completo enviado para ${data.email}</div>
   `;
- 
+
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
