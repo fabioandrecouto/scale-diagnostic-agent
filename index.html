@@ -1702,7 +1702,26 @@ function getNivelClass(nivel) {
   };
   return map[nivel] || 'nivel-desenvolvimento';
 }
- 
+
+function getCTAContent(score) {
+  if (score < 60) {
+    return {
+      sub: `Seu score mostra que existe um problema de arquitetura — não de esforço. O próximo passo é entender exatamente onde a operação está quebrando.`,
+      cta: `QUERO DESTRAVAR MINHA OPERAÇÃO`
+    };
+  } else if (score < 80) {
+    return {
+      sub: `Você já construiu base. Mas ainda não tem um motor de receita previsível. O próximo passo é aperfeiçoar o que já existe.`,
+      cta: `QUERO APERFEIÇOAR MINHA OPERAÇÃO`
+    };
+  } else {
+    return {
+      sub: `Seu score mostra que a base já existe. O próximo passo é transformar isso em um motor de escala mais robusto e previsível.`,
+      cta: `QUERO LEVAR MINHA OPERAÇÃO PARA O PRÓXIMO NÍVEL`
+    };
+  }
+}
+
 const DIM_NAMES = {
   S: 'Strategic Architecture',
   C: 'Commercial Engine',
@@ -1714,12 +1733,12 @@ const DIM_NAMES = {
 function renderReport(data) {
   document.getElementById('chat-screen').style.display = 'none';
   document.getElementById('progressFill').style.width = '100%';
-
+  const { sub, cta } = getCTAContent(data.score_geral);
   const rs = document.getElementById('report-screen');
   rs.style.display = 'block';
-
   const scoreColor = getScoreColor(data.score_geral);
   const nivelClass = getNivelClass(data.nivel);
+ 
   const today = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
 
   // Dimensão mais crítica (menor score)
@@ -1770,8 +1789,8 @@ function renderReport(data) {
     <div class="cta-block">
       <img src="archie.jpeg" class="cta-archie" alt="Archie">
       <div class="cta-title">PRÓXIMO PASSO</div>
-      <div class="cta-sub">Seu score está pronto. Agora você decide: <strong>continuar no escuro</strong>, ou entender exatamente o que está travando sua escala.</div>
-     <a class="cta-btn" href="https://wa.me/5511974270077?text=${waText}" target="_blank">QUERO DESTRAVAR MINHA OPERAÇÃO</a>
+ <div class="cta-sub">${sub}</div>
+     <a class="cta-btn" href="https://wa.me/5511974270077?text=${waText}" target="_blank">${cta}</a>
     </div>
     <div class="email-note">📩 Relatório enviado para ${data.email}</div>
   `;
