@@ -1808,5 +1808,19 @@ function renderReport(data) {
   if (el) el.src = chosen;
 })();
 </script>
+<script>
+(function() {
+  const p = new URLSearchParams(window.location.search);
+  if (p.get('form') === '1') {
+    window.history.replaceState({}, '', '/');
+    document.getElementById('intro').style.display = 'none';
+    const s = document.getElementById('sintomas-section');
+    if (s) s.style.display = 'none';
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    document.getElementById('form-screen').style.display = 'flex';
+  }
+})();
+</script>
+ 
 </body>
 </html>
