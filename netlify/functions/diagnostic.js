@@ -120,6 +120,13 @@ TOM: Direto, frases curtas, sem elogios. Nunca use "mentoria" ou "consultoria".`
     // Build context message from form data if present
     let messagesWithContext = [...messages];
     if (formData && messages.length === 1 && messages[0].content === 'olá') {
+
+      // FALLBACK iOS/Safari: dispara lead capture aqui também,
+      // pois o Safari cancela a requisição anterior antes de navegar.
+      if (formData.email) {
+        sendLeadCapture(formData).catch(e => console.error('Lead capture fallback:', e.message));
+      }
+
       const contextParts = [];
       if (formData.nome) contextParts.push(`Nome: ${formData.nome}`);
       if (formData.email) contextParts.push(`Email: ${formData.email}`);
@@ -161,7 +168,7 @@ TOM: Direto, frases curtas, sem elogios. Nunca use "mentoria" ou "consultoria".`
       if (jsonMatch) {
         const report = JSON.parse(jsonMatch[0]);
         if (report.tipo === 'relatorio') {
-          // CORREÇÃO: garantir email via formData se não veio no JSON
+          // Garantir email via formData se não veio no JSON
           if (!report.email && formData?.email) report.email = formData.email;
           if (!report.whatsapp && formData?.whatsapp) report.whatsapp = formData.whatsapp;
           if (!report.faturamento && formData?.faturamento) report.faturamento = formData.faturamento;
