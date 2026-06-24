@@ -227,27 +227,27 @@ async function sendLeadCapture(data) {
   const RESEND_KEY = process.env.RESEND_API_KEY;
   if (!RESEND_KEY) return;
 
-  const html = `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#f5f5f5;font-family:Arial,sans-serif;">
-<div style="max-width:600px;margin:24px auto;background:#fff;border-radius:12px;overflow:hidden;">
-  <div style="background:#0A0A0A;padding:24px 32px;">
-    <div style="font-size:11px;letter-spacing:4px;color:#888;">SCALECO · SCALE DIAGNOSTIC™</div>
-    <div style="font-size:20px;font-weight:700;color:#fff;margin-top:8px;">NOVO LEAD CADASTRADO</div>
+  const html = `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#000000;font-family:Arial,sans-serif;">
+<div style="max-width:600px;margin:24px auto;background:#111111;border-radius:8px;overflow:hidden;border:1px solid #222222;">
+  <div style="background:#2D5BE3;padding:24px 32px;">
+    <div style="font-size:11px;letter-spacing:4px;color:rgba(0,0,0,0.5);font-weight:700;text-transform:uppercase;">SCALECO · SCALE DIAGNOSTIC™</div>
+    <div style="font-size:20px;font-weight:800;color:#000;margin-top:6px;">NOVO LEAD CADASTRADO</div>
   </div>
   <div style="padding:28px 32px;">
-    <div style="background:#f9f9f9;border-radius:8px;padding:20px;font-size:14px;color:#333;line-height:2;">
-      <strong>Nome:</strong> ${data.nome}<br>
-      <strong>Email:</strong> ${data.email}<br>
-      <strong>WhatsApp:</strong> ${data.whatsapp}<br>
-      <strong>Faturamento:</strong> ${data.faturamento}
+    <div style="background:#1a1a1a;border:1px solid #222;border-radius:8px;padding:20px;font-size:14px;color:#888;line-height:2.2;">
+      <strong style="color:#444;">Nome:</strong> <span style="color:#ddd;">${data.nome}</span><br>
+      <strong style="color:#444;">Email:</strong> <a href="mailto:${data.email}" style="color:#2D5BE3;">${data.email}</a><br>
+      <strong style="color:#444;">WhatsApp:</strong> <span style="color:#ddd;">${data.whatsapp}</span><br>
+      <strong style="color:#444;">Faturamento:</strong> <span style="color:#ddd;">${data.faturamento}</span>
     </div>
-    <div style="margin-top:16px;padding:14px;background:#e8f0fe;border:1px solid #c5d5fb;border-radius:8px;font-size:13px;color:#555;">
+    <div style="margin-top:16px;padding:14px 16px;background:#131929;border:1px solid #1e2d5e;border-radius:8px;font-size:13px;color:#8baaf0;">
       ⚠ Este lead iniciou o diagnóstico mas ainda não concluiu.
     </div>
     <div style="margin-top:20px;text-align:center;">
       <a href="https://wa.me/55${data.whatsapp.replace(/\D/g,'')}" style="display:inline-block;background:#25D366;color:#fff;text-decoration:none;border-radius:8px;padding:12px 28px;font-weight:700;font-size:14px;">CHAMAR NO WHATSAPP</a>
     </div>
   </div>
-  <div style="padding:16px;border-top:1px solid #eee;text-align:center;font-size:11px;color:#aaa;">ScaleCo · diagnostic.scaleco.ai</div>
+  <div style="padding:16px;border-top:1px solid #1e1e1e;text-align:center;font-size:11px;color:#333;">ScaleCo · diagnostic.scaleco.ai</div>
 </div></body></html>`;
 
   await fetch('https://api.resend.com/emails', {
@@ -304,56 +304,98 @@ async function sendEmails(report) {
         <div style="background:#f9f9f9;border-radius:8px;padding:16px;font-size:12px;color:#444;line-height:2;white-space:pre-wrap;">${report.conversation.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
       </div>` : '';
 
-  const adminHTML = `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#f5f5f5;font-family:Arial,sans-serif;">
-<div style="max-width:640px;margin:24px auto;background:#fff;border-radius:12px;overflow:hidden;">
-  <div style="background:#0A0A0A;padding:32px;text-align:center;">
-    <div style="font-size:11px;letter-spacing:4px;color:#888;">SCALECO · SCALE METHOD™ · SCALE DIAGNOSTIC™</div>
-    <div style="font-size:24px;font-weight:700;color:#fff;margin-top:8px;">DIAGNÓSTICO CONCLUÍDO</div>
-    <div style="font-size:13px;color:#888;margin-top:6px;">${report.empresa || '—'} · ${report.nome}${report.localizacao ? ' · ' + report.localizacao : ''}</div>
+  // Dimensões com dark theme
+  const dimsHTMLDark = Object.entries(report.dimensoes).map(([k, d]) =>
+    `<tr>
+      <td style="padding:8px 12px;font-weight:700;color:#2D5BE3;font-size:15px;">${k}</td>
+      <td style="padding:8px 12px;color:#aaa;font-size:12px;letter-spacing:1px;text-transform:uppercase;">${dimNames[k] || k}</td>
+      <td style="padding:8px 12px;font-weight:700;text-align:right;font-size:18px;color:#fff;">${d.score}</td>
+    </tr>${d.gargalo ? `<tr><td colspan="3" style="padding:2px 12px 12px 28px;font-size:12px;color:#EF4444;">↳ ${d.gargalo}</td></tr>` : ''}`
+  ).join("");
+
+  const priosHTMLDark = report.prioridades.map((p, i) =>
+    `<tr>
+      <td style="padding:10px 12px;font-weight:700;color:#2D5BE3;font-size:20px;vertical-align:top;width:40px;">${String(i + 1).padStart(2, "0")}</td>
+      <td style="padding:10px 12px;color:#ccc;font-size:14px;line-height:1.5;">${p}</td>
+    </tr>`
+  ).join("");
+
+  const tabelaHTMLDark = Array.isArray(report.scaleco_tabela) ? report.scaleco_tabela.map(row =>
+    `<tr>
+      <td style="padding:12px 14px;font-size:13px;color:#ddd;border-bottom:1px solid #1e1e1e;vertical-align:top;">${row.desafio}</td>
+      <td style="padding:12px 14px;font-size:13px;color:#888;border-bottom:1px solid #1e1e1e;vertical-align:top;">${row.impacto}</td>
+      <td style="padding:12px 14px;font-size:13px;color:#2D5BE3;border-bottom:1px solid #1e1e1e;vertical-align:top;">${row.conexao}</td>
+    </tr>`
+  ).join("") : "";
+
+  const conversationHTMLDark = report.conversation
+    ? `<div style="margin-top:24px;border-top:1px solid #1e1e1e;padding-top:20px;">
+        <div style="font-size:10px;letter-spacing:3px;color:#444;text-transform:uppercase;margin-bottom:12px;">HISTÓRICO DA CONVERSA</div>
+        <div style="background:#0d0d0d;border:1px solid #1e1e1e;border-radius:8px;padding:16px;font-size:12px;color:#666;line-height:2;white-space:pre-wrap;">${report.conversation.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
+      </div>` : '';
+
+  const adminHTML = `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#000000;font-family:Arial,sans-serif;">
+<div style="max-width:640px;margin:24px auto;background:#111111;border-radius:8px;overflow:hidden;border:1px solid #222222;">
+
+  <!-- HEADER AZUL -->
+  <div style="background:#2D5BE3;padding:32px;text-align:center;">
+    <div style="font-size:11px;letter-spacing:4px;color:rgba(0,0,0,0.5);font-weight:700;text-transform:uppercase;">SCALECO · SCALE METHOD™ · SCALE DIAGNOSTIC™</div>
+    <div style="font-size:26px;font-weight:800;color:#000;margin-top:8px;letter-spacing:0.02em;">DIAGNÓSTICO CONCLUÍDO</div>
+    <div style="font-size:13px;color:rgba(0,0,0,0.55);margin-top:8px;">${report.empresa || '—'} · ${report.nome}${report.localizacao ? ' · ' + report.localizacao : ''}</div>
   </div>
+
   <div style="padding:32px;">
-    <div style="text-align:center;background:#f9f9f9;border-radius:12px;padding:24px;margin-bottom:24px;border-top:4px solid #2D5BE3;">
-      <div style="font-size:10px;letter-spacing:3px;color:#888;text-transform:uppercase;">SCORE GERAL · SCALE METHOD™</div>
-      <div style="font-size:64px;font-weight:700;color:${nivelColor};line-height:1;margin:8px 0;">${report.score_geral}</div>
-      <span style="padding:4px 14px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;background:${nivelColor}22;color:${nivelColor};border:1px solid ${nivelColor}44;">${report.nivel}</span>
-      ${report.parecer ? `<div style="font-size:14px;color:#555;line-height:1.7;margin-top:16px;font-style:italic;">${report.parecer}</div>` : ''}
+
+    <!-- SCORE -->
+    <div style="text-align:center;background:#1a1a1a;border-radius:12px;padding:28px 24px;margin-bottom:24px;border:1px solid #1e2d5e;border-top:3px solid #2D5BE3;">
+      <div style="font-size:10px;letter-spacing:3px;color:#444;text-transform:uppercase;margin-bottom:8px;">SCORE GERAL · SCALE METHOD™</div>
+      <div style="font-size:72px;font-weight:700;color:${nivelColor};line-height:1;margin-bottom:10px;">${report.score_geral}</div>
+      <span style="display:inline-block;padding:5px 16px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:${nivelColor}22;color:${nivelColor};border:1px solid ${nivelColor}44;">${report.nivel}</span>
+      ${report.parecer ? `<div style="font-size:14px;color:#888;line-height:1.7;margin-top:18px;font-style:italic;max-width:520px;margin-left:auto;margin-right:auto;">${report.parecer}</div>` : ''}
     </div>
 
-    <div style="font-size:10px;letter-spacing:3px;color:#888;text-transform:uppercase;margin-bottom:10px;">DIMENSÕES SCALE</div>
-    <table style="width:100%;border-collapse:collapse;background:#f9f9f9;border-radius:8px;margin-bottom:20px;">${dimsHTML}</table>
+    <!-- DIMENSÕES -->
+    <div style="font-size:10px;letter-spacing:3px;color:#444;text-transform:uppercase;margin-bottom:10px;">DIMENSÕES SCALE</div>
+    <table style="width:100%;border-collapse:collapse;background:#1a1a1a;border-radius:8px;margin-bottom:20px;border:1px solid #1e1e1e;">${dimsHTMLDark}</table>
 
-    <div style="background:#fff0f0;border:1px solid #fcc;border-radius:8px;padding:16px;margin-bottom:20px;">
-      <div style="font-size:10px;letter-spacing:2px;color:#EF4444;text-transform:uppercase;margin-bottom:6px;">⚠ GARGALO CRÍTICO</div>
-      <div style="font-size:14px;color:#333;font-weight:500;">${report.gargalo_critico || '—'}</div>
+    <!-- GARGALO -->
+    <div style="background:#1a0a0a;border:1px solid rgba(239,68,68,0.3);border-radius:8px;padding:16px;margin-bottom:20px;">
+      <div style="font-size:10px;letter-spacing:2px;color:#EF4444;text-transform:uppercase;margin-bottom:8px;">⚠ GARGALO CRÍTICO</div>
+      <div style="font-size:14px;color:#eee;font-weight:500;line-height:1.5;">${report.gargalo_critico || '—'}</div>
     </div>
 
-    <div style="font-size:10px;letter-spacing:3px;color:#888;text-transform:uppercase;margin-bottom:10px;">PRIORIDADES DE AÇÃO</div>
-    <table style="width:100%;border-collapse:collapse;margin-bottom:28px;">${priosHTML}</table>
+    <!-- PRIORIDADES -->
+    <div style="font-size:10px;letter-spacing:3px;color:#444;text-transform:uppercase;margin-bottom:10px;">PRIORIDADES DE AÇÃO</div>
+    <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">${priosHTMLDark}</table>
 
-    ${tabelaHTML ? `
-    <div style="font-size:10px;letter-spacing:3px;color:#888;text-transform:uppercase;margin-bottom:10px;">INVESTIGAÇÃO SETORIAL · SCALECO</div>
-    ${report.setor_insights ? `<div style="font-size:13px;color:#444;line-height:1.7;margin-bottom:14px;padding:14px;background:#f0f4ff;border-radius:8px;">${report.setor_insights}</div>` : ''}
-    <table style="width:100%;border-collapse:collapse;margin-bottom:8px;background:#fafafa;border-radius:8px;overflow:hidden;">
-      <thead><tr>
-        <th style="padding:10px 12px;text-align:left;font-size:11px;color:#888;border-bottom:1px solid #eee;">Principal desafio</th>
-        <th style="padding:10px 12px;text-align:left;font-size:11px;color:#888;border-bottom:1px solid #eee;">Impacto direto</th>
-        <th style="padding:10px 12px;text-align:left;font-size:11px;color:#2D5BE3;border-bottom:1px solid #eee;">Conexão ScaleCo</th>
+    ${tabelaHTMLDark ? `
+    <!-- INVESTIGAÇÃO SETORIAL -->
+    <div style="font-size:10px;letter-spacing:3px;color:#444;text-transform:uppercase;margin-bottom:10px;">INVESTIGAÇÃO SETORIAL · SCALECO</div>
+    ${report.setor_insights ? `<div style="font-size:13px;color:#888;line-height:1.7;margin-bottom:14px;padding:14px 16px;background:#131929;border:1px solid #1e2d5e;border-radius:8px;">${report.setor_insights}</div>` : ''}
+    <table style="width:100%;border-collapse:collapse;margin-bottom:8px;background:#1a1a1a;border-radius:8px;overflow:hidden;border:1px solid #1e1e1e;">
+      <thead><tr style="background:#111;">
+        <th style="padding:10px 14px;text-align:left;font-size:10px;color:#444;border-bottom:1px solid #1e1e1e;letter-spacing:1px;text-transform:uppercase;">Principal desafio</th>
+        <th style="padding:10px 14px;text-align:left;font-size:10px;color:#444;border-bottom:1px solid #1e1e1e;letter-spacing:1px;text-transform:uppercase;">Impacto direto</th>
+        <th style="padding:10px 14px;text-align:left;font-size:10px;color:#2D5BE3;border-bottom:1px solid #1e1e1e;letter-spacing:1px;text-transform:uppercase;">Conexão ScaleCo</th>
       </tr></thead>
-      <tbody>${tabelaHTML}</tbody>
+      <tbody>${tabelaHTMLDark}</tbody>
     </table>
-    ${report.ecossistema_match ? `<div style="margin-top:12px;padding:14px;background:#e8f0fe;border:1px solid #c5d5fb;border-radius:8px;font-size:13px;color:#333;line-height:1.6;">${report.ecossistema_match}</div>` : ''}
+    ${report.ecossistema_match ? `<div style="margin-top:12px;padding:14px 16px;background:#131929;border:1px solid #1e2d5e;border-radius:8px;font-size:13px;color:#8baaf0;line-height:1.6;">${report.ecossistema_match}</div>` : ''}
     ` : ''}
 
-    <div style="background:#f0f4ff;border-radius:8px;padding:16px;font-size:13px;color:#333;margin-top:20px;">
-      <strong>Lead:</strong> ${report.nome} · ${report.email || '—'}<br>
-      ${report.whatsapp ? `<strong>WhatsApp:</strong> <a href="https://wa.me/55${report.whatsapp.replace(/\D/g,'')}">${report.whatsapp}</a><br>` : ''}
-      ${report.faturamento ? `<strong>Faturamento:</strong> ${report.faturamento}<br>` : ''}
-      ${report.localizacao ? `<strong>Localização:</strong> ${report.localizacao}<br>` : ''}
-      ${report.empresa ? `<strong>Empresa:</strong> ${report.empresa}` : ''}
+    <!-- LEAD INFO -->
+    <div style="background:#1a1a1a;border:1px solid #1e1e1e;border-radius:8px;padding:16px;font-size:13px;color:#666;margin-top:20px;line-height:2;">
+      <strong style="color:#444;">Lead:</strong> <span style="color:#ccc;">${report.nome}</span> · <a href="mailto:${report.email || ''}" style="color:#2D5BE3;">${report.email || '—'}</a><br>
+      ${report.whatsapp ? `<strong style="color:#444;">WhatsApp:</strong> <a href="https://wa.me/55${report.whatsapp.replace(/\D/g,'')}" style="color:#2D5BE3;">${report.whatsapp}</a><br>` : ''}
+      ${report.faturamento ? `<strong style="color:#444;">Faturamento:</strong> <span style="color:#ccc;">${report.faturamento}</span><br>` : ''}
+      ${report.localizacao ? `<strong style="color:#444;">Localização:</strong> <span style="color:#ccc;">${report.localizacao}</span><br>` : ''}
+      ${report.empresa ? `<strong style="color:#444;">Empresa:</strong> <span style="color:#ccc;">${report.empresa}</span>` : ''}
     </div>
-    ${conversationHTML}
+
+    ${conversationHTMLDark}
   </div>
-  <div style="padding:16px;border-top:1px solid #eee;text-align:center;font-size:11px;color:#aaa;">ScaleCo · diagnostic.scaleco.ai · Powered by Archie</div>
+
+  <div style="padding:16px;border-top:1px solid #1e1e1e;text-align:center;font-size:11px;color:#333;">ScaleCo · diagnostic.scaleco.ai · Powered by Archie</div>
 </div></body></html>`;
 
   const res = await fetch("https://api.resend.com/emails", {
