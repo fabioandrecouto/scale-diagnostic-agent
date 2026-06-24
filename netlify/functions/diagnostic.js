@@ -94,10 +94,20 @@ INTERPRETAÇÃO INTERNA REVISADA:
 - 7–9 pontos reais → Score geral 56–75 → Nível: Estruturado
 - 10–12 pontos reais → Score geral 76–100 → Nível: Escalável
 
-GERAÇÃO DO RELATÓRIO:
-Após as 7 perguntas e email confirmado, responda APENAS com este JSON puro (sem markdown, sem texto antes ou depois):
+INVESTIGAÇÃO SETORIAL — OBRIGATÓRIO EM TODOS OS RELATÓRIOS:
+Independente do score (alto ou baixo), você SEMPRE deve gerar os 3 campos abaixo. Nunca omita — são parte essencial do relatório.
 
-{"tipo":"relatorio","nome":"[nome]","empresa":"[empresa]","email":"[email]","whatsapp":"[whatsapp ou null]","faturamento":"[faixa ou null]","score_geral":[0-100],"nivel":"[Crítico|Em Desenvolvimento|Estruturado|Escalável]","dimensoes":{"S":{"score":[0-100],"status":"[frase curta]","gargalo":"[gargalo ou null]"},"C":{"score":[0-100],"status":"[frase curta]","gargalo":"[gargalo ou null]"},"A":{"score":[0-100],"status":"[frase curta]","gargalo":"[gargalo ou null]"},"L":{"score":[0-100],"status":"[frase curta]","gargalo":"[gargalo ou null]"},"E":{"score":[0-100],"status":"[frase curta]","gargalo":"[gargalo ou null]"},"G":{"score":[0-100],"status":"[frase curta]","gargalo":"[gargalo ou null]"}},"gargalo_critico":"[maior problema em 1 frase]","prioridades":["ação 1","ação 2","ação 3"],"parecer":"[2-3 frases diretas e duras sobre a realidade da operação]"}
+- setor_insights: 2-3 frases diretas sobre os erros ou riscos mais comuns de empresas do mesmo setor e faturamento. Para scores altos: aponte os riscos de crescimento e armadilhas de escala do segmento. Seja específico ao segmento — nunca genérico.
+- scaleco_tabela: SEMPRE 3 linhas. Para scores baixos/médios: desafios atuais. Para scores altos: os próximos desafios de escala que a operação vai enfrentar. Cada linha com desafio + impacto + como o Scale Method™ da ScaleCo endereça.
+- ecossistema_match: 1 parágrafo sobre como a ScaleCo e o Scale Method™ se conectam com o momento específico desta operação — seja para corrigir gargalos ou para sustentar a escala já iniciada.
+
+NOME DO LEAD — CRÍTICO:
+O nome do lead vem nos dados do formulário pré-preenchido ([DADOS DO FORMULÁRIO]). Use exatamente esse nome no campo "nome" do JSON. Nunca coloque null se o nome veio no formulário.
+
+GERAÇÃO DO RELATÓRIO:
+Após as 7 perguntas, responda APENAS com este JSON puro (sem markdown, sem texto antes ou depois):
+
+{"tipo":"relatorio","nome":"[nome do formulário]","empresa":"[empresa mencionada na conversa]","email":"[email do formulário]","whatsapp":"[whatsapp do formulário ou null]","faturamento":"[faixa do formulário ou mencionada]","localizacao":"[cidade/estado se mencionado ou null]","score_geral":[0-100],"nivel":"[Crítico|Em Desenvolvimento|Estruturado|Escalável]","dimensoes":{"S":{"score":[0-100],"status":"[frase curta diagnóstico]","gargalo":"[gargalo específico ou null]"},"C":{"score":[0-100],"status":"[frase curta diagnóstico]","gargalo":"[gargalo específico ou null]"},"A":{"score":[0-100],"status":"[frase curta diagnóstico]","gargalo":"[gargalo específico ou null]"},"L":{"score":[0-100],"status":"[frase curta diagnóstico]","gargalo":"[gargalo específico ou null]"},"E":{"score":[0-100],"status":"[frase curta diagnóstico]","gargalo":"[gargalo específico ou null]"},"G":{"score":[0-100],"status":"[frase curta diagnóstico]","gargalo":"[gargalo específico ou null]"}},"parecer":"[2-3 frases diretas sobre a realidade da operação — sem elogios, sem suavizar. Para scores altos: aponte o próximo risco real.]","gargalo_critico":"[maior problema atual ou próximo risco de escala em 1 frase objetiva — nunca null]","prioridades":["ação concreta 1","ação concreta 2","ação concreta 3"],"setor_insights":"[2-3 frases específicas ao segmento — OBRIGATÓRIO, nunca null]","scaleco_tabela":[{"desafio":"[desafio 1]","impacto":"[impacto direto]","conexao":"[como Scale Method™ resolve]"},{"desafio":"[desafio 2]","impacto":"[impacto direto]","conexao":"[como Scale Method™ resolve]"},{"desafio":"[desafio 3]","impacto":"[impacto direto]","conexao":"[como Scale Method™ resolve]"}],"ecossistema_match":"[parágrafo específico sobre como ScaleCo e Scale Method™ se conectam com este momento da operação — OBRIGATÓRIO, nunca null]"}
 
 TOM: Direto, frases curtas, sem elogios. Nunca use "mentoria" ou "consultoria".`;
 
@@ -121,8 +131,7 @@ TOM: Direto, frases curtas, sem elogios. Nunca use "mentoria" ou "consultoria".`
     let messagesWithContext = [...messages];
     if (formData && messages.length === 1 && messages[0].content === 'olá') {
 
-      // FALLBACK iOS/Safari: dispara lead capture aqui também,
-      // pois o Safari cancela a requisição anterior antes de navegar.
+      // FALLBACK iOS/Safari: dispara lead capture aqui também
       if (formData.email) {
         sendLeadCapture(formData).catch(e => console.error('Lead capture fallback:', e.message));
       }
@@ -153,7 +162,7 @@ TOM: Direto, frases curtas, sem elogios. Nunca use "mentoria" ou "consultoria".`
       },
       body: JSON.stringify({
         model: "claude-sonnet-4-6",
-        max_tokens: 1000,
+        max_tokens: 4000,
         system: SYSTEM_PROMPT,
         messages: messagesWithContext,
       }),
@@ -168,10 +177,12 @@ TOM: Direto, frases curtas, sem elogios. Nunca use "mentoria" ou "consultoria".`
       if (jsonMatch) {
         const report = JSON.parse(jsonMatch[0]);
         if (report.tipo === 'relatorio') {
-          // Garantir email via formData se não veio no JSON
+          // Fallback de todos os campos do formData
+          if (!report.nome && formData?.nome) report.nome = formData.nome;
           if (!report.email && formData?.email) report.email = formData.email;
           if (!report.whatsapp && formData?.whatsapp) report.whatsapp = formData.whatsapp;
           if (!report.faturamento && formData?.faturamento) report.faturamento = formData.faturamento;
+          if (!report.localizacao && formData?.localizacao) report.localizacao = formData.localizacao;
 
           const conversation = messages
             .filter(m => m.role === 'user' || m.role === 'assistant')
@@ -229,7 +240,7 @@ async function sendLeadCapture(data) {
       <strong>WhatsApp:</strong> ${data.whatsapp}<br>
       <strong>Faturamento:</strong> ${data.faturamento}
     </div>
-    <div style="margin-top:16px;padding:14px;background:#fff8e1;border:1px solid #ffe082;border-radius:8px;font-size:13px;color:#555;">
+    <div style="margin-top:16px;padding:14px;background:#e8f0fe;border:1px solid #c5d5fb;border-radius:8px;font-size:13px;color:#555;">
       ⚠ Este lead iniciou o diagnóstico mas ainda não concluiu.
     </div>
     <div style="margin-top:20px;text-align:center;">
@@ -265,7 +276,7 @@ async function sendEmails(report) {
   const dimNames = {
     S: "Strategic Architecture",
     C: "Commercial Engine",
-    A: "Analytics & Governance",
+    A: "Analytics",
     L: "Leadership Institutionalization",
     E: "Execution Cadence",
     G: "Governance & Rhythm"
@@ -279,48 +290,68 @@ async function sendEmails(report) {
     `<tr><td style="padding:8px 12px;font-weight:700;color:#2D5BE3;font-size:18px;">${String(i + 1).padStart(2, "0")}</td><td style="padding:8px 12px;color:#333;font-size:14px;">${p}</td></tr>`
   ).join("");
 
+  const tabelaHTML = Array.isArray(report.scaleco_tabela) ? report.scaleco_tabela.map(row =>
+    `<tr>
+      <td style="padding:10px 12px;font-size:13px;color:#333;border-bottom:1px solid #eee;">${row.desafio}</td>
+      <td style="padding:10px 12px;font-size:13px;color:#555;border-bottom:1px solid #eee;">${row.impacto}</td>
+      <td style="padding:10px 12px;font-size:13px;color:#2D5BE3;border-bottom:1px solid #eee;">${row.conexao}</td>
+    </tr>`
+  ).join("") : "";
+
   const conversationHTML = report.conversation
     ? `<div style="margin-top:24px;border-top:1px solid #eee;padding-top:20px;">
         <div style="font-size:10px;letter-spacing:3px;color:#888;text-transform:uppercase;margin-bottom:12px;">HISTÓRICO DA CONVERSA</div>
         <div style="background:#f9f9f9;border-radius:8px;padding:16px;font-size:12px;color:#444;line-height:2;white-space:pre-wrap;">${report.conversation.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
       </div>` : '';
 
-  const answersHTML = report.answers
-    ? `<div style="margin-top:16px;">
-        <div style="font-size:10px;letter-spacing:3px;color:#888;text-transform:uppercase;margin-bottom:12px;">RESPOSTAS DO LEAD</div>
-        <div style="background:#fff8f0;border:1px solid #fde;border-radius:8px;padding:16px;font-size:13px;color:#333;line-height:2;white-space:pre-wrap;">${report.answers.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
-      </div>` : '';
-
   const adminHTML = `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#f5f5f5;font-family:Arial,sans-serif;">
-<div style="max-width:600px;margin:24px auto;background:#fff;border-radius:12px;overflow:hidden;">
+<div style="max-width:640px;margin:24px auto;background:#fff;border-radius:12px;overflow:hidden;">
   <div style="background:#0A0A0A;padding:32px;text-align:center;">
-    <div style="font-size:11px;letter-spacing:4px;color:#888;">SCALECO · SCALE DIAGNOSTIC™</div>
+    <div style="font-size:11px;letter-spacing:4px;color:#888;">SCALECO · SCALE METHOD™ · SCALE DIAGNOSTIC™</div>
     <div style="font-size:24px;font-weight:700;color:#fff;margin-top:8px;">DIAGNÓSTICO CONCLUÍDO</div>
-    <div style="font-size:13px;color:#888;margin-top:6px;">${report.empresa || '—'} · ${report.nome}</div>
+    <div style="font-size:13px;color:#888;margin-top:6px;">${report.empresa || '—'} · ${report.nome}${report.localizacao ? ' · ' + report.localizacao : ''}</div>
   </div>
   <div style="padding:32px;">
     <div style="text-align:center;background:#f9f9f9;border-radius:12px;padding:24px;margin-bottom:24px;border-top:4px solid #2D5BE3;">
-      <div style="font-size:10px;letter-spacing:3px;color:#888;text-transform:uppercase;">SCORE GERAL</div>
+      <div style="font-size:10px;letter-spacing:3px;color:#888;text-transform:uppercase;">SCORE GERAL · SCALE METHOD™</div>
       <div style="font-size:64px;font-weight:700;color:${nivelColor};line-height:1;margin:8px 0;">${report.score_geral}</div>
       <span style="padding:4px 14px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;background:${nivelColor}22;color:${nivelColor};border:1px solid ${nivelColor}44;">${report.nivel}</span>
-      <div style="font-size:14px;color:#555;line-height:1.7;margin-top:12px;">${report.parecer || ''}</div>
+      ${report.parecer ? `<div style="font-size:14px;color:#555;line-height:1.7;margin-top:16px;font-style:italic;">${report.parecer}</div>` : ''}
     </div>
+
     <div style="font-size:10px;letter-spacing:3px;color:#888;text-transform:uppercase;margin-bottom:10px;">DIMENSÕES SCALE</div>
     <table style="width:100%;border-collapse:collapse;background:#f9f9f9;border-radius:8px;margin-bottom:20px;">${dimsHTML}</table>
+
     <div style="background:#fff0f0;border:1px solid #fcc;border-radius:8px;padding:16px;margin-bottom:20px;">
       <div style="font-size:10px;letter-spacing:2px;color:#EF4444;text-transform:uppercase;margin-bottom:6px;">⚠ GARGALO CRÍTICO</div>
       <div style="font-size:14px;color:#333;font-weight:500;">${report.gargalo_critico || '—'}</div>
     </div>
+
     <div style="font-size:10px;letter-spacing:3px;color:#888;text-transform:uppercase;margin-bottom:10px;">PRIORIDADES DE AÇÃO</div>
     <table style="width:100%;border-collapse:collapse;margin-bottom:28px;">${priosHTML}</table>
-    <div style="background:#f0f4ff;border-radius:8px;padding:16px;font-size:13px;color:#333;">
+
+    ${tabelaHTML ? `
+    <div style="font-size:10px;letter-spacing:3px;color:#888;text-transform:uppercase;margin-bottom:10px;">INVESTIGAÇÃO SETORIAL · SCALECO</div>
+    ${report.setor_insights ? `<div style="font-size:13px;color:#444;line-height:1.7;margin-bottom:14px;padding:14px;background:#f0f4ff;border-radius:8px;">${report.setor_insights}</div>` : ''}
+    <table style="width:100%;border-collapse:collapse;margin-bottom:8px;background:#fafafa;border-radius:8px;overflow:hidden;">
+      <thead><tr>
+        <th style="padding:10px 12px;text-align:left;font-size:11px;color:#888;border-bottom:1px solid #eee;">Principal desafio</th>
+        <th style="padding:10px 12px;text-align:left;font-size:11px;color:#888;border-bottom:1px solid #eee;">Impacto direto</th>
+        <th style="padding:10px 12px;text-align:left;font-size:11px;color:#2D5BE3;border-bottom:1px solid #eee;">Conexão ScaleCo</th>
+      </tr></thead>
+      <tbody>${tabelaHTML}</tbody>
+    </table>
+    ${report.ecossistema_match ? `<div style="margin-top:12px;padding:14px;background:#e8f0fe;border:1px solid #c5d5fb;border-radius:8px;font-size:13px;color:#333;line-height:1.6;">${report.ecossistema_match}</div>` : ''}
+    ` : ''}
+
+    <div style="background:#f0f4ff;border-radius:8px;padding:16px;font-size:13px;color:#333;margin-top:20px;">
       <strong>Lead:</strong> ${report.nome} · ${report.email || '—'}<br>
       ${report.whatsapp ? `<strong>WhatsApp:</strong> <a href="https://wa.me/55${report.whatsapp.replace(/\D/g,'')}">${report.whatsapp}</a><br>` : ''}
       ${report.faturamento ? `<strong>Faturamento:</strong> ${report.faturamento}<br>` : ''}
+      ${report.localizacao ? `<strong>Localização:</strong> ${report.localizacao}<br>` : ''}
       ${report.empresa ? `<strong>Empresa:</strong> ${report.empresa}` : ''}
     </div>
     ${conversationHTML}
-    ${answersHTML}
   </div>
   <div style="padding:16px;border-top:1px solid #eee;text-align:center;font-size:11px;color:#aaa;">ScaleCo · diagnostic.scaleco.ai · Powered by Archie</div>
 </div></body></html>`;
