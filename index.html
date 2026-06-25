@@ -2,14 +2,9 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#0A0A0A">
-<title>Scale Diagnostic™ · ScaleCo × ScaleCo</title>
-<base href="/">
-<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Scale Diagnostic™ · ScaleCo</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
  
@@ -17,149 +12,24 @@
   --black: #0A0A0A;
   --black2: #111111;
   --black3: #1A1A1A;
-  --blue: #2D5BE3;
-  --blue-dim: #C99703;
-  --blue-glow: rgba(251,190,10,0.07);
+  --blue: #1E3FA8;
+  --blue-dim: #162D7A;
+  --blue-glow: rgba(30,63,168,0.07);
   --white: #FFFFFF;
   --gray: #888888;
   --gray-light: #2A2A2A;
   --success: #22C55E;
   --warning: #F59E0B;
   --danger: #EF4444;
-  --yellow: #2D5BE3;
-  --yellow-dim: #C99703;
-  --site-canvas:
-    radial-gradient(circle at 16% 10%, rgba(251, 190, 10, 0.16), transparent 30%),
-    radial-gradient(circle at 88% 16%, rgba(201, 151, 3, 0.12), transparent 28%),
-    radial-gradient(circle at 50% 96%, rgba(251, 190, 10, 0.08), transparent 36%),
-    var(--black);
 }
  
-html {
+html, body {
   height: 100%;
-  height: -webkit-fill-available;
-}
-
-body {
-  height: 100%;
-  min-height: 100%;
-  min-height: -webkit-fill-available;
-  background: var(--site-canvas);
-  background-repeat: no-repeat;
-  background-size: 100vw 100vh, 100vw 100vh, 100vw 100vh, auto;
-  background-attachment: fixed, fixed, fixed, scroll;
+  background: var(--black);
   color: var(--white);
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 15px;
   line-height: 1.6;
-  -webkit-text-size-adjust: 100%;
-  overflow-x: hidden;
-}
-
-body::before,
-body::after {
-  content: '';
-  position: fixed;
-  inset: auto;
-  pointer-events: none;
-  z-index: 0;
-  border-radius: 999px;
-  filter: blur(60px);
-  opacity: 0.28;
-  animation: glowBreath 9s ease-in-out infinite;
-}
-
-body::before {
-  width: 320px;
-  height: 320px;
-  left: -120px;
-  top: 14vh;
-  background: rgba(251, 190, 10, 0.30);
-}
-
-body::after {
-  width: 380px;
-  height: 380px;
-  right: -150px;
-  bottom: 6vh;
-  background: rgba(201, 151, 3, 0.22);
-  animation-delay: -3.5s;
-}
-
-#intro,
-#sintomas-section,
-#form-screen,
-#chat-screen,
-#showoff-screen,
-#report-screen,
-.capa-page {
-  position: relative;
-  z-index: 1;
-  background: transparent;
-}
-
-.mb-logo-img {
-  display: block;
-  width: min(320px, 78vw);
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 0 18px rgba(251,190,10,0.14));
-  mix-blend-mode: screen;
-}
-
-.mb-logo-img.is-small {
-  width: min(240px, 62vw);
-}
-
-.mb-logo-img.is-report {
-  width: min(300px, 74vw);
-  margin: 0 auto 12px;
-}
-
-.brand-lockup {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: clamp(12px, 2vw, 22px);
-  margin-bottom: 26px;
-}
-
-.brand-lockup .mb-logo-img {
-  width: min(245px, 46vw);
-}
-
-.brand-x {
-  color: rgba(255,255,255,0.34);
-  font-size: clamp(10px, 1.1vw, 13px);
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  line-height: 1;
-}
-
-.scaleco-logo-img {
-  display: block;
-  width: min(138px, 28vw);
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 0 16px rgba(45,91,227,0.18));
-}
-
-.mb-symbol-mark {
-  display: inline-block;
-  width: 28px;
-  height: 20px;
-  flex: 0 0 28px;
-  background-image: url('assets/scaleco-logo-yellow-transparent.png');
-  background-repeat: no-repeat;
-  background-position: right center;
-  background-size: 190px auto;
-  filter: drop-shadow(0 0 10px rgba(251,190,10,0.18));
-}
-
-.yellow-mark {
-  color: var(--blue);
-  font-weight: 700;
 }
  
 /* ── INTRO SCREEN ── */
@@ -168,7 +38,7 @@ body::after {
 }
  
 .intro-logo {
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 4px;
@@ -190,20 +60,9 @@ body::after {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-3px); }
 }
-
-@keyframes glowBreath {
-  0%, 100% {
-    opacity: 0.22;
-    transform: translate3d(0, 0, 0) scale(0.9);
-  }
-  50% {
-    opacity: 0.5;
-    transform: translate3d(20px, -14px, 0) scale(1.14);
-  }
-}
  
 .intro-title {
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 48px;
   letter-spacing: 2px;
   line-height: 1;
@@ -254,19 +113,17 @@ body::after {
  
 .start-btn {
   background: var(--blue);
-  color: #000000;
+  color: var(--white);
   border: none;
   border-radius: 3px;
   padding: 16px 56px;
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 3px;
   text-transform: uppercase;
   cursor: pointer;
   transition: background 0.2s;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
 }
  
 .start-btn:hover { background: var(--blue-dim); }
@@ -285,6 +142,7 @@ body::after {
   position: fixed;
   inset: 0;
   z-index: 100;
+  background: #0A0A0A;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -294,136 +152,71 @@ body::after {
 }
 
 .form-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 13px;
   letter-spacing: 5px;
   color: var(--gray);
-  margin-bottom: 28px;
+  margin-bottom: 32px;
   text-align: center;
 }
 
 .form-card {
-  background: rgba(17,17,17,0.88);
-  border: 1px solid rgba(251,190,10,0.16);
-  border-radius: 22px;
-  padding: clamp(28px, 5vw, 52px);
+  background: var(--black2);
+  border: 1px solid var(--gray-light);
+  border-radius: 14px;
+  padding: 36px 32px;
   width: 100%;
-  max-width: 720px;
-  box-shadow: 0 24px 80px rgba(0,0,0,0.42);
-  backdrop-filter: blur(18px);
-}
-
-.form-progress {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 8px;
-  margin-bottom: 28px;
-}
-
-.form-progress-dot {
-  height: 3px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.12);
-  overflow: hidden;
-}
-
-.form-progress-dot.is-active,
-.form-progress-dot.is-done {
-  background: var(--blue);
-}
-
-.form-step {
-  display: none;
-  animation: slideUp 0.35s ease;
-}
-
-.form-step.is-active {
-  display: block;
-}
-
-.form-kicker {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--blue);
-  margin-bottom: 12px;
+  max-width: 440px;
 }
 
 .form-card-title {
-  font-family: 'Funnel Display', sans-serif;
-  font-size: clamp(28px, 5vw, 46px);
-  letter-spacing: -0.04em;
-  line-height: 1.04;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 3px;
   color: var(--white);
-  margin-bottom: 12px;
+  margin-bottom: 6px;
+  text-align: center;
 }
 
 .form-card-sub {
-  font-size: 15px;
+  font-size: 13px;
   color: var(--gray);
-  margin-bottom: 30px;
-  line-height: 1.65;
-  max-width: 560px;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  text-align: center;
+  margin-bottom: 28px;
+  line-height: 1.6;
 }
 
 .form-field {
-  margin-bottom: 18px;
-}
-
-.form-field.is-wide {
-  grid-column: 1 / -1;
-}
-
-.form-field.is-consent {
-  margin-top: 20px;
+  margin-bottom: 16px;
 }
 
 .form-label {
   display: block;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.13em;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.58);
-  margin-bottom: 8px;
+  color: var(--gray);
+  margin-bottom: 7px;
 }
 
 .form-input {
   width: 100%;
-  background: rgba(10,10,10,0.72);
-  border: 1px solid rgba(255,255,255,0.14);
-  border-radius: 12px;
-  padding: 15px 16px;
+  background: var(--black3);
+  border: 1px solid var(--gray-light);
+  border-radius: 8px;
+  padding: 12px 14px;
   color: var(--white);
-  font-family: 'Funnel Display', sans-serif;
-  font-size: 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
   outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s;
   appearance: none;
   -webkit-appearance: none;
 }
 
-textarea.form-input {
-  min-height: 112px;
-  resize: vertical;
-}
-
-.form-input:focus {
-  border-color: var(--blue);
-  box-shadow: 0 0 0 4px rgba(251,190,10,0.08);
-}
-
-.form-input::placeholder { color: rgba(255,255,255,0.26); }
+.form-input:focus { border-color: var(--blue); }
+.form-input::placeholder { color: #444; }
 
 .form-input option {
   background: var(--black3);
@@ -437,7 +230,7 @@ textarea.form-input {
 .form-select-wrap::after {
   content: '▾';
   position: absolute;
-  right: 16px;
+  right: 14px;
   top: 50%;
   transform: translateY(-50%);
   color: var(--gray);
@@ -445,157 +238,38 @@ textarea.form-input {
   font-size: 12px;
 }
 
-.form-option-grid {
-  display: grid;
-  gap: 10px;
-}
-
-.form-option-grid.is-two {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.form-option {
-  display: block;
-  cursor: pointer;
-}
-
-.form-option input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.form-option span {
-  display: flex;
-  min-height: 54px;
-  align-items: center;
-  border: 1px solid rgba(255,255,255,0.14);
-  border-radius: 13px;
-  padding: 14px 16px;
-  background: rgba(10,10,10,0.64);
-  color: rgba(255,255,255,0.86);
-  font-size: 15px;
-  transition: border-color 0.2s, background 0.2s, color 0.2s;
-}
-
-.form-option input:checked + span {
-  border-color: var(--blue);
-  background: rgba(251,190,10,0.11);
-  color: var(--white);
-}
-
-.form-option input:focus-visible + span {
-  box-shadow: 0 0 0 4px rgba(251,190,10,0.10);
-}
-
-.form-phone-row {
-  display: grid;
-  grid-template-columns: minmax(150px, 0.45fr) 1fr;
-  gap: 12px;
-}
-
-.form-check {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  color: rgba(255,255,255,0.72);
-  font-size: 13px;
-  line-height: 1.5;
-  margin-top: 4px;
-}
-
-.form-check input {
-  width: 18px;
-  height: 18px;
-  margin-top: 2px;
-  accent-color: var(--blue);
-  flex: 0 0 auto;
-}
-
-.form-check a {
-  color: var(--blue);
-  text-decoration: none;
-}
-
-.form-honeypot {
-  position: absolute;
-  left: -9999px;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.form-actions {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  margin-top: 30px;
-}
-
-.form-submit,
-.form-back {
-  border: none;
-  border-radius: 999px;
-  padding: 15px 22px;
-  font-family: 'Funnel Display', sans-serif;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.1s, border-color 0.2s, color 0.2s;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-}
-
 .form-submit {
+  width: 100%;
   background: var(--blue);
-  color: #000000;
-  min-width: 210px;
-}
-
-.form-back {
-  background: transparent;
-  color: rgba(255,255,255,0.56);
-  border: 1px solid rgba(255,255,255,0.16);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  padding: 15px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 17px;
+  letter-spacing: 3px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s, transform 0.1s;
 }
 
 .form-submit:hover { background: var(--blue-dim); }
-.form-back:hover { border-color: var(--blue); color: var(--white); }
-.form-submit:active,
-.form-back:active { transform: scale(0.98); }
-.form-submit:disabled,
-.form-back:disabled { opacity: 0.45; cursor: not-allowed; }
+.form-submit:active { transform: scale(0.98); }
+.form-submit:disabled { background: var(--gray-light); cursor: not-allowed; }
 
 .form-privacy {
   font-size: 11px;
-  color: rgba(255,255,255,0.28);
+  color: #444;
   text-align: center;
-  margin-top: 18px;
+  margin-top: 14px;
   line-height: 1.5;
-}
-
-.form-error {
-  display: none;
-  margin-top: 18px;
-  border: 1px solid rgba(239,68,68,0.35);
-  border-radius: 12px;
-  background: rgba(239,68,68,0.10);
-  color: #FCA5A5;
-  font-size: 13px;
-  line-height: 1.45;
-  padding: 12px 14px;
-}
-
-.form-error.is-visible {
-  display: block;
 }
  
 /* ── CHAT SCREEN ── */
 #chat-screen {
   display: none;
   flex-direction: column;
-  height: var(--chat-height, 100dvh);
+  height: 100dvh;
   height: 100vh;
 }
  
@@ -619,7 +293,7 @@ textarea.form-input {
  
 .chat-header-info {}
 .chat-header-name {
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 16px;
   letter-spacing: 2px;
   color: var(--white);
@@ -731,7 +405,7 @@ textarea.form-input {
 .message.user .msg-bubble {
   background: var(--blue);
   border-color: var(--blue);
-  color: #000000;
+  color: var(--white);
   border-radius: 14px 4px 14px 14px;
 }
  
@@ -793,7 +467,7 @@ textarea.form-input {
   background: transparent;
   border: none; outline: none;
   color: var(--white);
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 14px;
   line-height: 1.5;
   resize: none;
@@ -816,7 +490,7 @@ textarea.form-input {
 }
 .send-btn:hover { background: var(--blue-dim); }
 .send-btn:disabled { background: var(--gray-light); cursor: not-allowed; }
-.send-btn svg { width: 15px; height: 15px; fill: #000000; }
+.send-btn svg { width: 15px; height: 15px; fill: white; }
  
 /* ── REPORT SCREEN ── */
 #report-screen {
@@ -824,9 +498,8 @@ textarea.form-input {
   min-height: 100vh;
   padding: 40px 24px 80px;
   animation: fadeIn 0.6s ease;
-  max-width: 980px;
+  max-width: 680px;
   margin: 0 auto;
-  background: transparent;
 }
  
 .report-header {
@@ -835,7 +508,7 @@ textarea.form-input {
 }
  
 .report-logo {
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 12px;
   letter-spacing: 5px;
   color: var(--gray);
@@ -851,7 +524,7 @@ textarea.form-input {
 }
  
 .report-title {
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 13px;
   letter-spacing: 4px;
   color: var(--blue);
@@ -859,7 +532,7 @@ textarea.form-input {
 }
  
 .report-company {
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 28px;
   letter-spacing: 2px;
   margin-bottom: 4px;
@@ -900,21 +573,40 @@ textarea.form-input {
 }
  
 .score-number {
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 80px;
   line-height: 1;
   letter-spacing: -2px;
   margin-bottom: 6px;
 }
  
+.score-nivel {
+  display: inline-block;
+  padding: 4px 16px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+ 
 .nivel-critico { background: rgba(239,68,68,0.15); color: #EF4444; border: 1px solid rgba(239,68,68,0.3); }
 .nivel-desenvolvimento { background: rgba(245,158,11,0.15); color: #F59E0B; border: 1px solid rgba(245,158,11,0.3); }
-.nivel-estruturado { background: rgba(251,190,10,0.15); color: #2D5BE3; border: 1px solid rgba(251,190,10,0.3); }
+.nivel-estruturado { background: rgba(45,91,227,0.15); color: #2D5BE3; border: 1px solid rgba(45,91,227,0.3); }
 .nivel-escalavel { background: rgba(34,197,94,0.15); color: #22C55E; border: 1px solid rgba(34,197,94,0.3); }
+ 
+.score-parecer {
+  font-size: 14px;
+  color: #BBBBBB;
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0 auto;
+}
  
 /* Dimensoes */
 .section-title {
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 13px;
   letter-spacing: 4px;
   color: var(--gray);
@@ -944,7 +636,7 @@ textarea.form-input {
 }
  
 .dim-letter {
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 20px;
   letter-spacing: 2px;
   color: var(--blue);
@@ -962,7 +654,7 @@ textarea.form-input {
 }
  
 .dim-score {
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 22px;
   letter-spacing: 1px;
 }
@@ -1038,7 +730,7 @@ textarea.form-input {
 }
  
 .prio-num {
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 22px;
   color: var(--blue);
   line-height: 1;
@@ -1072,7 +764,7 @@ textarea.form-input {
 }
  
 .cta-title {
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 22px;
   letter-spacing: 2px;
   margin-bottom: 8px;
@@ -1083,58 +775,21 @@ textarea.form-input {
   color: var(--gray);
   margin-bottom: 20px;
   line-height: 1.6;
-  max-width: 520px;
+  max-width: 360px;
   margin-left: auto;
   margin-right: auto;
-}
-
-.fabio-card {
-  background: rgba(255,255,255,0.035);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 10px;
-  padding: 18px;
-  text-align: left;
-  margin: 0 auto 20px;
-  max-width: 520px;
-  position: relative;
-}
-
-.fabio-card::before {
-  content: '';
-  display: block;
-  width: 48px;
-  height: 3px;
-  background: var(--blue);
-  border-radius: 2px;
-  margin-bottom: 14px;
-}
-
-.fabio-name {
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: #FFFFFF;
-  margin-bottom: 6px;
-}
-
-.fabio-bio {
-  font-size: 13px;
-  line-height: 1.7;
-  color: rgba(255,255,255,0.58);
 }
  
 .cta-btn {
   display: block;
   background: var(--blue);
-  color: #000000;
+  color: var(--white);
   text-decoration: none;
   border-radius: 8px;
   padding: 14px 36px;
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 16px;
-  font-weight: 800;
   letter-spacing: 3px;
-  text-transform: uppercase;
   cursor: pointer;
   border: none;
   transition: background 0.2s;
@@ -1162,219 +817,7 @@ textarea.form-input {
   text-align: center;
   margin-top: 16px;
 }
-
-/* ScaleCo intelligence block */
-.intelligence-block {
-  background:
-    radial-gradient(circle at top left, rgba(251,190,10,0.14), transparent 42%),
-    linear-gradient(135deg, rgba(255,255,255,0.045), rgba(255,255,255,0.01)),
-    var(--black2);
-  border: 1px solid rgba(251,190,10,0.22);
-  border-radius: 14px;
-  padding: 24px;
-  margin: 0 0 24px;
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 22px 70px rgba(0,0,0,0.34);
-}
-
-.intelligence-block::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(251,190,10,0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(251,190,10,0.035) 1px, transparent 1px);
-  background-size: 34px 34px;
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent 76%);
-  pointer-events: none;
-}
-
-.intelligence-block > * {
-  position: relative;
-  z-index: 1;
-}
-
-.intelligence-kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--blue);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.intelligence-title {
-  font-size: clamp(22px, 5vw, 34px);
-  line-height: 1;
-  letter-spacing: 0.02em;
-  color: #FFFFFF;
-  margin-bottom: 10px;
-}
-
-.intelligence-copy {
-  color: #BEBEBE;
-  font-size: 14px;
-  line-height: 1.7;
-  margin-bottom: 20px;
-}
-
-.intelligence-table-wrap {
-  border: 0;
-  overflow: visible;
-}
-
-.intelligence-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0 12px;
-  background: transparent;
-  table-layout: auto;
-}
-
-.intelligence-table th,
-.intelligence-table td {
-  padding: 16px 18px;
-  text-align: left;
-  vertical-align: top;
-  border-bottom: 0;
-}
-
-.intelligence-table th {
-  color: #FFFFFF;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.intelligence-table td {
-  color: #D8D8D8;
-  font-size: 14px;
-  line-height: 1.5;
-  background: rgba(0,0,0,0.28);
-  border-top: 1px solid rgba(255,255,255,0.08);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-.intelligence-table td:first-child {
-  border-left: 1px solid rgba(255,255,255,0.08);
-  border-radius: 12px 0 0 12px;
-  width: 33%;
-}
-
-.intelligence-table td:nth-child(2) {
-  width: 34%;
-}
-
-.intelligence-table td:last-child {
-  border-right: 1px solid rgba(255,255,255,0.08);
-  border-radius: 0 12px 12px 0;
-  width: 33%;
-}
-
-.intelligence-footnote {
-  margin-top: 14px;
-  color: rgba(255,255,255,0.36);
-  font-size: 11px;
-  line-height: 1.5;
-}
  
-/* ── SHOWOFF SCREEN ── */
-#showoff-screen {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 24px;
-  overflow: hidden;
-}
-
-#showoff-screen > * {
-  position: relative;
-  z-index: 1;
-}
-
-.showoff-logo {
-  margin-bottom: 48px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.showoff-logo-text {
-  font-family: 'Funnel Display', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
-}
-
-.showoff-pulse {
-  width: 48px; height: 48px;
-  margin-bottom: 40px;
-  animation: showoffSpin 2s linear infinite;
-}
-
-@keyframes showoffSpin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.showoff-line {
-  font-family: 'Funnel Display', sans-serif;
-  font-size: clamp(18px, 4vw, 28px);
-  font-weight: 700;
-  color: #FFFFFF;
-  text-align: center;
-  max-width: 480px;
-  letter-spacing: 0.02em;
-  line-height: 1.3;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  min-height: 36px;
-}
-
-.showoff-line.visible { opacity: 1; }
-
-.showoff-sub {
-  margin-top: 16px;
-  font-family: 'Funnel Display', sans-serif;
-  font-size: 13px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.3);
-  text-align: center;
-  letter-spacing: 0.06em;
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
-
-.showoff-sub.visible { opacity: 1; }
-
-.showoff-bar-wrap {
-  margin-top: 40px;
-  width: 200px;
-  height: 2px;
-  background: #1a1a1a;
-  border-radius: 1px;
-  overflow: hidden;
-}
-
-.showoff-bar-fill {
-  height: 100%;
-  background: #2D5BE3;
-  border-radius: 1px;
-  width: 0%;
-  transition: width 5s linear;
-}
-
 /* Utils */
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes logoPulse {
@@ -1399,272 +842,6 @@ textarea.form-input {
   .chat-header { padding: 12px 16px; }
   .progress-bar { width: 80px; }
   #chat-screen { height: 100dvh; overflow: hidden; }
-
-  .brand-lockup {
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 22px;
-  }
-
-  .brand-lockup .mb-logo-img {
-    width: min(190px, 52vw);
-  }
-
-  .scaleco-logo-img {
-    width: min(95px, 26vw);
-  }
-
-  .brand-x {
-    font-size: 10px;
-  }
-
-  .intro-headline {
-    font-size: clamp(30px, 8.2vw, 38px);
-    line-height: 1.03;
-    max-width: 340px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .intro-headline-sub {
-    font-size: 0.66em;
-    line-height: 1.12;
-    max-width: 290px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-/* ── MOBILE FIRST — ajustes críticos para celular ── */
-@media (max-width: 768px) {
-
-  body {
-    background-attachment: scroll;
-    background-size: 180vw 140vh, 180vw 140vh, 180vw 160vh, auto;
-    background-position: left top, right 20vh, center bottom, center;
-  }
-
-  /* ANTI-ZOOM iOS: inputs precisam de font-size 16px para não causar zoom no Safari */
-  .form-input,
-  .form-input:focus,
-  select.form-input,
-  #userInput,
-  #userInput:focus,
-  textarea {
-    font-size: 16px !important;
-  }
-
-  /* Touch targets maiores (44px mínimo recomendado) */
-  .start-btn,
-  .form-submit,
-  .cta-btn,
-  .cta-btn-sec,
-  .intro-cta,
-  .capa-btn,
-  button[onclick="showForm()"] {
-    min-height: 52px;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .send-btn {
-    width: 44px;
-    height: 44px;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  /* Form screen: scroll suave e padding seguro no iOS */
-  #form-screen {
-    padding: 24px 16px;
-    padding-bottom: max(24px, env(safe-area-inset-bottom));
-    justify-content: flex-start;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
-  }
-
-  .form-logo {
-    margin-top: 8px;
-    margin-bottom: 20px;
-  }
-
-  .form-card {
-    border-radius: 12px;
-  }
-
-  .form-card-title {
-    font-size: 30px;
-    letter-spacing: -0.04em;
-  }
-
-  .form-card-sub {
-    font-size: 13px;
-  }
-
-  .form-grid,
-  .form-option-grid.is-two,
-  .form-phone-row {
-    grid-template-columns: 1fr;
-  }
-
-  .form-actions {
-    flex-direction: column-reverse;
-    align-items: stretch;
-  }
-
-  .form-submit,
-  .form-back {
-    width: 100%;
-    min-height: 52px;
-  }
-
-  /* Chat: teclado virtual — usa dvh e variável CSS para offset do teclado */
-  #chat-screen {
-    height: var(--chat-height, 100dvh);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: auto;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-
-  .messages {
-    flex: 1;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
-    padding: 16px 12px;
-  }
-
-  .input-area {
-    padding: 10px 12px;
-    padding-bottom: max(12px, env(safe-area-inset-bottom));
-    flex-shrink: 0;
-  }
-
-  #userInput {
-    min-height: 24px;
-  }
-
-  /* Report: botões full-width no mobile */
-  .cta-btn,
-  .cta-btn-sec {
-    display: block;
-    width: 100%;
-    text-align: center;
-    padding: 16px 20px;
-  }
-
-  .cta-block { padding: 24px 16px; }
-
-  .intelligence-block {
-    padding: 22px 16px;
-  }
-
-  .intelligence-table-wrap {
-    overflow: visible;
-    border: none;
-  }
-
-  .intelligence-table {
-    min-width: 0;
-    display: block;
-    background: transparent;
-    border-collapse: separate;
-    border-spacing: 0;
-    table-layout: auto;
-  }
-
-  .intelligence-table thead {
-    display: none;
-  }
-
-  .intelligence-table tbody,
-  .intelligence-table tr,
-  .intelligence-table td {
-    display: block;
-    width: 100%;
-  }
-
-  .intelligence-table tbody {
-    border-spacing: 0;
-  }
-
-  .intelligence-table tr {
-    background: rgba(0,0,0,0.30);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 12px;
-    margin-bottom: 12px;
-    overflow: hidden;
-  }
-
-  .intelligence-table td {
-    width: 100%;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-radius: 0;
-    padding: 13px 14px;
-    font-size: 13px;
-    background: rgba(0,0,0,0.18);
-  }
-
-  .intelligence-table tr td:first-child,
-  .intelligence-table tr td:nth-child(2),
-  .intelligence-table tr td:last-child {
-    width: 100%;
-    border-left: none;
-    border-right: none;
-    border-radius: 0;
-  }
-
-  .intelligence-table tr td:first-child {
-    border-radius: 12px 12px 0 0;
-  }
-
-  .intelligence-table td:last-child {
-    border-bottom: none;
-    border-radius: 0 0 12px 12px;
-  }
-
-  .intelligence-table td::before {
-    content: attr(data-label);
-    display: block;
-    margin-bottom: 4px;
-    color: var(--blue);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  /* Score legível */
-  .score-block { padding: 20px 16px; }
-
-  /* Dimensões */
-  .dim-row { padding: 14px 14px; }
-  .dim-name { font-size: 11px; }
-
-  /* Header do chat mais compacto */
-  .chat-header-name { font-size: 14px; letter-spacing: 1px; }
-  .chat-header-status { font-size: 10px; }
-
-  /* Report header mais compacto */
-  .report-company { font-size: 22px; }
-  .report-title { font-size: 11px; }
-
-  /* Showoff screen: texto maior no mobile */
-  .showoff-line {
-    font-size: clamp(20px, 5.5vw, 28px);
-    max-width: 90vw;
-  }
-
-  .showoff-bar-wrap { width: 70vw; }
 }
 
   /* ── CAPA ── */
@@ -1711,7 +888,7 @@ textarea.form-input {
     order: 1;
   }
   .capa-logo {
-    font-family: 'Funnel Display', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 13px;
     letter-spacing: 0.12em;
     color: rgba(255,255,255,0.3);
@@ -1719,7 +896,7 @@ textarea.form-input {
   }
   .capa-logo span { color: #2D5BE3; }
   .capa-headline {
-    font-family: 'Funnel Display', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(40px, 4.5vw, 62px);
     line-height: 0.97;
     letter-spacing: 0.01em;
@@ -1741,8 +918,8 @@ textarea.form-input {
     align-items: center;
     gap: 10px;
     background: #2D5BE3;
-    color: #000000;
-    font-family: 'Funnel Display', sans-serif;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.02em;
@@ -1753,7 +930,7 @@ textarea.form-input {
     transition: background 0.2s, transform 0.15s;
     -webkit-tap-highlight-color: transparent;
   }
-  .capa-btn:hover { background: #C99703; transform: translateY(-1px); }
+  .capa-btn:hover { background: #2550cc; transform: translateY(-1px); }
   .capa-btn:active { transform: scale(0.98); }
   .capa-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
   .capa-microcopy {
@@ -1768,7 +945,7 @@ textarea.form-input {
     border-top: 1px solid rgba(255,255,255,0.08);
   }
   .capa-author-name {
-    font-family: 'Funnel Display', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 22px;
     letter-spacing: 0.04em;
     color: #0A0A0A;
@@ -1796,27 +973,6 @@ textarea.form-input {
     .capa-author { margin-top: 1.5rem; }
   }
 
-
-/* ── DIMENSÃO CRÍTICA ── */
-.dim-critica-row { border-color: rgba(239,68,68,0.4) !important; background: rgba(239,68,68,0.06) !important; }
-.dim-critica-block { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.35); border-left: 4px solid #EF4444; border-radius: 10px; padding: 18px 22px; margin: 16px 0 20px; }
-.dim-critica-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #EF4444; margin-bottom: 8px; }
-.dim-critica-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 6px; }
-.dim-critica-status { font-size: 13px; color: #ccc; line-height: 1.5; }
-
-/* ── GARGALO DESTAQUE ── */
-.gargalo-destaque { border-left: 4px solid #EF4444 !important; background: rgba(239,68,68,0.1) !important; }
-.gargalo-destaque .gargalo-text { font-size: 16px !important; font-weight: 600 !important; }
-
-/* ── PLANO DE AÇÃO GATE ── */
-.prio-gate-wrap { position: relative; overflow: hidden; border-radius: 12px; min-height: 220px; }
-.prio-blur .prio-text { filter: blur(5px); user-select: none; pointer-events: none; }
-.prio-gate-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 0%, rgba(10,10,10,0.88) 35%, rgba(10,10,10,0.98) 100%); display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding: 28px 24px; text-align: center; }
-.prio-gate-icon { font-size: 28px; margin-bottom: 10px; }
-.prio-gate-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px; }
-.prio-gate-sub { font-size: 13px; color: #888; line-height: 1.6; margin-bottom: 20px; max-width: 360px; }
-.prio-gate-btn { display: inline-flex; align-items: center; background: var(--blue); color: #fff; text-decoration: none; border-radius: 8px; padding: 14px 28px; font-size: 13px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; transition: background 0.2s; }
-.prio-gate-btn:hover { opacity: 0.88; }
 </style>
 </head>
 <body>
@@ -1827,6 +983,7 @@ textarea.form-input {
   display: grid;
   grid-template-columns: 1fr;
   min-height: 100vh;
+  background: linear-gradient(to bottom, #0D1B3E 0%, #0A1628 40%, #0A0A0A 100%);
 }
 
 .intro-photo-wrap {
@@ -1863,7 +1020,7 @@ textarea.form-input {
   padding: 5px 14px;
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: 999px;
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -1888,28 +1045,19 @@ textarea.form-input {
 }
 
 .intro-headline {
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(36px, 8vw, 52px);
   line-height: 1;
   letter-spacing: 0.02em;
   color: #FAFAF8;
   text-align: center;
   margin-bottom: 14px;
-  max-width: 520px;
 }
 
 .intro-headline span { color: #2D5BE3; }
 
-.intro-headline-sub {
-  display: block;
-  color: #2D5BE3;
-  font-size: 0.78em;
-  line-height: 1.08;
-  margin-top: 10px;
-}
-
 .intro-subline {
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 14px;
   font-weight: 300;
   color: rgba(255,255,255,0.45);
@@ -1930,7 +1078,7 @@ textarea.form-input {
 }
 
 .intro-symptoms-label {
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -1943,7 +1091,7 @@ textarea.form-input {
   display: flex;
   align-items: flex-start;
   gap: 9px;
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 13px;
   font-weight: 300;
   color: rgba(255,255,255,0.55);
@@ -1966,8 +1114,8 @@ textarea.form-input {
   justify-content: center;
   gap: 10px;
   background: #2D5BE3;
-  color: #000000;
-  font-family: 'Funnel Display', sans-serif;
+  color: #fff;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 18px;
   letter-spacing: 0.1em;
   padding: 16px 32px;
@@ -1979,11 +1127,11 @@ textarea.form-input {
   -webkit-tap-highlight-color: transparent;
   margin-bottom: 16px;
 }
-.intro-cta:hover { background: #C99703; }
+.intro-cta:hover { background: #2550cc; }
 .intro-cta:active { transform: scale(0.98); }
 
 .intro-credibility {
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 10px;
   font-weight: 400;
   color: rgba(255,255,255,0.65);
@@ -2000,7 +1148,7 @@ textarea.form-input {
 }
 
 .intro-logo-item {
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -2017,7 +1165,7 @@ textarea.form-input {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 11px;
   font-weight: 400;
   color: rgba(255,255,255,0.85);
@@ -2035,7 +1183,7 @@ textarea.form-input {
 
 .intro-powered {
   margin-top: 14px;
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 10px;
   font-weight: 300;
   color: rgba(255,255,255,0.3);
@@ -2069,6 +1217,7 @@ textarea.form-input {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
+    background: #0A0A0A;
   }
 
   .intro-headline {
@@ -2106,21 +1255,14 @@ textarea.form-input {
     <div class="intro-photo-overlay"></div>
     <div class="intro-photo-badge">
       <div class="intro-badge-dot"></div>
-      Scale Diagnostic™ · ScaleCo × ScaleCo
+      Scale Diagnostic™ · ScaleCo
     </div>
   </div>
 
   <div class="intro-content">
 
-    <div class="brand-lockup" aria-label="ScaleCo em parceria com ScaleCo">
-      <img src="assets/scaleco-logo-yellow-transparent.png" class="mb-logo-img is-small" alt="ScaleCo">
-      <span class="brand-x" aria-hidden="true">powered by</span>
-      <img src="assets/scaleco-logo-transparent.png" class="scaleco-logo-img" alt="ScaleCo">
-    </div>
-
     <h1 class="intro-headline">
-      Diagnóstico de Arquitetura de Receita
-      <span class="intro-headline-sub">Metodologia aplicada em <span style="white-space:nowrap;">Big Techs</span></span>
+      Sua empresa <span>escala</span><br>ou só cresce com esforço?
     </h1>
 
     <p class="intro-subline">
@@ -2147,159 +1289,139 @@ textarea.form-input {
 
 </div>
 
+  <!-- SINTOMAS -->
+  <div id="sintomas-section" style="background:#0A0A0A;padding:4rem 1.5rem 5rem;max-width:680px;margin:0 auto;">
+
+    <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:2rem;display:flex;align-items:center;gap:10px;">
+      <span style="display:block;width:24px;height:1px;background:rgba(255,255,255,0.15);"></span>
+      Identificação
+    </div>
+
+    <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,6vw,48px);line-height:1.0;letter-spacing:0.01em;color:#FFFFFF;margin-bottom:2.5rem;">Você reconhece algum<br>desses sintomas?</h2>
+
+    <div style="display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,0.08);">
+
+      <div style="display:grid;grid-template-columns:2rem 1fr;gap:1rem;padding:1.5rem 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:0.05em;color:#2D5BE3;padding-top:2px;">01</span>
+        <div>
+          <p style="font-size:15px;font-weight:500;color:#FFFFFF;margin-bottom:4px;">Se você parar por 30 dias, a receita desacelera.</p>
+          <p style="font-size:14px;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.6;margin:0;">Sua empresa ainda depende mais da sua energia do que de um sistema.</p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:2rem 1fr;gap:1rem;padding:1.5rem 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:0.05em;color:#2D5BE3;padding-top:2px;">02</span>
+        <div>
+          <p style="font-size:15px;font-weight:500;color:#FFFFFF;margin-bottom:4px;">Você não consegue prever sua receita com confiança.</p>
+          <p style="font-size:14px;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.6;margin:0;">Você vende hoje sem clareza do que entra amanhã.</p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:2rem 1fr;gap:1rem;padding:1.5rem 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:0.05em;color:#2D5BE3;padding-top:2px;">03</span>
+        <div>
+          <p style="font-size:15px;font-weight:500;color:#FFFFFF;margin-bottom:4px;">Você cresce… mas o caixa nunca acompanha.</p>
+          <p style="font-size:14px;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.6;margin:0;">Mais vendas sem estrutura podem acelerar o caos.</p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:2rem 1fr;gap:1rem;padding:1.5rem 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:0.05em;color:#2D5BE3;padding-top:2px;">04</span>
+        <div>
+          <p style="font-size:15px;font-weight:500;color:#FFFFFF;margin-bottom:4px;">Seu time trabalha muito, mas a previsibilidade continua baixa.</p>
+          <p style="font-size:14px;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.6;margin:0;">Esforço alto não substitui arquitetura.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- O QUE VOCÊ RECEBE -->
+    <div style="margin-top:3rem;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,0.08);">
+
+      <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:1.5rem;display:flex;align-items:center;gap:10px;">
+        <span style="display:block;width:24px;height:1px;background:rgba(255,255,255,0.15);"></span>
+        O que você recebe no diagnóstico
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:2.5rem;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="color:#2D5BE3;font-size:14px;font-weight:600;flex-shrink:0;">✓</span>
+          <span style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:400;color:rgba(255,255,255,0.75);">Score por dimensão</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="color:#2D5BE3;font-size:14px;font-weight:600;flex-shrink:0;">✓</span>
+          <span style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:400;color:rgba(255,255,255,0.75);">Principal gargalo identificado</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="color:#2D5BE3;font-size:14px;font-weight:600;flex-shrink:0;">✓</span>
+          <span style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:400;color:rgba(255,255,255,0.75);">Prioridade dos próximos 90 dias</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="color:#2D5BE3;font-size:14px;font-weight:600;flex-shrink:0;">✓</span>
+          <span style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:400;color:rgba(255,255,255,0.75);">Relatório no e-mail</span>
+        </div>
+      </div>
+
+      <button onclick="showForm()" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#2D5BE3;color:#fff;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.1em;padding:16px 32px;border:none;cursor:pointer;width:100%;-webkit-tap-highlight-color:transparent;">
+        COMEÇAR DIAGNÓSTICO
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <p style="margin-top:10px;font-size:11px;color:rgba(255,255,255,0.25);letter-spacing:0.04em;text-align:center;">Direto ao ponto. Sem teoria.</p>
+
+    </div>
+
+  </div>
+
 <!-- PRE-CHAT FORM -->
 <div id="form-screen">
-  <div class="form-logo">
-    <img src="assets/scaleco-logo-yellow-transparent.png" class="mb-logo-img is-small" alt="ScaleCo">
+  <div class="form-logo">SCALECO · SCALE DIAGNOSTIC™</div>
+  <div class="form-card">
+    <div class="form-card-title">ANTES DE COMEÇAR O DIAGNÓSTICO</div>
+    <div class="form-card-sub">Preciso entender o contexto da sua operação.<br>Em poucos minutos, você vai ver onde sua escala está travando.</div>
+
+    <div class="form-field">
+      <label class="form-label">Nome completo</label>
+      <input type="text" id="f-nome" class="form-input" placeholder="Seu nome">
+    </div>
+
+    <div class="form-field">
+      <label class="form-label">Email</label>
+      <input type="email" id="f-email" class="form-input" placeholder="seu@email.com">
+    </div>
+
+    <div class="form-field">
+      <label class="form-label">WhatsApp</label>
+      <input type="tel" id="f-whatsapp" class="form-input" placeholder="(11) 99999-9999" oninput="maskPhone(event)" maxlength="15">
+    </div>
+
+    <div class="form-field">
+      <label class="form-label">Faturamento anual aproximado</label>
+      <div class="form-select-wrap">
+        <select id="f-faturamento" class="form-input">
+          <option value="" disabled selected>Selecione uma faixa</option>
+          <option value="Até R$1M/ano">Até R$1M/ano</option>
+          <option value="R$1M–R$5M/ano">R$1M – R$5M/ano</option>
+          <option value="R$5M–R$20M/ano">R$5M – R$20M/ano</option>
+          <option value="R$20M–R$40M/ano">R$20M – R$40M/ano</option>
+          <option value="R$40M–R$80M/ano">R$40M – R$80M/ano</option>
+          <option value="Acima de R$80M/ano">Acima de R$80M/ano</option>
+
+        </select>
+      </div>
+    </div>
+
+    <p style="font-size:12px;color:#555;text-align:center;margin-bottom:12px;letter-spacing:0.04em;">Diagnóstico direto. Sem teoria.</p><button class="form-submit" id="form-submit-btn" onclick="submitForm()">INICIAR AVALIAÇÃO</button>
+    <div class="form-privacy">Seus dados são usados apenas para envio do relatório.</div>
+    <div style="margin-top:20px;padding-top:16px;border-top:1px solid #1e1e1e;font-size:11px;color:#333;text-align:center;letter-spacing:0.04em;">Usado por empresas que querem previsibilidade de receita.</div>
   </div>
-  <form class="form-card" id="candidatura-form" onsubmit="submitForm(); return false;" novalidate>
-    <input type="hidden" id="f-intencao" name="intencao" value="membro">
-    <input type="hidden" id="f-source" name="source" value="candidatura-page">
-    <input type="hidden" id="f-telefone" name="telefone" value="">
-    <div class="form-honeypot" aria-hidden="true">
-      <label for="f-gotcha">Não preencha este campo</label>
-      <input type="text" id="f-gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
-    </div>
-
-    <div class="form-progress" id="form-progress" aria-hidden="true"></div>
-
-    <section class="form-step is-active" data-step="0">
-      <div class="form-kicker">Candidatura ScaleCo</div>
-      <h2 class="form-card-title">Olá, qual é o seu e-mail profissional?</h2>
-      <p class="form-card-sub">Vamos começar pelo contato principal para priorizar sua aplicação.</p>
-      <div class="form-field">
-        <label class="form-label" for="f-email">E-mail profissional</label>
-        <input type="email" id="f-email" name="email" class="form-input" placeholder="voce@empresa.com" autocomplete="email" required>
-      </div>
-    </section>
-
-    <section class="form-step" data-step="1">
-      <div class="form-kicker">Para priorizar sua aplicação</div>
-      <h2 class="form-card-title">Conte quem é você.</h2>
-      <p class="form-card-sub">Essas informações ajudam a equipe ScaleCo a entender seu contexto antes do diagnóstico com o Archie.</p>
-      <div class="form-grid">
-        <div class="form-field is-wide">
-          <label class="form-label" for="f-nome">1. Qual o seu nome completo?</label>
-          <input type="text" id="f-nome" name="nome" class="form-input" placeholder="Seu nome completo" autocomplete="name" required>
-        </div>
-        <div class="form-field is-wide">
-          <label class="form-label">2. E o seu WhatsApp?</label>
-          <div class="form-phone-row">
-            <div class="form-select-wrap">
-              <select id="f-codigo-pais" name="codigo_pais" class="form-input" aria-label="Região / código do país">
-                <option value="+55" selected>+55 · Brasil</option>
-                <option value="+1">+1 · EUA / Canadá</option>
-                <option value="+351">+351 · Portugal</option>
-                <option value="+54">+54 · Argentina</option>
-                <option value="+56">+56 · Chile</option>
-                <option value="+57">+57 · Colômbia</option>
-                <option value="+52">+52 · México</option>
-                <option value="+598">+598 · Uruguai</option>
-                <option value="+595">+595 · Paraguai</option>
-              </select>
-            </div>
-            <input type="tel" id="f-whatsapp" name="whatsapp" class="form-input" placeholder="11 9 0000-0000" oninput="maskPhone(event)" autocomplete="tel-national" required>
-          </div>
-        </div>
-        <div class="form-field">
-          <label class="form-label" for="f-empresa">3. Qual o nome da sua empresa?</label>
-          <input type="text" id="f-empresa" name="empresa" class="form-input" placeholder="Ex: ScaleCo" autocomplete="organization" required>
-        </div>
-        <div class="form-field">
-          <label class="form-label" for="f-website">4. Site da empresa</label>
-          <input type="url" id="f-website" name="website" class="form-input" placeholder="https://suaempresa.com.br" autocomplete="url">
-        </div>
-      </div>
-    </section>
-
-    <section class="form-step" data-step="2">
-      <div class="form-kicker">Perfil executivo</div>
-      <h2 class="form-card-title">4. Qual o seu cargo na empresa?</h2>
-      <div class="form-option-grid is-two" data-required-radio="cargo">
-        <label class="form-option"><input type="radio" name="cargo" value="Sócio ou Fundador" checked><span>Sócio ou Fundador</span></label>
-        <label class="form-option"><input type="radio" name="cargo" value="Presidente ou CEO"><span>Presidente ou CEO</span></label>
-        <label class="form-option"><input type="radio" name="cargo" value="Vice-presidente ou C-Level"><span>Vice-presidente ou C-Level</span></label>
-        <label class="form-option"><input type="radio" name="cargo" value="Diretor"><span>Diretor</span></label>
-        <label class="form-option"><input type="radio" name="cargo" value="Gerente"><span>Gerente</span></label>
-        <label class="form-option"><input type="radio" name="cargo" value="Coordenador"><span>Coordenador</span></label>
-        <label class="form-option"><input type="radio" name="cargo" value="Supervisor"><span>Supervisor</span></label>
-        <label class="form-option"><input type="radio" name="cargo" value="Analista"><span>Analista</span></label>
-      </div>
-    </section>
-
-    <section class="form-step" data-step="3">
-      <div class="form-kicker">Porte da operação</div>
-      <h2 class="form-card-title">5. Qual o faturamento anual da sua empresa?</h2>
-      <div class="form-option-grid" data-required-radio="faturamento">
-        <label class="form-option"><input type="radio" name="faturamento" value="Ainda não faturamos"><span>Ainda não faturamos</span></label>
-        <label class="form-option"><input type="radio" name="faturamento" value="Até R$250 mil ao ano"><span>Até R$250 mil ao ano</span></label>
-        <label class="form-option"><input type="radio" name="faturamento" value="De R$250 mil a R$500 mil ao ano"><span>De R$250 mil a R$500 mil ao ano</span></label>
-        <label class="form-option"><input type="radio" name="faturamento" value="De R$500 mil a R$1 milhão ao ano"><span>De R$500 mil a R$1 milhão ao ano</span></label>
-        <label class="form-option"><input type="radio" name="faturamento" value="De R$1 milhão a R$5 milhões ao ano"><span>De R$1 milhão a R$5 milhões ao ano</span></label>
-        <label class="form-option"><input type="radio" name="faturamento" value="De R$5 a R$10 milhões ao ano"><span>De R$5 a R$10 milhões ao ano</span></label>
-        <label class="form-option"><input type="radio" name="faturamento" value="De R$10 a R$50 milhões ao ano"><span>De R$10 a R$50 milhões ao ano</span></label>
-        <label class="form-option"><input type="radio" name="faturamento" value="De R$50 a R$500 milhões ao ano"><span>De R$50 a R$500 milhões ao ano</span></label>
-        <label class="form-option"><input type="radio" name="faturamento" value="Acima de R$500 milhões"><span>Acima de R$500 milhões</span></label>
-      </div>
-    </section>
-
-    <section class="form-step" data-step="4">
-      <div class="form-kicker">Time</div>
-      <h2 class="form-card-title">6. Quantos colaboradores sua empresa possui?</h2>
-      <div class="form-option-grid" data-required-radio="colaboradores">
-        <label class="form-option"><input type="radio" name="colaboradores" value="Acima de 1.000 colaboradores"><span>Acima de 1.000 colaboradores</span></label>
-        <label class="form-option"><input type="radio" name="colaboradores" value="De 101 a 1.000 colaboradores"><span>De 101 a 1.000 colaboradores</span></label>
-        <label class="form-option"><input type="radio" name="colaboradores" value="De 51 a 100 colaboradores"><span>De 51 a 100 colaboradores</span></label>
-        <label class="form-option"><input type="radio" name="colaboradores" value="De 10 a 50 colaboradores"><span>De 10 a 50 colaboradores</span></label>
-        <label class="form-option"><input type="radio" name="colaboradores" value="Até 10 colaboradores"><span>Até 10 colaboradores</span></label>
-      </div>
-      <div class="form-field is-wide is-consent">
-        <label class="form-check">
-          <input type="checkbox" id="f-lgpd" name="lgpd" required>
-          <span>Concordo com a <a href="/politica-de-privacidade/" target="_blank" rel="noopener">Política de Privacidade</a> e autorizo o contato da equipe ScaleCo.</span>
-        </label>
-      </div>
-    </section>
-
-    <div class="form-error" id="form-error" role="alert" aria-live="polite"></div>
-
-    <div class="form-actions">
-      <button type="button" class="form-back" id="form-back-btn" onclick="prevFormStep()">Voltar</button>
-      <button type="button" class="form-submit" id="form-next-btn" onclick="nextFormStep()">Continuar</button>
-    </div>
-    <div class="form-privacy">Candidatura direta. Seus dados são usados para priorização e contato da equipe ScaleCo.</div>
-    <div style="margin-top:20px;padding-top:16px;border-top:1px solid #1e1e1e;font-size:11px;color:#333;text-align:center;letter-spacing:0.04em;">Ecossistema ScaleCo × metodologia ScaleCo.</div>
-  </form>
 </div>
  
-<!-- SHOWOFF SCREEN -->
-<div id="showoff-screen">
-  <div class="showoff-logo">
-    <img src="assets/scaleco-logo-yellow-transparent.png" class="mb-logo-img" alt="ScaleCo">
-  </div>
-
-  <svg class="showoff-pulse" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="24" cy="24" r="20" stroke="#1a1a1a" stroke-width="3"/>
-    <path d="M24 4 A20 20 0 0 1 44 24" stroke="#2D5BE3" stroke-width="3" stroke-linecap="round"/>
-  </svg>
-
-  <div class="showoff-line" id="showoff-line"></div>
-  <div class="showoff-sub" id="showoff-sub">analisando sua operação...</div>
-
-  <div class="showoff-bar-wrap">
-    <div class="showoff-bar-fill" id="showoff-bar"></div>
-  </div>
-</div>
-
 <!-- CHAT -->
 <div id="chat-screen">
   <div class="chat-header">
     <img src="archie.jpeg" class="archie-sm" alt="Archie">
     <div class="chat-header-info">
-      <div class="chat-header-name" style="display:flex;align-items:center;gap:8px;">
-        ARCHIE
-        <span style="font-size:9px;font-weight:500;letter-spacing:0.08em;color:#2D5BE3;opacity:0.7;text-transform:uppercase;">× ScaleCo</span>
-      </div>
+      <div class="chat-header-name">ARCHIE</div>
       <div class="chat-header-status">
         <div class="status-dot"></div>
         Scale Diagnostic™ ativo
@@ -2318,8 +1440,7 @@ textarea.form-input {
       <textarea id="userInput" rows="1"
         placeholder="Digite sua resposta..."
         onkeydown="handleKey(event)"
-        oninput="autoResize(this)"
-        onfocus="handleInputFocus()"></textarea>
+        oninput="autoResize(this)"></textarea>
       <button class="send-btn" id="sendBtn" onclick="sendMessage()">
         <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
       </button>
@@ -2335,164 +1456,17 @@ let history = [];
 let isLoading = false;
 let msgCount = 0;
 let formData = {};
-let currentFormStep = 0;
-const FORM_TOTAL_STEPS = 5;
-const CANDIDATURA_STORAGE_KEY = 'scaleco_diagnostic_form';
 const MAX_MSGS = 14;
-let demoChatMode = false;
-let demoStep = 0;
-
-const DEMO_REPORT = {
-  tipo: 'relatorio',
-  nome: 'Bernardo Kawano',
-  empresa: 'ScaleCo',
-  email: 'bernardo@scaleco.com.br',
-  whatsapp: '(11) 99999-9999',
-  faturamento: 'R$1M–R$5M/ano',
-  localizacao: 'São Paulo – SP',
-  score_geral: 38,
-  nivel: 'Em Desenvolvimento',
-  dimensoes: {
-    S: { score: 25, status: 'ICP definido por intuição, sem validação', gargalo: 'Não há perfil de cliente ideal documentado' },
-    C: { score: 40, status: 'Canal único, dependente de indicação', gargalo: 'Sem engine de aquisição ativo ou previsível' },
-    A: { score: 20, status: 'Sem previsão de receita estruturada', gargalo: 'Forecast baseado em feeling, não em dados' },
-    L: { score: 30, status: 'Operação trava quando founder sai', gargalo: 'Time não opera sem presença constante do líder' },
-    E: { score: 45, status: 'Reuniões acontecem, sem cadência formal', gargalo: 'Pipeline review não segue ritmo definido' },
-    G: { score: 50, status: 'Gestão informal, sem playbook', gargalo: null },
-  },
-  gargalo_critico: 'Ausência de previsibilidade de receita — a operação depende do fundador para cada etapa do ciclo.',
-  prioridades: [
-    'Definir e documentar o ICP com critérios comportamentais e econômicos objetivos',
-    'Construir pelo menos um canal de aquisição ativo com métricas semanais rastreadas',
-    'Implementar forecast semanal com dados reais de pipeline — não de feeling',
-  ],
-  parecer: 'A ScaleCo tem os ingredientes certos, mas sem um motor de receita estruturado, o crescimento ainda é refém da energia do fundador. O gargalo não é falta de talento — é falta de sistema.',
-  setor_insights: 'Empresas de ecossistema e comunidade nesse faturamento cometem dois erros recorrentes: confundem engajamento com receita previsível, e postergam a formalização de processos comerciais porque "estão crescendo por indicação". O resultado é um teto invisível que aparece exatamente quando a operação tenta dar o próximo salto.',
-  ecossistema_match: 'Temos conexões estratégicas com decisores corporativos no segmento de inovação e formação de times em São Paulo que podem acelerar a expansão da carteira da ScaleCo nos próximos 90 dias.',
-  scaleco_tabela: [
-    {
-      desafio: 'Transformar comunidade e autoridade em receita previsível',
-      impacto: 'Pipeline irregular, dependência de relacionamento direto e dificuldade de forecast',
-      conexao: 'Empresários B2B, CRM, vendas consultivas e parceiros de geração de demanda',
-    },
-    {
-      desafio: 'Escalar operação sem perder curadoria e qualidade do ecossistema',
-      impacto: 'Risco de diluir a proposta de valor e criar gargalos manuais na entrega',
-      conexao: 'Processos, automação, governança de comunidade e gestão operacional',
-    },
-    {
-      desafio: 'Expandir para outras regiões com posicionamento consistente',
-      impacto: 'Crescimento regional pode ficar dependente de indicações locais e eventos pontuais',
-      conexao: 'Líderes empresariais regionais, parceiros comerciais e hubs de inovação',
-    },
-  ],
-};
-
-const DEMO_CHAT_REPLIES = [
-  'Sou o Archie, o engine de diagnóstico da ScaleCo. Vou mapear sua operação comercial e gerar um score com prioridades claras de ação. Vamos começar?\n\nO que a empresa vende e qual o ticket médio por venda?',
-  'Você consegue descrever em uma frase quem é seu cliente ideal?',
-  'Como os clientes chegam até você hoje?',
-  'Você consegue prever quanto vai faturar no próximo mês?',
-  'Se você sair por 30 dias, o comercial continua funcionando, ou trava em você?',
-  'Quando uma meta não é batida, você consegue identificar exatamente em qual etapa do funil falhou?',
-  'Existe um ritmo claro de gestão da receita — reuniões, forecast, pipeline review — ou cada semana funciona de um jeito?',
-  JSON.stringify(DEMO_REPORT),
-];
-
-function createLeadId() {
-  if (window.crypto && typeof window.crypto.randomUUID === 'function') {
-    return window.crypto.randomUUID();
-  }
-  return `lead_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 10)}`;
-}
-
-// ── MODO DEMO: ?demo=showoff — mostra tela showoff + relatório sem API ──
-(function() {
-  const p = new URLSearchParams(window.location.search);
-  if (p.get('demo') === 'chat') {
-    demoChatMode = true;
-    formData = {
-      leadId: 'demo-chat',
-      nome: 'Bernardo Kawano',
-      email: 'bernardo@scaleco.com.br',
-      codigo_pais: '+55',
-      whatsapp: '(11) 99999-9999',
-      telefone: '+55 (11) 99999-9999',
-      empresa: 'Empresa Alpha',
-      website: 'https://empresa-alpha.com.br',
-      cargo: 'Sócio ou Fundador',
-      faturamento: 'R$1M–R$5M/ano',
-      colaboradores: 'De 51 a 100 colaboradores',
-      intencao: 'membro',
-      source: 'candidatura-page',
-      lgpd: true,
-      localizacao: 'São Paulo – SP',
-    };
-
-    const openDemoChat = () => {
-      document.getElementById('intro').style.display = 'none';
-      const s = document.getElementById('sintomas-section');
-      if (s) s.style.display = 'none';
-      document.getElementById('form-screen').style.display = 'none';
-      const cs = document.getElementById('chat-screen');
-      cs.style.display = 'flex';
-      cs.style.position = 'fixed';
-      cs.style.top = 'var(--chat-top, 0px)';
-      cs.style.left = '0';
-      cs.style.right = '0';
-      cs.style.bottom = 'auto';
-      cs.style.height = 'var(--chat-height, 100dvh)';
-      cs.style.zIndex = '999';
-      syncChatViewport();
-      startChat();
-    };
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', openDemoChat);
-    } else {
-      openDemoChat();
-    }
-    return;
-  }
-
-  if (p.get('demo') === 'showoff') {
-    document.getElementById('intro').style.display = 'none';
-    const s = document.getElementById('sintomas-section');
-    if (s) s.style.display = 'none';
-    document.getElementById('form-screen').style.display = 'none';
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => showShowoff(DEMO_REPORT));
-    } else {
-      showShowoff(DEMO_REPORT);
-    }
-    return;
-  }
-})();
 
 // Se abriu via nova aba com ?start=1, pula landing e inicia chat direto
 (function() {
   const p = new URLSearchParams(window.location.search);
   if (p.get('start') === '1') {
-    const leadId = p.get('leadId') || createLeadId();
-    const storedFormData = getStoredFormData(leadId);
     formData = {
-      ...storedFormData,
-      leadId,
-      nome: p.get('nome') || storedFormData.nome || '',
-      email: p.get('email') || storedFormData.email || '',
-      codigo_pais: p.get('codigo_pais') || storedFormData.codigo_pais || '',
-      whatsapp: p.get('whatsapp') || storedFormData.whatsapp || '',
-      telefone: p.get('telefone') || storedFormData.telefone || '',
-      empresa: p.get('empresa') || storedFormData.empresa || '',
-      website: p.get('website') || storedFormData.website || '',
-      cargo: p.get('cargo') || storedFormData.cargo || '',
-      faturamento: p.get('faturamento') || storedFormData.faturamento || '',
-      colaboradores: p.get('colaboradores') || storedFormData.colaboradores || '',
-      intencao: p.get('intencao') || storedFormData.intencao || '',
-      source: p.get('source') || storedFormData.source || '',
-      lgpd: p.get('lgpd') === '1' || Boolean(storedFormData.lgpd),
-      localizacao: p.get('localizacao') || storedFormData.localizacao || '',
+      nome: p.get('nome') || '',
+      email: p.get('email') || '',
+      whatsapp: p.get('whatsapp') || '',
+      faturamento: p.get('faturamento') || '',
     };
     document.getElementById('intro').style.display = 'none';
     const s = document.getElementById('sintomas-section');
@@ -2501,13 +1475,12 @@ function createLeadId() {
     const cs = document.getElementById('chat-screen');
     cs.style.display = 'flex';
     cs.style.position = 'fixed';
-    cs.style.top = 'var(--chat-top, 0px)';
+    cs.style.top = '0';
     cs.style.left = '0';
     cs.style.right = '0';
-    cs.style.bottom = 'auto';
-    cs.style.height = 'var(--chat-height, 100dvh)';
+    cs.style.bottom = '0';
     cs.style.zIndex = '999';
-    syncChatViewport();
+    cs.style.background = '#0A0A0A';
     window.history.replaceState({}, '', '/');
     window.addEventListener('DOMContentLoaded', startChat);
     if (document.readyState !== 'loading') startChat();
@@ -2517,104 +1490,21 @@ function createLeadId() {
 function autoResize(el) {
   el.style.height = 'auto';
   el.style.height = Math.min(el.scrollHeight, 100) + 'px';
-  scrollChatToBottom(60);
 }
  
 function handleKey(e) {
   if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
 }
 
-function isMobileChatViewport() {
-  return window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
-}
-
-function syncChatViewport() {
-  const chat = document.getElementById('chat-screen');
-  if (!chat || !isMobileChatViewport()) {
-    document.documentElement.style.removeProperty('--chat-height');
-    return;
-  }
-
-  const viewport = window.visualViewport;
-  const height = viewport ? viewport.height : window.innerHeight;
-
-  document.documentElement.style.setProperty('--chat-height', `${Math.round(height)}px`);
-
-  if (chat.style.display === 'flex' && window.scrollY !== 0) {
-    window.scrollTo(0, 0);
-  }
-}
-
-function scrollChatToBottom(delay = 0) {
-  const run = () => {
-    const wrap = document.getElementById('messages');
-    if (!wrap) return;
-    wrap.scrollTop = wrap.scrollHeight;
-  };
-
-  if (delay > 0) {
-    setTimeout(run, delay);
-  } else {
-    run();
-  }
-}
-
-function handleInputFocus() {
-  syncChatViewport();
-  scrollChatToBottom(120);
-  scrollChatToBottom(320);
-}
-
-function initChatViewportHandling() {
-  syncChatViewport();
-
-  if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', () => {
-      syncChatViewport();
-      scrollChatToBottom(80);
-    });
-    window.visualViewport.addEventListener('scroll', () => {
-      syncChatViewport();
-      scrollChatToBottom(80);
-    });
-  }
-
-  window.addEventListener('resize', () => {
-    syncChatViewport();
-    scrollChatToBottom(80);
-  });
-}
-
-initChatViewportHandling();
-
 function showForm() {
   document.getElementById('intro').style.display = 'none';
   const sintomas = document.getElementById('sintomas-section');
   if (sintomas) sintomas.style.display = 'none';
-  currentFormStep = 0;
   window.scrollTo({ top: 0, behavior: 'instant' });
   document.getElementById('form-screen').style.display = 'flex';
-  initCandidaturaForm();
 }
 
-(function openCandidaturaRoute() {
-  const p = new URLSearchParams(window.location.search);
-  const isCandidaturaPath = window.location.pathname.replace(/\/+$/, '') === '/candidatura';
-  if (!isCandidaturaPath || p.get('start') === '1' || p.has('demo')) return;
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', showForm);
-  } else {
-    showForm();
-  }
-})();
-
 function maskPhone(e) {
-  const countryCode = document.getElementById('f-codigo-pais')?.value || '+55';
-  if (countryCode !== '+55') {
-    e.target.value = e.target.value.replace(/[^\d\s-]/g, '').slice(0, 18);
-    return;
-  }
-
   let v = e.target.value.replace(/\D/g, '').slice(0, 11);
   if (v.length > 10) {
     v = v.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
@@ -2628,219 +1518,48 @@ function maskPhone(e) {
   e.target.value = v;
 }
 
-function initCandidaturaForm() {
-  const progress = document.getElementById('form-progress');
-  if (progress && !progress.children.length) {
-    progress.innerHTML = Array.from({ length: FORM_TOTAL_STEPS }, () => '<div class="form-progress-dot"></div>').join('');
+function submitForm() {
+  const nome = document.getElementById('f-nome').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const whatsapp = document.getElementById('f-whatsapp').value.trim();
+  const faturamento = document.getElementById('f-faturamento').value;
+
+  if (!nome || !email || !whatsapp || !faturamento) {
+    alert('Por favor, preencha todos os campos.');
+    return;
   }
-  renderFormStep();
-}
 
-function renderFormStep() {
-  document.querySelectorAll('.form-step').forEach((step, index) => {
-    step.classList.toggle('is-active', index === currentFormStep);
-  });
-
-  document.querySelectorAll('.form-progress-dot').forEach((dot, index) => {
-    dot.classList.toggle('is-active', index === currentFormStep);
-    dot.classList.toggle('is-done', index < currentFormStep);
-  });
-
-  const backBtn = document.getElementById('form-back-btn');
-  const nextBtn = document.getElementById('form-next-btn');
-  if (backBtn) backBtn.disabled = currentFormStep === 0;
-  if (nextBtn) nextBtn.textContent = currentFormStep === FORM_TOTAL_STEPS - 1 ? 'Enviar candidatura' : 'Continuar';
-  clearFormError();
-  scrollFormToTop();
-}
-
-function getFieldValue(id) {
-  return document.getElementById(id)?.value.trim() || '';
-}
-
-function getRadioValue(name) {
-  return document.querySelector(`input[name="${name}"]:checked`)?.value || '';
-}
-
-function scrollFormToTop() {
-  const screen = document.getElementById('form-screen');
-  if (screen) screen.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function clearFormError() {
-  const error = document.getElementById('form-error');
-  if (!error) return;
-  error.textContent = '';
-  error.classList.remove('is-visible');
-}
-
-function showFormError(message, selector) {
-  const error = document.getElementById('form-error');
-  if (error) {
-    error.textContent = message;
-    error.classList.add('is-visible');
-  }
-  const field = document.querySelector(selector);
-  if (field && typeof field.focus === 'function') field.focus();
-  return false;
-}
-
-function normalizeWebsiteInput(value) {
-  const cleaned = String(value || '').trim();
-  if (!cleaned) return '';
-  return /^https?:\/\//i.test(cleaned) ? cleaned : `https://${cleaned}`;
-}
-
-function validateCurrentFormStep() {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const website = getFieldValue('f-website');
-
-  if (currentFormStep === 0) {
-    const email = getFieldValue('f-email');
-    if (!emailRegex.test(email)) {
-      return showFormError('Por favor, insira um email profissional válido.', '#f-email');
-    }
-  }
-
-  if (currentFormStep === 1) {
-    if (!getFieldValue('f-nome')) {
-      return showFormError('Por favor, informe seu nome completo.', '#f-nome');
-    }
-    if (!getFieldValue('f-empresa')) {
-      return showFormError('Por favor, informe o nome da empresa.', '#f-empresa');
-    }
-    const phoneDigits = getFieldValue('f-whatsapp').replace(/\D/g, '');
-    const minPhoneDigits = getFieldValue('f-codigo-pais') === '+55' ? 10 : 6;
-    if (phoneDigits.length < minPhoneDigits) {
-      return showFormError('Por favor, insira um WhatsApp válido.', '#f-whatsapp');
-    }
-    if (website) {
-      try {
-        new URL(normalizeWebsiteInput(website));
-      } catch (e) {
-        return showFormError('Por favor, informe um site válido. Exemplo: suaempresa.com.br', '#f-website');
-      }
-    }
-  }
-
-  if (currentFormStep === 2 && !getRadioValue('cargo')) {
-    return showFormError('Por favor, selecione seu cargo.', 'input[name="cargo"]');
-  }
-
-  if (currentFormStep === 3 && !getRadioValue('faturamento')) {
-    return showFormError('Por favor, selecione o faturamento anual.', 'input[name="faturamento"]');
-  }
-
-  if (currentFormStep === 4 && !getRadioValue('colaboradores')) {
-    return showFormError('Por favor, selecione a quantidade de colaboradores.', 'input[name="colaboradores"]');
-  }
-
-  if (currentFormStep === 4) {
-    if (getFieldValue('f-gotcha')) return false;
-    if (!document.getElementById('f-lgpd')?.checked) {
-      return showFormError('Para continuar, aceite a Política de Privacidade.', '#f-lgpd');
-    }
-  }
-
-  clearFormError();
-  return true;
-}
-
-function nextFormStep() {
-  if (!validateCurrentFormStep()) return;
-  if (currentFormStep >= FORM_TOTAL_STEPS - 1) {
-    submitForm();
+  if (!emailRegex.test(email)) {
+    alert('Por favor, insira um email válido.');
     return;
   }
-  currentFormStep += 1;
-  renderFormStep();
-}
 
-function prevFormStep() {
-  currentFormStep = Math.max(0, currentFormStep - 1);
-  renderFormStep();
-}
-
-function buildCandidaturaData(leadId) {
-  const codigoPais = getFieldValue('f-codigo-pais') || '+55';
-  const whatsapp = getFieldValue('f-whatsapp');
-  const telefone = `${codigoPais} ${whatsapp}`.trim();
-  const telefoneField = document.getElementById('f-telefone');
-  if (telefoneField) telefoneField.value = telefone;
-
-  return {
-    leadId,
-    intencao: getFieldValue('f-intencao') || 'membro',
-    source: getFieldValue('f-source') || 'candidatura-page',
-    nome: getFieldValue('f-nome'),
-    email: getFieldValue('f-email').toLowerCase(),
-    codigo_pais: codigoPais,
-    whatsapp,
-    telefone,
-    empresa: getFieldValue('f-empresa'),
-    website: normalizeWebsiteInput(getFieldValue('f-website')),
-    cargo: getRadioValue('cargo'),
-    faturamento: getRadioValue('faturamento'),
-    colaboradores: getRadioValue('colaboradores'),
-    lgpd: Boolean(document.getElementById('f-lgpd')?.checked),
-    localizacao: '',
-  };
-}
-
-function persistFormDataForChat(data) {
-  try {
-    sessionStorage.setItem(CANDIDATURA_STORAGE_KEY, JSON.stringify(data));
-  } catch (e) {}
-}
-
-function getStoredFormData(leadId) {
-  try {
-    const parsed = JSON.parse(sessionStorage.getItem(CANDIDATURA_STORAGE_KEY) || '{}');
-    if (!leadId || parsed.leadId === leadId) return parsed;
-  } catch (e) {}
-  return {};
-}
-
-async function submitForm() {
-  if (currentFormStep !== FORM_TOTAL_STEPS - 1) {
-    nextFormStep();
+  const phoneDigits = whatsapp.replace(/\D/g, '');
+  if (phoneDigits.length < 10) {
+    alert('Por favor, insira um WhatsApp válido com DDD.');
     return;
   }
-  if (!validateCurrentFormStep()) return;
 
-  const nextBtn = document.getElementById('form-next-btn');
-  if (nextBtn?.disabled) return;
-  if (nextBtn) {
-    nextBtn.disabled = true;
-    nextBtn.textContent = 'Enviando...';
-  }
+  formData = { nome, email, whatsapp, faturamento };
 
-  const leadId = createLeadId();
-  formData = buildCandidaturaData(leadId);
-
-  persistFormDataForChat(formData);
-  await captureLead(formData);
+  captureLead(formData);
 
   // Redireciona na mesma aba — compatível com todos os browsers/mobile
-  const params = new URLSearchParams({ leadId, start: '1' });
+  const params = new URLSearchParams({ nome, email, whatsapp, faturamento, start: '1' });
   window.location.href = '/?' + params.toString();
 }
  
 async function captureLead(data) {
   try {
-    const request = fetch('/api/diagnostic', {
+    await fetch('/api/diagnostic', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      keepalive: true,
       body: JSON.stringify({
         messages: [{ role: 'user', content: '__lead_capture__' }],
         formData: data
       }),
     });
-    await Promise.race([
-      request,
-      new Promise((resolve) => setTimeout(resolve, 900)),
-    ]);
   } catch (e) {}
 }
 
@@ -2871,8 +1590,7 @@ function appendMessage(role, text) {
       <div class="msg-bubble">${text.replace(/\n/g, '<br>')}</div>
     </div>`;
   wrap.appendChild(div);
-  scrollChatToBottom();
-  scrollChatToBottom(160);
+  wrap.scrollTop = wrap.scrollHeight;
 }
  
 function showTyping() {
@@ -2888,7 +1606,7 @@ function showTyping() {
       <div class="typing-dot"></div>
     </div>`;
   wrap.appendChild(div);
-  scrollChatToBottom();
+  wrap.scrollTop = wrap.scrollHeight;
 }
  
 function removeTyping() {
@@ -2897,22 +1615,12 @@ function removeTyping() {
 }
  
 async function callAgent(messages) {
-  if (demoChatMode) {
-    const reply = DEMO_CHAT_REPLIES[Math.min(demoStep, DEMO_CHAT_REPLIES.length - 1)];
-    demoStep++;
-    await new Promise((resolve) => setTimeout(resolve, 650));
-    return reply;
-  }
-
   const res = await fetch('/api/diagnostic', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ messages, formData }),
   });
   const data = await res.json();
-  if (!res.ok) {
-    throw new Error(data.reply || 'Erro ao processar resposta.');
-  }
   return data.reply;
 }
  
@@ -2930,11 +1638,7 @@ async function sendFirst() {
   checkForReport(reply);
   isLoading = false;
   document.getElementById('sendBtn').disabled = false;
-  if (!isMobileChatViewport()) {
-    document.getElementById('userInput').focus();
-  } else {
-    scrollChatToBottom(180);
-  }
+  document.getElementById('userInput').focus();
 }
  
 async function sendMessage() {
@@ -2952,7 +1656,6 @@ async function sendMessage() {
   history.push({ role: 'user', content: text });
   msgCount++;
   updateProgress();
-
   showTyping();
  
   try {
@@ -2961,9 +1664,7 @@ async function sendMessage() {
     history.push({ role: 'assistant', content: reply });
     msgCount++;
     updateProgress();
-    if (checkForReport(reply)) {
-      return;
-    }
+    checkForReport(reply);
   } catch (e) {
     removeTyping();
     appendMessage('assistant', 'Erro de conexão. Tente novamente.');
@@ -2971,165 +1672,21 @@ async function sendMessage() {
  
   isLoading = false;
   document.getElementById('sendBtn').disabled = false;
-  if (!isMobileChatViewport()) {
-    input.focus();
-  } else {
-    scrollChatToBottom(180);
-  }
+  input.focus();
 }
-
+ 
 function checkForReport(reply) {
-  const data = parseReport(reply);
-  if (data) {
-    appendMessage('assistant', 'Tudo pronto! Iremos fazer a investigação aprofundada do seu negócio. Só um momento.');
-    setTimeout(() => {
-      showShowoff(data);
-    }, 3000);
-    return true;
-  }
-  appendMessage('assistant', reply);
-  return false;
-}
-
-function restoreChatWithAssistantReply(reply) {
-  document.getElementById('showoff-screen').style.display = 'none';
-  document.getElementById('chat-screen').style.display = 'flex';
-  history.push({ role: 'assistant', content: reply });
-  msgCount++;
-  updateProgress();
-  appendMessage('assistant', reply);
-  isLoading = false;
-  document.getElementById('sendBtn').disabled = false;
-
-  if (!isMobileChatViewport()) {
-    document.getElementById('userInput').focus();
-  } else {
-    scrollChatToBottom(180);
-  }
-}
-
-function parseReport(reply) {
   try {
     const jsonMatch = reply.match(/\{[\s\S]*\}/);
     if (jsonMatch) {
       const data = JSON.parse(jsonMatch[0]);
       if (data.tipo === 'relatorio') {
-        return data;
+        renderReport(data);
+        return;
       }
     }
   } catch (e) {}
-  return null;
-}
-
-async function showShowoffWhenReady(reportPromise) {
-  document.getElementById('chat-screen').style.display = 'none';
-
-  const showoff = document.getElementById('showoff-screen');
-  showoff.style.display = 'flex';
-
-  const lineEl = document.getElementById('showoff-line');
-  const subEl = document.getElementById('showoff-sub');
-  const barEl = document.getElementById('showoff-bar');
-
-  lineEl.classList.remove('visible');
-  subEl.classList.remove('visible');
-  barEl.style.transition = 'none';
-  barEl.style.width = '0%';
-
-  const lines = [
-    'Mapeando desafios do seu setor...',
-    'Cruzando com o ecossistema ScaleCo...',
-    'Identificando conexões estratégicas...',
-    'Consolidando seu diagnóstico completo.',
-  ];
-
-  let i = 0;
-  setTimeout(() => {
-    barEl.style.transition = 'width 5s linear';
-    barEl.style.width = '100%';
-  }, 50);
-  setTimeout(() => { subEl.classList.add('visible'); }, 400);
-
-  function nextLine() {
-    lineEl.classList.remove('visible');
-    setTimeout(() => {
-      lineEl.textContent = lines[i % lines.length] || '';
-      lineEl.classList.add('visible');
-      i++;
-    }, 300);
-  }
-
-  nextLine();
-  const interval = setInterval(nextLine, 1250);
-  const minimumShowoff = new Promise((resolve) => setTimeout(resolve, 5500));
-
-  try {
-    const [result] = await Promise.all([reportPromise, minimumShowoff]);
-    clearInterval(interval);
-    showoff.style.display = 'none';
-
-    if (result && result.reportData) {
-      renderReport(result.reportData);
-    } else {
-      restoreChatWithAssistantReply(result?.reply || 'Preciso de uma resposta mais concreta antes de consolidar o relatório.');
-    }
-  } catch (e) {
-    clearInterval(interval);
-    showoff.style.display = 'none';
-    restoreChatWithAssistantReply('Tive uma instabilidade para consolidar o relatório. Pode reenviar essa última resposta para eu tentar novamente?');
-  }
-}
-
-function showShowoff(reportData) {
-  document.getElementById('chat-screen').style.display = 'none';
-
-  const showoff = document.getElementById('showoff-screen');
-  showoff.style.display = 'flex';
-
-  const empresa = reportData.empresa || 'sua empresa';
-  const localizacao = reportData.localizacao || formData.localizacao || '';
-
-  const lines = [
-    'Mapeando desafios do seu setor...',
-    'Identificando padrões críticos de operação...',
-    `Cruzando com o ecossistema ScaleCo${localizacao ? ' em ' + localizacao : ''}...`,
-    'Consolidando seu diagnóstico completo.',
-  ];
-
-  let i = 0;
-  const lineEl = document.getElementById('showoff-line');
-  const subEl = document.getElementById('showoff-sub');
-  const barEl = document.getElementById('showoff-bar');
-
-  // Iniciar barra de progresso
-  setTimeout(() => { barEl.style.width = '100%'; }, 50);
-
-  function nextLine() {
-    lineEl.classList.remove('visible');
-    setTimeout(() => {
-      lineEl.textContent = lines[i] || '';
-      lineEl.classList.add('visible');
-      i++;
-    }, 300);
-  }
-
-  // Revelar subtítulo
-  setTimeout(() => { subEl.classList.add('visible'); }, 400);
-
-  nextLine();
-  const interval = setInterval(() => {
-    if (i < lines.length) {
-      nextLine();
-    } else {
-      clearInterval(interval);
-    }
-  }, 1250);
-
-  // Após 5.5s, esconder showoff e mostrar relatório
-  setTimeout(() => {
-    showoff.style.display = 'none';
-    renderReport(reportData);
-  }, 5500);
+  appendMessage('assistant', reply);
 }
  
 function getScoreColor(score) {
@@ -3152,211 +1709,96 @@ function getNivelClass(nivel) {
 function getCTAContent(score) {
   if (score < 60) {
     return {
-      sub: `Encontramos problemas, potenciais riscos e gargalos diretos na sua operação. Alguns deles exigem arquitetura de receita, não apenas mais esforço comercial. Por isso, o próximo passo é uma conversa estratégica com Fábio Couto para entender onde o motor de crescimento está travando.`,
-      cta: `AGENDAR CONVERSA ESTRATÉGICA`,
-      href: 'tel:+554137950866',
+      sub: `Seu score mostra que existe um problema de arquitetura — não de esforço. O próximo passo é entender exatamente onde a operação está quebrando.`,
+      cta: `QUERO DESTRAVAR MINHA OPERAÇÃO`
     };
   } else if (score < 80) {
     return {
-      sub: `Você já tem uma base, mas ainda existem pontos de arquitetura de receita que podem limitar previsibilidade, escala e execução. A conversa com Fábio Couto ajuda a separar o que é ajuste operacional do que é decisão estratégica de crescimento.`,
-      cta: `QUERO APERFEIÇOAR MINHA OPERAÇÃO`,
+      sub: `Você já construiu base. Mas ainda não tem um motor de receita previsível. O próximo passo é aperfeiçoar o que já existe.`,
+      cta: `QUERO APERFEIÇOAR MINHA OPERAÇÃO`
     };
   } else {
     return {
-      sub: `Sua base mostra sinais de maturidade, mas a próxima camada de crescimento pede arquitetura de receita mais sofisticada. A conversa com Fábio Couto conecta os achados do diagnóstico a decisões práticas de escala.`,
-      cta: `QUERO LEVAR MINHA OPERAÇÃO PARA O PRÓXIMO NÍVEL`,
+      sub: `Seu score mostra que a base já existe. O próximo passo é transformar isso em um motor de escala mais robusto e previsível.`,
+      cta: `QUERO LEVAR MINHA OPERAÇÃO PARA O PRÓXIMO NÍVEL`
     };
   }
-}
-
-function animateScore(targetScore) {
-  const scoreEl = document.getElementById('scoreNumber');
-  if (!scoreEl) return;
-
-  const target = Math.max(0, Math.min(Number(targetScore) || 0, 100));
-  const duration = 1400;
-  const start = performance.now();
-
-  function tick(now) {
-    const progress = Math.min((now - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    scoreEl.textContent = Math.round(eased * target);
-
-    if (progress < 1) {
-      requestAnimationFrame(tick);
-    } else {
-      scoreEl.textContent = target;
-    }
-  }
-
-  requestAnimationFrame(tick);
 }
 
 const DIM_NAMES = {
   S: 'Strategic Architecture',
   C: 'Commercial Engine',
-  A: 'Analytics',
+  A: 'Analytics & Governance',
   L: 'Leadership Institutionalization',
-  E: 'Execution',
-  G: 'Governance',
+  E: 'Execution Cadence',
 };
  
 function renderReport(data) {
   document.getElementById('chat-screen').style.display = 'none';
   document.getElementById('progressFill').style.width = '100%';
+  const { sub, cta } = getCTAContent(data.score_geral);
   const rs = document.getElementById('report-screen');
   rs.style.display = 'block';
   const scoreColor = getScoreColor(data.score_geral);
   const nivelClass = getNivelClass(data.nivel);
+ 
+  const today = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
 
-  const waText = encodeURIComponent(
-    'Ola Fabio, fiz o Scale Diagnostic. Meu score foi ' + data.score_geral +
-    ' (' + data.nivel + ') e quero entender o plano de acao.'
-  );
-  const ctaLink = 'https://wa.me/5511974270077?text=' + waText;
+  // Dimensão mais crítica (menor score)
+  const dimCritica = Object.entries(data.dimensoes)
+    .sort((a, b) => a[1].score - b[1].score)[0];
+  const dimKey = dimCritica[0];
+  const dimData = dimCritica[1];
+  const dimColor = getScoreColor(dimData.score);
 
-  const escapeHtml = function(value) {
-    return String(value == null ? '' : value)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#039;');
-  };
+  const waText = encodeURIComponent(`Olá Fábio, acabei de fazer o diagnóstico da ScaleCo. Meu score foi ${data.score_geral} (${data.nivel}) e gostaria de conversar sobre o resultado.`);
 
-  const hl = function(value) {
-    var text = escapeHtml(value);
-    ['forecast','pipeline','escala','gargalo','previsibilidade'].forEach(function(term) {
-      text = text.replace(new RegExp(term, 'gi'), function(m) {
-        return '<span class="yellow-mark">' + m + '</span>';
-      });
-    });
-    return text;
-  };
+  rs.innerHTML = `
+    <div class="report-header">
+      <div class="report-logo">SCALECO · SCALE DIAGNOSTIC™</div>
+      <img src="archie.jpeg" class="report-archie" alt="Archie">
+      <div class="report-title">DIAGNÓSTICO DE ARQUITETURA</div>
+      <div class="report-company">${data.empresa.toUpperCase()}</div>
+      <div class="report-date">${today} · ${data.nome}</div>
+    </div>
 
-  var DIM_NAMES_LOCAL = {
-    S: 'Strategic Architecture',
-    C: 'Commercial Engine',
-    A: 'Analytics',
-    L: 'Leadership Institutionalization',
-    E: 'Execution',
-    G: 'Governance'
-  };
+    <div class="score-block">
+      <div class="score-label">SCORE GERAL · SCALE METHOD™</div>
+      <div class="score-number" style="color:${scoreColor}">${data.score_geral}</div>
+      <div><span class="score-nivel ${nivelClass}">${data.nivel}</span></div>
+      <p class="score-parecer">${data.parecer}</p>
+    </div>
 
-  // Dimensoes — ordenar para achar a critica
-  var dimEntries = Object.entries(data.dimensoes || {});
-  var sorted = dimEntries.slice().sort(function(a, b) { return a[1].score - b[1].score; });
-  var dimCriticaKey = sorted.length ? sorted[0][0] : null;
-  var dimCriticaData = sorted.length ? sorted[0][1] : null;
+    <div class="gargalo-block">
+      <div class="gargalo-label">⚠ Principal ponto de atenção</div>
+      <div class="gargalo-text">${data.gargalo_critico}</div>
+    </div>
 
-  var dimensoesHTML = dimEntries.map(function(entry) {
-    var key = entry[0];
-    var dim = entry[1];
-    var dColor = getScoreColor(dim.score);
-    var isCritica = key === dimCriticaKey;
-    var rowClass = isCritica ? 'dim-row dim-critica-row' : 'dim-row';
-    var letterColor = isCritica ? '#EF4444' : 'var(--blue)';
-    var html = '<div class="' + rowClass + '">';
-    html += '<div class="dim-top">';
-    html += '<div class="dim-letter" style="color:' + letterColor + '">' + escapeHtml(key) + '</div>';
-    html += '<div class="dim-name">' + escapeHtml(DIM_NAMES_LOCAL[key] || key) + '</div>';
-    html += '<div class="dim-score" style="color:' + dColor + '">' + dim.score + '</div>';
-    html += '</div>';
-    html += '<div class="dim-bar-wrap"><div class="dim-bar-fill" style="width:' + dim.score + '%;background:' + dColor + '"></div></div>';
-    if (isCritica && dim.gargalo) {
-      html += '<div class="dim-gargalo" style="color:#EF4444">&#8627; ' + hl(dim.gargalo) + '</div>';
-    }
-    html += '</div>';
-    return html;
-  }).join('');
+    <div class="section-title">DIMENSÃO MAIS CRÍTICA</div>
+    <div class="dimensoes">
+      <div class="dim-row">
+        <div class="dim-top">
+          <div class="dim-letter">${dimKey}</div>
+          <div class="dim-name">${DIM_NAMES[dimKey]}</div>
+          <div class="dim-score" style="color:${dimColor}">${dimData.score}</div>
+        </div>
+        <div class="dim-bar-wrap">
+          <div class="dim-bar-fill" style="width:${dimData.score}%;background:${dimColor}"></div>
+        </div>
+        <div class="dim-status">${dimData.status}</div>
+      </div>
+    </div>
 
-  // Prioridades borradas
-  var priosBlurHTML = '';
-  if (Array.isArray(data.prioridades)) {
-    priosBlurHTML = data.prioridades.map(function(p, i) {
-      return '<div class="prio-item prio-blur">' +
-        '<div class="prio-num">0' + (i + 1) + '</div>' +
-        '<div class="prio-text" style="filter:blur(5px);user-select:none">' + hl(p) + '</div>' +
-        '</div>';
-    }).join('');
-  }
+    <div class="cta-block">
+      <img src="archie.jpeg" class="cta-archie" alt="Archie">
+      <div class="cta-title">PRÓXIMO PASSO</div>
+ <div class="cta-sub">${sub}</div>
+     <a class="cta-btn" href="https://wa.me/5511974270077?text=${waText}" target="_blank">${cta}</a>
+    </div>
+    <div class="email-note">📩 Relatório enviado para ${data.email}</div>
+  `;
 
-  // Montar HTML do relatorio
-  var html = '';
-
-  // Header
-  html += '<div class="report-hero">';
-  html += '<div class="report-hero-brand">SCALECO &middot; SCALE METHOD&trade;</div>';
-  html += '<div class="report-hero-sub">SCALE DIAGNOSTIC&trade;</div>';
-  html += '<div class="report-hero-title">DIAGN&Oacute;STICO CONCLU&Iacute;DO</div>';
-  html += '<div class="report-hero-meta">' + escapeHtml(data.empresa || '');
-  if (data.nome) html += ' <span>&middot;</span> ' + escapeHtml(data.nome);
-  html += '</div></div>';
-
-  // Score
-  html += '<div class="score-block">';
-  html += '<div class="score-label">SCORE GERAL &middot; SCALE METHOD&trade;</div>';
-  html += '<div class="score-number" id="scoreNumber" style="color:' + scoreColor + '">0</div>';
-  html += '<div class="nivel-badge ' + nivelClass + '" style="margin-top:10px">' + escapeHtml(data.nivel || '') + '</div>';
-  html += '</div>';
-
-  // Parecer
-  if (data.parecer) {
-    html += '<div class="parecer-block"><div class="parecer-text">' + hl(data.parecer) + '</div></div>';
-  }
-
-  // Dimensoes
-  html += '<div class="section-title">DIMENS&Otilde;ES SCALE</div>';
-  html += '<div class="dimensoes">' + dimensoesHTML + '</div>';
-
-  // Dimensao critica destaque
-  if (dimCriticaKey && dimCriticaData) {
-    html += '<div class="dim-critica-block">';
-    html += '<div class="dim-critica-label">&#9888; DIMENS&Atilde;O MAIS CR&Iacute;TICA</div>';
-    html += '<div class="dim-critica-title">' + escapeHtml(DIM_NAMES_LOCAL[dimCriticaKey] || dimCriticaKey) + ' &middot; Score ' + dimCriticaData.score + '</div>';
-    if (dimCriticaData.status) {
-      html += '<div class="dim-critica-status">' + escapeHtml(dimCriticaData.status) + '</div>';
-    }
-    html += '</div>';
-  }
-
-  // Gargalo critico
-  if (data.gargalo_critico) {
-    html += '<div class="gargalo-block gargalo-destaque">';
-    html += '<div class="gargalo-label">&#9888; GARGALO CR&Iacute;TICO</div>';
-    html += '<div class="gargalo-text">' + escapeHtml(data.gargalo_critico) + '</div>';
-    html += '</div>';
-  }
-
-  // Plano de acao — gate
-  if (priosBlurHTML) {
-    html += '<div class="section-title">PLANO DE A&Ccedil;&Atilde;O</div>';
-    html += '<div class="prioridades prio-gate-wrap">';
-    html += priosBlurHTML;
-    html += '<div class="prio-gate-overlay">';
-    html += '<div class="prio-gate-icon">&#128274;</div>';
-    html += '<div class="prio-gate-title">Plano de a&ccedil;&atilde;o dispon&iacute;vel</div>';
-    html += '<div class="prio-gate-sub">Os 3 passos priorit&aacute;rios para sua opera&ccedil;&atilde;o est&atilde;o prontos.<br>Para acessar, fale com a ScaleCo.</div>';
-    html += '<a class="prio-gate-btn" href="' + ctaLink + '" target="_blank">QUERO ACESSAR MEU PLANO &#8594;</a>';
-    html += '</div></div>';
-  }
-
-  // CTA
-  html += '<div class="cta-block">';
-  html += '<div class="cta-title">PR&Oacute;XIMO PASSO</div>';
-  html += '<div class="fabio-card">';
-  html += '<div class="fabio-name">F&aacute;bio Couto &middot; Founder &amp; CEO &mdash; ScaleCo.ai</div>';
-  html += '<div class="fabio-bio">Ex-VP Salesforce Brasil &middot; 25+ anos liderando vendas e construindo motores de receita em empresas globais de tecnologia.</div>';
-  html += '</div>';
-  html += '<div class="cta-sub">Seu diagn&oacute;stico est&aacute; pronto. O pr&oacute;ximo passo &eacute; uma conversa com F&aacute;bio para entender o plano de a&ccedil;&atilde;o.</div>';
-  html += '<a class="cta-btn" href="' + ctaLink + '" target="_blank">FALAR COM A SCALECO</a>';
-  html += '</div>';
-
-  html += '<div class="email-note">&#128233; Relat&oacute;rio enviado para ' + escapeHtml(data.email || '') + '</div>';
-
-  rs.innerHTML = html;
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  animateScore(data.score_geral);
 }
 </script>
 
