@@ -2783,25 +2783,20 @@ async function submitForm() {
   const leadId = createLeadId();
   formData = buildCandidaturaData(leadId);
 
-  persistFormDataForChat(formData);
-  await captureLead(formData);
+  // Capturar lead em background (não bloquear)
+  captureLead(formData).catch(() => {});
 
-  // Redireciona com dados na URL — evita perda de sessionStorage no Safari iOS
-  const params = new URLSearchParams({
-    leadId,
-    start: '1',
-    nome: formData.nome || '',
-    email: formData.email || '',
-    empresa: formData.empresa || '',
-    whatsapp: formData.whatsapp || '',
-    codigo_pais: formData.codigo_pais || '',
-    faturamento: formData.faturamento || '',
-    cargo: formData.cargo || '',
-    colaboradores: formData.colaboradores || '',
-    source: formData.source || '',
-    lgpd: formData.lgpd ? '1' : '0',
+  // Abrir chat DIRETO — sem redirect, sem reload, funciona no iOS
+  ['intro','sintomas-section','form-screen','report-screen','showoff-screen'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) { el.style.display = 'none'; el.style.visibility = 'hidden'; }
   });
-  window.location.href = '/?' + params.toString();
+  document.body.style.overflow = 'hidden';
+  document.documentElement.style.overflow = 'hidden';
+  var cs = document.getElementById('chat-screen');
+  cs.style.cssText = 'display:flex!important;position:fixed!important;top:0!important;left:0!important;right:0!important;bottom:0!important;width:100%!important;height:100%!important;z-index:9999!important;background:#0A0A0A!important;visibility:visible!important;';
+  syncChatViewport();
+  startChat();
 }
  
 async function captureLead(data) {
