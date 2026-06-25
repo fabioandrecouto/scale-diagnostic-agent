@@ -604,6 +604,10 @@ textarea.form-input {
   height: var(--chat-height, 100dvh);
   height: 100vh;
 }
+
+#chat-screen.is-open {
+  display: flex;
+}
  
 .chat-header {
   display: flex;
@@ -1405,6 +1409,34 @@ textarea.form-input {
   .chat-header { padding: 12px 16px; }
   .progress-bar { width: 80px; }
   #chat-screen { height: 100dvh; overflow: hidden; }
+
+  #chat-screen:not(.is-open) {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  #chat-screen.is-open {
+    height: var(--chat-height, 100dvh);
+    position: fixed;
+    top: var(--chat-top, 0px);
+    left: 0;
+    right: 0;
+    bottom: auto;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 999;
+    background: #0A0A0A;
+  }
+
+  #chat-screen.is-open .messages {
+    background: #0A0A0A;
+  }
+
+  body.is-chat-open {
+    overflow: hidden;
+    touch-action: none;
+  }
 
   .brand-lockup {
     justify-content: center;
@@ -2787,19 +2819,10 @@ async function submitForm() {
   const leadId = createLeadId();
   formData = buildCandidaturaData(leadId);
 
-  // Capturar lead em background (não bloquear)
-  captureLead(formData).catch(() => {});
+  persistFormDataForChat(formData);
+  await captureLead(formData);
 
-  // Abrir chat DIRETO — sem redirect, sem reload, funciona no iOS
-  ['intro','sintomas-section','form-screen','report-screen','showoff-screen'].forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el) { el.style.display = 'none'; el.style.visibility = 'hidden'; }
-  });
-  document.body.style.overflow = 'hidden';
-  document.documentElement.style.overflow = 'hidden';
-  var cs = document.getElementById('chat-screen');
-  cs.style.cssText = 'display:flex!important;position:fixed!important;top:0!important;left:0!important;right:0!important;bottom:0!important;width:100%!important;height:100%!important;z-index:9999!important;background:#0A0A0A!important;visibility:visible!important;';
-  syncChatViewport();
+  openChatScreen();
   startChat();
 }
  
@@ -2819,6 +2842,22 @@ async function captureLead(data) {
       new Promise((resolve) => setTimeout(resolve, 900)),
     ]);
   } catch (e) {}
+}
+
+
+function openChatScreen() {
+  document.getElementById('intro').style.display = 'none';
+  const sintomas = document.getElementById('sintomas-section');
+  if (sintomas) sintomas.style.display = 'none';
+  document.getElementById('form-screen').style.display = 'none';
+  const showoff = document.getElementById('showoff-screen');
+  if (showoff) showoff.style.display = 'none';
+
+  const chat = document.getElementById('chat-screen');
+  chat.classList.add('is-open');
+  document.body.classList.add('is-chat-open');
+  window.scrollTo(0, 0);
+  syncChatViewport();
 }
 
 function startChat() {
