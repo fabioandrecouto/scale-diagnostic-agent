@@ -238,7 +238,11 @@ async function sendLeadCapture(data) {
       <strong style="color:#444;">Nome:</strong> <span style="color:#ddd;">${data.nome}</span><br>
       <strong style="color:#444;">Email:</strong> <a href="mailto:${data.email}" style="color:#2D5BE3;">${data.email}</a><br>
       <strong style="color:#444;">WhatsApp:</strong> <span style="color:#ddd;">${data.whatsapp}</span><br>
-      <strong style="color:#444;">Faturamento:</strong> <span style="color:#ddd;">${data.faturamento}</span>
+      <strong style="color:#444;">Empresa:</strong> <span style="color:#ddd;">${data.empresa || '—'}</span><br>
+      <strong style="color:#444;">Cargo:</strong> <span style="color:#ddd;">${data.cargo || '—'}</span><br>
+      <strong style="color:#444;">Faturamento:</strong> <span style="color:#ddd;">${data.faturamento}</span><br>
+      <strong style="color:#444;">Colaboradores:</strong> <span style="color:#ddd;">${data.colaboradores || '—'}</span><br>
+      <strong style="color:#444;">Website:</strong> <span style="color:#ddd;">${data.website || '—'}</span>
     </div>
     <div style="margin-top:16px;padding:14px 16px;background:#131929;border:1px solid #1e2d5e;border-radius:8px;font-size:13px;color:#8baaf0;">
       ⚠ Este lead iniciou o diagnóstico mas ainda não concluiu.
