@@ -131,11 +131,6 @@ TOM: Direto, frases curtas, sem elogios. Nunca use "mentoria" ou "consultoria".`
     let messagesWithContext = [...messages];
     if (formData && messages.length === 1 && messages[0].content === 'olá') {
 
-      // FALLBACK iOS/Safari: dispara lead capture aqui também
-      if (formData.email) {
-        sendLeadCapture(formData).catch(e => console.error('Lead capture fallback:', e.message));
-      }
-
       const contextParts = [];
       if (formData.nome) contextParts.push(`Nome: ${formData.nome}`);
       if (formData.email) contextParts.push(`Email: ${formData.email}`);
