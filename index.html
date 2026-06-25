@@ -2,6 +2,16 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<script>
+// Ocultar body imediatamente se start=1 — evita flash da intro no iOS
+if (new URLSearchParams(window.location.search).get('start') === '1') {
+  document.documentElement.style.visibility = 'hidden';
+  document.addEventListener('DOMContentLoaded', function() {
+    document.documentElement.style.visibility = '';
+  });
+}
+</script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -2467,59 +2477,7 @@ function createLeadId() {
   }
 })();
 
-// Se abriu via nova aba com ?start=1, pula landing e inicia chat direto
-(function() {
-  const p = new URLSearchParams(window.location.search);
-  if (p.get('start') === '1') {
-    const leadId = p.get('leadId') || createLeadId();
-    const storedFormData = getStoredFormData(leadId);
-    formData = {
-      ...storedFormData,
-      leadId,
-      nome: p.get('nome') || storedFormData.nome || '',
-      email: p.get('email') || storedFormData.email || '',
-      codigo_pais: p.get('codigo_pais') || storedFormData.codigo_pais || '',
-      whatsapp: p.get('whatsapp') || storedFormData.whatsapp || '',
-      telefone: p.get('telefone') || storedFormData.telefone || '',
-      empresa: p.get('empresa') || storedFormData.empresa || '',
-      website: p.get('website') || storedFormData.website || '',
-      cargo: p.get('cargo') || storedFormData.cargo || '',
-      faturamento: p.get('faturamento') || storedFormData.faturamento || '',
-      colaboradores: p.get('colaboradores') || storedFormData.colaboradores || '',
-      intencao: p.get('intencao') || storedFormData.intencao || '',
-      source: p.get('source') || storedFormData.source || '',
-      lgpd: p.get('lgpd') === '1' || Boolean(storedFormData.lgpd),
-      localizacao: p.get('localizacao') || storedFormData.localizacao || '',
-    };
-    function activateChat() {
-      ['intro','sintomas-section','form-screen','report-screen'].forEach(function(id) {
-        var el = document.getElementById(id);
-        if (el) { el.style.display = 'none'; el.style.visibility = 'hidden'; }
-      });
-      document.body.style.overflow = 'hidden';
-      document.documentElement.style.overflow = 'hidden';
-      var cs = document.getElementById('chat-screen');
-      cs.style.display = 'flex';
-      cs.style.position = 'fixed';
-      cs.style.top = '0';
-      cs.style.left = '0';
-      cs.style.right = '0';
-      cs.style.bottom = '0';
-      cs.style.width = '100%';
-      cs.style.height = '100%';
-      cs.style.zIndex = '9999';
-      cs.style.background = '#0A0A0A';
-      syncChatViewport();
-      window.history.replaceState({}, '', '/');
-      startChat();
-    }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', activateChat);
-    } else {
-      activateChat();
-    }
-  }
-})();
+// bloco start=1 movido para fim do body
  
 function autoResize(el) {
   el.style.height = 'auto';
@@ -3403,5 +3361,48 @@ function renderReport(data) {
 })();
 </script>
  
+
+<script>
+// Iniciar chat — roda depois de todo o DOM estar pronto
+(function() {
+  var p = new URLSearchParams(window.location.search);
+  if (p.get('start') !== '1') return;
+
+  var leadId = p.get('leadId') || createLeadId();
+  var stored = getStoredFormData(leadId);
+  formData = {
+    leadId: leadId,
+    nome: p.get('nome') || stored.nome || '',
+    email: p.get('email') || stored.email || '',
+    codigo_pais: p.get('codigo_pais') || stored.codigo_pais || '',
+    whatsapp: p.get('whatsapp') || stored.whatsapp || '',
+    telefone: p.get('telefone') || stored.telefone || '',
+    empresa: p.get('empresa') || stored.empresa || '',
+    website: p.get('website') || stored.website || '',
+    cargo: p.get('cargo') || stored.cargo || '',
+    faturamento: p.get('faturamento') || stored.faturamento || '',
+    colaboradores: p.get('colaboradores') || stored.colaboradores || '',
+    intencao: p.get('intencao') || stored.intencao || '',
+    source: p.get('source') || stored.source || '',
+    lgpd: p.get('lgpd') === '1' || Boolean(stored.lgpd),
+    localizacao: p.get('localizacao') || stored.localizacao || '',
+  };
+
+  // Esconder tudo e abrir o chat — DOM já está pronto aqui
+  ['intro','sintomas-section','form-screen','report-screen','showoff-screen'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) { el.style.display = 'none'; el.style.visibility = 'hidden'; }
+  });
+  document.body.style.overflow = 'hidden';
+  document.documentElement.style.overflow = 'hidden';
+
+  var cs = document.getElementById('chat-screen');
+  cs.style.cssText = 'display:flex!important;position:fixed!important;top:0!important;left:0!important;right:0!important;bottom:0!important;width:100%!important;height:100%!important;z-index:9999!important;background:#0A0A0A!important;';
+
+  syncChatViewport();
+  window.history.replaceState({}, '', '/');
+  startChat();
+})();
+</script>
 </body>
 </html>
