@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0A0A0A">
-<title>Scale Diagnostic™ · ScaleCo</title>
+<title>Scale Diagnostic™ · ScaleCo × ScaleCo</title>
 <base href="/">
 <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -18,8 +18,8 @@
   --black2: #111111;
   --black3: #1A1A1A;
   --blue: #2D5BE3;
-  --blue-dim: #1E45C9;
-  --blue-glow: rgba(45,91,227,0.07);
+  --blue-dim: #C99703;
+  --blue-glow: rgba(251,190,10,0.07);
   --white: #FFFFFF;
   --gray: #888888;
   --gray-light: #2A2A2A;
@@ -27,11 +27,11 @@
   --warning: #F59E0B;
   --danger: #EF4444;
   --yellow: #2D5BE3;
-  --yellow-dim: #1E45C9;
+  --yellow-dim: #C99703;
   --site-canvas:
-    radial-gradient(circle at 16% 10%, rgba(45, 91, 227, 0.16), transparent 30%),
-    radial-gradient(circle at 88% 16%, rgba(30,69,201, 0.12), transparent 28%),
-    radial-gradient(circle at 50% 96%, rgba(45, 91, 227, 0.08), transparent 36%),
+    radial-gradient(circle at 16% 10%, rgba(251, 190, 10, 0.16), transparent 30%),
+    radial-gradient(circle at 88% 16%, rgba(201, 151, 3, 0.12), transparent 28%),
+    radial-gradient(circle at 50% 96%, rgba(251, 190, 10, 0.08), transparent 36%),
     var(--black);
 }
  
@@ -74,7 +74,7 @@ body::before {
   height: 320px;
   left: -120px;
   top: 14vh;
-  background: rgba(45, 91, 227, 0.30);
+  background: rgba(251, 190, 10, 0.30);
 }
 
 body::after {
@@ -82,7 +82,7 @@ body::after {
   height: 380px;
   right: -150px;
   bottom: 6vh;
-  background: rgba(30,69,201, 0.22);
+  background: rgba(201, 151, 3, 0.22);
   animation-delay: -3.5s;
 }
 
@@ -103,7 +103,7 @@ body::after {
   width: min(320px, 78vw);
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 0 18px rgba(45,91,227,0.14));
+  filter: drop-shadow(0 0 18px rgba(251,190,10,0.14));
   mix-blend-mode: screen;
 }
 
@@ -119,8 +119,13 @@ body::after {
 .brand-lockup {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  flex-direction: column;
+  gap: clamp(12px, 2vw, 22px);
   margin-bottom: 26px;
+}
+
+.brand-lockup .mb-logo-img {
+  width: min(245px, 46vw);
 }
 
 .brand-x {
@@ -134,9 +139,10 @@ body::after {
 
 .scaleco-logo-img {
   display: block;
-  width: min(180px, 42vw);
+  width: min(138px, 28vw);
   height: auto;
   object-fit: contain;
+  filter: drop-shadow(0 0 16px rgba(45,91,227,0.18));
 }
 
 .mb-symbol-mark {
@@ -144,11 +150,11 @@ body::after {
   width: 28px;
   height: 20px;
   flex: 0 0 28px;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgNTIiPjx0ZXh0IHk9IjQ0IiBmb250LWZhbWlseT0iJ0FyaWFsIEJsYWNrJywnRnJhbmtsaW4gR290aGljIEhlYXZ5JyxJbXBhY3Qsc2Fucy1zZXJpZiIgZm9udC1zaXplPSI1MCIgZm9udC13ZWlnaHQ9IjkwMCIgbGV0dGVyLXNwYWNpbmc9Ii0xIj48dHNwYW4gZmlsbD0iI0ZGRkZGRiI+U0NBTEU8L3RzcGFuPjx0c3BhbiBmaWxsPSIjMkQ1QkUzIj5DTzwvdHNwYW4+PC90ZXh0Pjwvc3ZnPg==');
+  background-image: url('assets/scaleco-logo-yellow-transparent.png');
   background-repeat: no-repeat;
   background-position: right center;
   background-size: 190px auto;
-  filter: drop-shadow(0 0 10px rgba(45,91,227,0.18));
+  filter: drop-shadow(0 0 10px rgba(251,190,10,0.18));
 }
 
 .yellow-mark {
@@ -248,7 +254,7 @@ body::after {
  
 .start-btn {
   background: var(--blue);
-  color: #FFFFFF;
+  color: #000000;
   border: none;
   border-radius: 3px;
   padding: 16px 56px;
@@ -301,7 +307,7 @@ body::after {
 
 .form-card {
   background: rgba(17,17,17,0.88);
-  border: 1px solid rgba(45,91,227,0.16);
+  border: 1px solid rgba(251,190,10,0.16);
   border-radius: 22px;
   padding: clamp(28px, 5vw, 52px);
   width: 100%;
@@ -414,7 +420,7 @@ textarea.form-input {
 
 .form-input:focus {
   border-color: var(--blue);
-  box-shadow: 0 0 0 4px rgba(45,91,227,0.08);
+  box-shadow: 0 0 0 4px rgba(251,190,10,0.08);
 }
 
 .form-input::placeholder { color: rgba(255,255,255,0.26); }
@@ -474,12 +480,12 @@ textarea.form-input {
 
 .form-option input:checked + span {
   border-color: var(--blue);
-  background: rgba(45,91,227,0.11);
+  background: rgba(251,190,10,0.11);
   color: var(--white);
 }
 
 .form-option input:focus-visible + span {
-  box-shadow: 0 0 0 4px rgba(45,91,227,0.10);
+  box-shadow: 0 0 0 4px rgba(251,190,10,0.10);
 }
 
 .form-phone-row {
@@ -544,7 +550,7 @@ textarea.form-input {
 
 .form-submit {
   background: var(--blue);
-  color: #FFFFFF;
+  color: #000000;
   min-width: 210px;
 }
 
@@ -725,7 +731,7 @@ textarea.form-input {
 .message.user .msg-bubble {
   background: var(--blue);
   border-color: var(--blue);
-  color: #FFFFFF;
+  color: #000000;
   border-radius: 14px 4px 14px 14px;
 }
  
@@ -810,14 +816,13 @@ textarea.form-input {
 }
 .send-btn:hover { background: var(--blue-dim); }
 .send-btn:disabled { background: var(--gray-light); cursor: not-allowed; }
-.send-btn svg { width: 15px; height: 15px; fill: #FFFFFF; }
+.send-btn svg { width: 15px; height: 15px; fill: #000000; }
  
 /* ── REPORT SCREEN ── */
 #report-screen {
   display: none;
   min-height: 100vh;
   padding: 40px 24px 80px;
-  overflow-x: hidden;
   animation: fadeIn 0.6s ease;
   max-width: 980px;
   margin: 0 auto;
@@ -904,7 +909,7 @@ textarea.form-input {
  
 .nivel-critico { background: rgba(239,68,68,0.15); color: #EF4444; border: 1px solid rgba(239,68,68,0.3); }
 .nivel-desenvolvimento { background: rgba(245,158,11,0.15); color: #F59E0B; border: 1px solid rgba(245,158,11,0.3); }
-.nivel-estruturado { background: rgba(45,91,227,0.15); color: #2D5BE3; border: 1px solid rgba(45,91,227,0.3); }
+.nivel-estruturado { background: rgba(251,190,10,0.15); color: #2D5BE3; border: 1px solid rgba(251,190,10,0.3); }
 .nivel-escalavel { background: rgba(34,197,94,0.15); color: #22C55E; border: 1px solid rgba(34,197,94,0.3); }
  
 /* Dimensoes */
@@ -1121,7 +1126,7 @@ textarea.form-input {
 .cta-btn {
   display: block;
   background: var(--blue);
-  color: #FFFFFF;
+  color: #000000;
   text-decoration: none;
   border-radius: 8px;
   padding: 14px 36px;
@@ -1161,10 +1166,10 @@ textarea.form-input {
 /* ScaleCo intelligence block */
 .intelligence-block {
   background:
-    radial-gradient(circle at top left, rgba(45,91,227,0.14), transparent 42%),
+    radial-gradient(circle at top left, rgba(251,190,10,0.14), transparent 42%),
     linear-gradient(135deg, rgba(255,255,255,0.045), rgba(255,255,255,0.01)),
     var(--black2);
-  border: 1px solid rgba(45,91,227,0.22);
+  border: 1px solid rgba(251,190,10,0.22);
   border-radius: 14px;
   padding: 24px;
   margin: 0 0 24px;
@@ -1178,8 +1183,8 @@ textarea.form-input {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(45,91,227,0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(45,91,227,0.035) 1px, transparent 1px);
+    linear-gradient(rgba(251,190,10,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(251,190,10,0.035) 1px, transparent 1px);
   background-size: 34px 34px;
   mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent 76%);
   pointer-events: none;
@@ -1386,8 +1391,7 @@ textarea.form-input {
   }
 }
 @media (max-width: 600px) {
-  #report-screen { padding: 24px 16px 60px; overflow-x: hidden; }
-  .report-hero { margin-left: -16px; margin-right: -16px; margin-top: -24px; padding: 32px 20px 28px; }
+  #report-screen { padding: 24px 16px 60px; }
   .score-number { font-size: 60px; }
   .form-card { padding: 28px 20px; }
   .intro-title { font-size: 36px; }
@@ -1749,7 +1753,7 @@ textarea.form-input {
     transition: background 0.2s, transform 0.15s;
     -webkit-tap-highlight-color: transparent;
   }
-  .capa-btn:hover { background: #1E45C9; transform: translateY(-1px); }
+  .capa-btn:hover { background: #C99703; transform: translateY(-1px); }
   .capa-btn:active { transform: scale(0.98); }
   .capa-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
   .capa-microcopy {
@@ -1793,104 +1797,26 @@ textarea.form-input {
   }
 
 
-/* ── REPORT HEADER PREMIUM ── */
-.report-hero {
-  background: #2D5BE3;
-  border-radius: 0;
-  padding: 40px 32px 36px;
-  text-align: center;
-  margin-bottom: 24px;
-  position: relative;
-  overflow: hidden;
-  margin-left: -24px;
-  margin-right: -24px;
-  margin-top: -40px;
-}
-.report-hero-brand {
-  font-family: 'Funnel Display', sans-serif;
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(0,0,0,0.75);
-  margin-bottom: 4px;
-  position: relative;
-}
-.report-hero-sub {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(0,0,0,0.45);
-  margin-bottom: 18px;
-  position: relative;
-}
-.report-hero-title {
-  font-family: 'Funnel Display', sans-serif;
-  font-size: clamp(28px, 6vw, 42px);
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  color: #000000;
-  margin-bottom: 12px;
-  position: relative;
-}
-.report-hero-meta {
-  font-size: 13px;
-  color: rgba(0,0,0,0.55);
-  position: relative;
-}
-.report-hero-meta span { margin: 0 6px; opacity: 0.4; }
+/* ── DIMENSÃO CRÍTICA ── */
+.dim-critica-row { border-color: rgba(239,68,68,0.4) !important; background: rgba(239,68,68,0.06) !important; }
+.dim-critica-block { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.35); border-left: 4px solid #EF4444; border-radius: 10px; padding: 18px 22px; margin: 16px 0 20px; }
+.dim-critica-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #EF4444; margin-bottom: 8px; }
+.dim-critica-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+.dim-critica-status { font-size: 13px; color: #ccc; line-height: 1.5; }
 
-/* Parecer executivo */
-.parecer-block {
-  background: var(--black2);
-  border: 1px solid rgba(45,91,227,0.2);
-  border-radius: 12px;
-  padding: 24px 28px;
-  margin-bottom: 24px;
-  text-align: center;
-}
-.parecer-text {
-  font-size: 15px;
-  line-height: 1.75;
-  color: #CCCCCC;
-  font-style: italic;
-  max-width: 680px;
-  margin: 0 auto;
-}
+/* ── GARGALO DESTAQUE ── */
+.gargalo-destaque { border-left: 4px solid #EF4444 !important; background: rgba(239,68,68,0.1) !important; }
+.gargalo-destaque .gargalo-text { font-size: 16px !important; font-weight: 600 !important; }
 
-/* Nivel badge melhorado */
-.nivel-badge {
-  display: inline-block;
-  padding: 6px 18px;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-bottom: 0;
-}
-
-/* Intelligence header */
-.intelligence-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
-}
-.intelligence-section-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--blue);
-}
-.intelligence-section-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.7);
-  letter-spacing: 0.04em;
-}
+/* ── PLANO DE AÇÃO GATE ── */
+.prio-gate-wrap { position: relative; overflow: hidden; border-radius: 12px; min-height: 220px; }
+.prio-blur .prio-text { filter: blur(5px); user-select: none; pointer-events: none; }
+.prio-gate-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 0%, rgba(10,10,10,0.88) 35%, rgba(10,10,10,0.98) 100%); display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding: 28px 24px; text-align: center; }
+.prio-gate-icon { font-size: 28px; margin-bottom: 10px; }
+.prio-gate-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.prio-gate-sub { font-size: 13px; color: #888; line-height: 1.6; margin-bottom: 20px; max-width: 360px; }
+.prio-gate-btn { display: inline-flex; align-items: center; background: var(--blue); color: #fff; text-decoration: none; border-radius: 8px; padding: 14px 28px; font-size: 13px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; transition: background 0.2s; }
+.prio-gate-btn:hover { opacity: 0.88; }
 </style>
 </head>
 <body>
@@ -2053,7 +1979,7 @@ textarea.form-input {
   -webkit-tap-highlight-color: transparent;
   margin-bottom: 16px;
 }
-.intro-cta:hover { background: #1E45C9; }
+.intro-cta:hover { background: #C99703; }
 .intro-cta:active { transform: scale(0.98); }
 
 .intro-credibility {
@@ -2180,14 +2106,16 @@ textarea.form-input {
     <div class="intro-photo-overlay"></div>
     <div class="intro-photo-badge">
       <div class="intro-badge-dot"></div>
-      Scale Diagnostic™ · ScaleCo
+      Scale Diagnostic™ · ScaleCo × ScaleCo
     </div>
   </div>
 
   <div class="intro-content">
 
-        <div class="brand-lockup" aria-label="ScaleCo">
-      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgNTIiPjx0ZXh0IHk9IjQ0IiBmb250LWZhbWlseT0iJ0FyaWFsIEJsYWNrJywnRnJhbmtsaW4gR290aGljIEhlYXZ5JyxJbXBhY3Qsc2Fucy1zZXJpZiIgZm9udC1zaXplPSI1MCIgZm9udC13ZWlnaHQ9IjkwMCIgbGV0dGVyLXNwYWNpbmc9Ii0xIj48dHNwYW4gZmlsbD0iI0ZGRkZGRiI+U0NBTEU8L3RzcGFuPjx0c3BhbiBmaWxsPSIjMkQ1QkUzIj5DTzwvdHNwYW4+PC90ZXh0Pjwvc3ZnPg==" class="scaleco-logo-img" alt="ScaleCo">
+    <div class="brand-lockup" aria-label="ScaleCo em parceria com ScaleCo">
+      <img src="assets/scaleco-logo-yellow-transparent.png" class="mb-logo-img is-small" alt="ScaleCo">
+      <span class="brand-x" aria-hidden="true">powered by</span>
+      <img src="assets/scaleco-logo-transparent.png" class="scaleco-logo-img" alt="ScaleCo">
     </div>
 
     <h1 class="intro-headline">
@@ -2222,7 +2150,7 @@ textarea.form-input {
 <!-- PRE-CHAT FORM -->
 <div id="form-screen">
   <div class="form-logo">
-    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgNTIiPjx0ZXh0IHk9IjQ0IiBmb250LWZhbWlseT0iJ0FyaWFsIEJsYWNrJywnRnJhbmtsaW4gR290aGljIEhlYXZ5JyxJbXBhY3Qsc2Fucy1zZXJpZiIgZm9udC1zaXplPSI1MCIgZm9udC13ZWlnaHQ9IjkwMCIgbGV0dGVyLXNwYWNpbmc9Ii0xIj48dHNwYW4gZmlsbD0iI0ZGRkZGRiI+U0NBTEU8L3RzcGFuPjx0c3BhbiBmaWxsPSIjMkQ1QkUzIj5DTzwvdHNwYW4+PC90ZXh0Pjwvc3ZnPg==" class="scaleco-logo-img" style="width:min(160px,38vw)" alt="ScaleCo">
+    <img src="assets/scaleco-logo-yellow-transparent.png" class="mb-logo-img is-small" alt="ScaleCo">
   </div>
   <form class="form-card" id="candidatura-form" onsubmit="submitForm(); return false;" novalidate>
     <input type="hidden" id="f-intencao" name="intencao" value="membro">
@@ -2236,9 +2164,9 @@ textarea.form-input {
     <div class="form-progress" id="form-progress" aria-hidden="true"></div>
 
     <section class="form-step is-active" data-step="0">
-      <div class="form-kicker">Scale Diagnostic™</div>
+      <div class="form-kicker">Candidatura ScaleCo</div>
       <h2 class="form-card-title">Olá, qual é o seu e-mail profissional?</h2>
-      <p class="form-card-sub">Vamos começar pelo contato principal para personalizar seu diagnóstico.</p>
+      <p class="form-card-sub">Vamos começar pelo contato principal para priorizar sua aplicação.</p>
       <div class="form-field">
         <label class="form-label" for="f-email">E-mail profissional</label>
         <input type="email" id="f-email" name="email" class="form-input" placeholder="voce@empresa.com" autocomplete="email" required>
@@ -2328,7 +2256,7 @@ textarea.form-input {
       <div class="form-field is-wide is-consent">
         <label class="form-check">
           <input type="checkbox" id="f-lgpd" name="lgpd" required>
-          <span>Concordo com a <a href="https://scaleco.ai/politica-de-privacidade/" target="_blank" rel="noopener">Política de Privacidade</a> e autorizo o contato da equipe ScaleCo.</span>
+          <span>Concordo com a <a href="/politica-de-privacidade/" target="_blank" rel="noopener">Política de Privacidade</a> e autorizo o contato da equipe ScaleCo.</span>
         </label>
       </div>
     </section>
@@ -2340,14 +2268,14 @@ textarea.form-input {
       <button type="button" class="form-submit" id="form-next-btn" onclick="nextFormStep()">Continuar</button>
     </div>
     <div class="form-privacy">Candidatura direta. Seus dados são usados para priorização e contato da equipe ScaleCo.</div>
-    <div style="margin-top:20px;padding-top:16px;border-top:1px solid #1e1e1e;font-size:11px;color:#333;text-align:center;letter-spacing:0.04em;">Scale Method™ · ScaleCo.ai</div>
+    <div style="margin-top:20px;padding-top:16px;border-top:1px solid #1e1e1e;font-size:11px;color:#333;text-align:center;letter-spacing:0.04em;">Ecossistema ScaleCo × metodologia ScaleCo.</div>
   </form>
 </div>
  
 <!-- SHOWOFF SCREEN -->
 <div id="showoff-screen">
   <div class="showoff-logo">
-    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgNTIiPjx0ZXh0IHk9IjQ0IiBmb250LWZhbWlseT0iJ0FyaWFsIEJsYWNrJywnRnJhbmtsaW4gR290aGljIEhlYXZ5JyxJbXBhY3Qsc2Fucy1zZXJpZiIgZm9udC1zaXplPSI1MCIgZm9udC13ZWlnaHQ9IjkwMCIgbGV0dGVyLXNwYWNpbmc9Ii0xIj48dHNwYW4gZmlsbD0iI0ZGRkZGRiI+U0NBTEU8L3RzcGFuPjx0c3BhbiBmaWxsPSIjMkQ1QkUzIj5DTzwvdHNwYW4+PC90ZXh0Pjwvc3ZnPg==" class="scaleco-logo-img" alt="ScaleCo">
+    <img src="assets/scaleco-logo-yellow-transparent.png" class="mb-logo-img" alt="ScaleCo">
   </div>
 
   <svg class="showoff-pulse" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2370,7 +2298,7 @@ textarea.form-input {
     <div class="chat-header-info">
       <div class="chat-header-name" style="display:flex;align-items:center;gap:8px;">
         ARCHIE
-        <span style="font-size:9px;font-weight:500;letter-spacing:0.08em;color:#2D5BE3;opacity:0.7;text-transform:uppercase;">· ScaleCo</span>
+        <span style="font-size:9px;font-weight:500;letter-spacing:0.08em;color:#2D5BE3;opacity:0.7;text-transform:uppercase;">× ScaleCo</span>
       </div>
       <div class="chat-header-status">
         <div class="status-dot"></div>
@@ -2416,9 +2344,9 @@ let demoStep = 0;
 
 const DEMO_REPORT = {
   tipo: 'relatorio',
-  nome: 'João Silva',
-  empresa: 'Empresa Demo',
-  email: 'joao@empresademo.com.br',
+  nome: 'Bernardo Kawano',
+  empresa: 'ScaleCo',
+  email: 'bernardo@scaleco.com.br',
   whatsapp: '(11) 99999-9999',
   faturamento: 'R$1M–R$5M/ano',
   localizacao: 'São Paulo – SP',
@@ -2438,9 +2366,9 @@ const DEMO_REPORT = {
     'Construir pelo menos um canal de aquisição ativo com métricas semanais rastreadas',
     'Implementar forecast semanal com dados reais de pipeline — não de feeling',
   ],
-  parecer: 'A empresa tem os ingredientes certos, mas sem um motor de receita estruturado, o crescimento ainda é refém da energia do fundador. O gargalo não é falta de talento — é falta de sistema.',
+  parecer: 'A ScaleCo tem os ingredientes certos, mas sem um motor de receita estruturado, o crescimento ainda é refém da energia do fundador. O gargalo não é falta de talento — é falta de sistema.',
   setor_insights: 'Empresas de ecossistema e comunidade nesse faturamento cometem dois erros recorrentes: confundem engajamento com receita previsível, e postergam a formalização de processos comerciais porque "estão crescendo por indicação". O resultado é um teto invisível que aparece exatamente quando a operação tenta dar o próximo salto.',
-  ecossistema_match: 'Temos conexões estratégicas com decisores corporativos no segmento de inovação e formação de times em São Paulo que podem acelerar a expansão da operação nos próximos 90 dias.',
+  ecossistema_match: 'Temos conexões estratégicas com decisores corporativos no segmento de inovação e formação de times em São Paulo que podem acelerar a expansão da carteira da ScaleCo nos próximos 90 dias.',
   scaleco_tabela: [
     {
       desafio: 'Transformar comunidade e autoridade em receita previsível',
@@ -2485,8 +2413,8 @@ function createLeadId() {
     demoChatMode = true;
     formData = {
       leadId: 'demo-chat',
-      nome: 'João Silva',
-      email: 'joao@empresademo.com.br',
+      nome: 'Bernardo Kawano',
+      email: 'bernardo@scaleco.com.br',
       codigo_pais: '+55',
       whatsapp: '(11) 99999-9999',
       telefone: '+55 (11) 99999-9999',
@@ -3109,8 +3037,8 @@ async function showShowoffWhenReady(reportPromise) {
   barEl.style.width = '0%';
 
   const lines = [
-    'Mapeando sua operação comercial...',
-    'Cruzando com o metodologia ScaleCo...',
+    'Mapeando desafios do seu setor...',
+    'Cruzando com o ecossistema ScaleCo...',
     'Identificando conexões estratégicas...',
     'Consolidando seu diagnóstico completo.',
   ];
@@ -3162,9 +3090,9 @@ function showShowoff(reportData) {
   const localizacao = reportData.localizacao || formData.localizacao || '';
 
   const lines = [
-    'Mapeando sua operação comercial...',
+    'Mapeando desafios do seu setor...',
     'Identificando padrões críticos de operação...',
-    `Cruzando com o metodologia ScaleCo${localizacao ? ' em ' + localizacao : ''}...`,
+    `Cruzando com o ecossistema ScaleCo${localizacao ? ' em ' + localizacao : ''}...`,
     'Consolidando seu diagnóstico completo.',
   ];
 
@@ -3276,167 +3204,157 @@ const DIM_NAMES = {
 function renderReport(data) {
   document.getElementById('chat-screen').style.display = 'none';
   document.getElementById('progressFill').style.width = '100%';
-  const { sub, cta, href: ctaHref } = getCTAContent(data.score_geral);
   const rs = document.getElementById('report-screen');
   rs.style.display = 'block';
   const scoreColor = getScoreColor(data.score_geral);
   const nivelClass = getNivelClass(data.nivel);
 
-  const today = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+  const waText = encodeURIComponent(
+    'Ola Fabio, fiz o Scale Diagnostic. Meu score foi ' + data.score_geral +
+    ' (' + data.nivel + ') e quero entender o plano de acao.'
+  );
+  const ctaLink = 'https://wa.me/5511974270077?text=' + waText;
 
-  const waText = encodeURIComponent(`Olá Fábio, acabei de fazer o Scale Diagnostic™. Meu score foi ${data.score_geral} (${data.nivel}) e gostaria de conversar sobre o resultado.`);
-  const ctaLink = ctaHref || `https://wa.me/5511974270077?text=${waText}`;
+  const escapeHtml = function(value) {
+    return String(value == null ? '' : value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  };
 
-  const escapeHtml = (value) => String(value ?? '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-
-  const highlightText = (value) => {
-    let text = escapeHtml(value);
-    [
-      'receita previsível', 'previsibilidade', 'conexões estratégicas',
-      'metodologia ScaleCo', 'próximos 90 dias', 'gargalos',
-      'forecast', 'expansão', 'operação', 'pipeline', 'escala',
-    ].forEach((term) => {
-      const safeTerm = escapeHtml(term);
-      text = text.replace(new RegExp(safeTerm, 'gi'), (match) => `<span class="yellow-mark">${match}</span>`);
+  const hl = function(value) {
+    var text = escapeHtml(value);
+    ['forecast','pipeline','escala','gargalo','previsibilidade'].forEach(function(term) {
+      text = text.replace(new RegExp(term, 'gi'), function(m) {
+        return '<span class="yellow-mark">' + m + '</span>';
+      });
     });
     return text;
   };
 
-  // Todas as dimensões
-  const dimEntries = Object.entries(data.dimensoes || {});
-  const dimensoesHTML = dimEntries.map(([key, dim]) => {
-    const dColor = getScoreColor(dim.score);
-    return `
-      <div class="dim-row">
-        <div class="dim-top">
-          <div class="dim-letter">${escapeHtml(key)}</div>
-          <div class="dim-name">${escapeHtml(DIM_NAMES[key] || key)}</div>
-          <div class="dim-score" style="color:${dColor}">${dim.score}</div>
-        </div>
-        <div class="dim-bar-wrap">
-          <div class="dim-bar-fill" style="width:${dim.score}%;background:${dColor}"></div>
-        </div>
-        ${dim.status ? `<div class="dim-status">${escapeHtml(dim.status)}</div>` : ''}
-        ${dim.gargalo ? `<div class="dim-gargalo">↳ ${highlightText(dim.gargalo)}</div>` : ''}
-      </div>`;
+  var DIM_NAMES_LOCAL = {
+    S: 'Strategic Architecture',
+    C: 'Commercial Engine',
+    A: 'Analytics',
+    L: 'Leadership Institutionalization',
+    E: 'Execution',
+    G: 'Governance'
+  };
+
+  // Dimensoes — ordenar para achar a critica
+  var dimEntries = Object.entries(data.dimensoes || {});
+  var sorted = dimEntries.slice().sort(function(a, b) { return a[1].score - b[1].score; });
+  var dimCriticaKey = sorted.length ? sorted[0][0] : null;
+  var dimCriticaData = sorted.length ? sorted[0][1] : null;
+
+  var dimensoesHTML = dimEntries.map(function(entry) {
+    var key = entry[0];
+    var dim = entry[1];
+    var dColor = getScoreColor(dim.score);
+    var isCritica = key === dimCriticaKey;
+    var rowClass = isCritica ? 'dim-row dim-critica-row' : 'dim-row';
+    var letterColor = isCritica ? '#EF4444' : 'var(--blue)';
+    var html = '<div class="' + rowClass + '">';
+    html += '<div class="dim-top">';
+    html += '<div class="dim-letter" style="color:' + letterColor + '">' + escapeHtml(key) + '</div>';
+    html += '<div class="dim-name">' + escapeHtml(DIM_NAMES_LOCAL[key] || key) + '</div>';
+    html += '<div class="dim-score" style="color:' + dColor + '">' + dim.score + '</div>';
+    html += '</div>';
+    html += '<div class="dim-bar-wrap"><div class="dim-bar-fill" style="width:' + dim.score + '%;background:' + dColor + '"></div></div>';
+    if (isCritica && dim.gargalo) {
+      html += '<div class="dim-gargalo" style="color:#EF4444">&#8627; ' + hl(dim.gargalo) + '</div>';
+    }
+    html += '</div>';
+    return html;
   }).join('');
 
-  // Prioridades
-  const priosHTML = Array.isArray(data.prioridades) ? data.prioridades.map((p, i) => `
-    <div class="prio-item">
-      <div class="prio-num">0${i + 1}</div>
-      <div class="prio-text">${highlightText(p)}</div>
-    </div>`).join('') : '';
+  // Prioridades borradas
+  var priosBlurHTML = '';
+  if (Array.isArray(data.prioridades)) {
+    priosBlurHTML = data.prioridades.map(function(p, i) {
+      return '<div class="prio-item prio-blur">' +
+        '<div class="prio-num">0' + (i + 1) + '</div>' +
+        '<div class="prio-text" style="filter:blur(5px);user-select:none">' + hl(p) + '</div>' +
+        '</div>';
+    }).join('');
+  }
 
-  // Intelligence block
-  const intelligenceRows = Array.isArray(data.scaleco_tabela) ? data.scaleco_tabela : [];
-  const intelligenceRowsHTML = intelligenceRows.map((row) => `
-    <tr>
-      <td data-label="Principal desafio">${highlightText(row.desafio)}</td>
-      <td data-label="Impacto direto">${highlightText(row.impacto)}</td>
-      <td data-label="Conexão estratégica">${highlightText(row.conexao)}</td>
-    </tr>`).join('');
+  // Montar HTML do relatorio
+  var html = '';
 
-  const intelligenceBlock = (data.setor_insights || data.ecossistema_match || intelligenceRowsHTML) ? `
-    <div class="intelligence-block">
-      <div class="intelligence-kicker">
-        INVESTIGAÇÃO SETORIAL · SCALECO
-      </div>
-      ${data.setor_insights ? `<div class="intelligence-copy">${highlightText(data.setor_insights)}</div>` : ''}
-      ${intelligenceRowsHTML ? `
-        <div class="intelligence-table-wrap">
-          <table class="intelligence-table">
-            <thead>
-              <tr>
-                <th>Principal desafio</th>
-                <th>Impacto direto</th>
-                <th>Conexão estratégica</th>
-              </tr>
-            </thead>
-            <tbody>${intelligenceRowsHTML}</tbody>
-          </table>
-        </div>` : ''}
-      ${data.ecossistema_match ? `
-        <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(45,91,227,0.2)">
-          <div style="font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--blue);margin-bottom:8px">ECOSSISTEMA SCALECO</div>
-          <div class="intelligence-footnote" style="color:rgba(255,255,255,0.55);font-size:13px;line-height:1.6">${highlightText(data.ecossistema_match)}</div>
-        </div>` : ''}
-    </div>` : '';
+  // Header
+  html += '<div class="report-hero">';
+  html += '<div class="report-hero-brand">SCALECO &middot; SCALE METHOD&trade;</div>';
+  html += '<div class="report-hero-sub">SCALE DIAGNOSTIC&trade;</div>';
+  html += '<div class="report-hero-title">DIAGN&Oacute;STICO CONCLU&Iacute;DO</div>';
+  html += '<div class="report-hero-meta">' + escapeHtml(data.empresa || '');
+  if (data.nome) html += ' <span>&middot;</span> ' + escapeHtml(data.nome);
+  html += '</div></div>';
 
-  rs.innerHTML = `
-    <!-- HEADER PREMIUM -->
-    <div class="report-hero">
-      <div class="report-hero-brand">SCALECO · SCALE METHOD™</div>
-      <div class="report-hero-sub">SCALE DIAGNOSTIC™</div>
-      <div class="report-hero-title">DIAGNÓSTICO CONCLUÍDO</div>
-      <div class="report-hero-meta">
-        ${escapeHtml(data.empresa || '')}
-        ${data.nome ? `<span>·</span> ${escapeHtml(data.nome)}` : ''}
-        ${(data.localizacao || formData.localizacao) ? `<span>·</span> ${escapeHtml(data.localizacao || formData.localizacao)}` : ''}
-      </div>
-    </div>
+  // Score
+  html += '<div class="score-block">';
+  html += '<div class="score-label">SCORE GERAL &middot; SCALE METHOD&trade;</div>';
+  html += '<div class="score-number" id="scoreNumber" style="color:' + scoreColor + '">0</div>';
+  html += '<div class="nivel-badge ' + nivelClass + '" style="margin-top:10px">' + escapeHtml(data.nivel || '') + '</div>';
+  html += '</div>';
 
-    <!-- SCORE -->
-    <div class="score-block">
-      <div class="score-label">SCORE GERAL · SCALE METHOD™</div>
-      <div class="score-number" id="scoreNumber" style="color:${scoreColor}">0</div>
-      <div class="nivel-badge ${nivelClass}" style="margin-top:10px">${escapeHtml(data.nivel || '')}</div>
-    </div>
+  // Parecer
+  if (data.parecer) {
+    html += '<div class="parecer-block"><div class="parecer-text">' + hl(data.parecer) + '</div></div>';
+  }
 
-    <!-- PARECER EXECUTIVO -->
-    ${data.parecer ? `
-    <div class="parecer-block">
-      <div class="parecer-text">${highlightText(data.parecer)}</div>
-    </div>` : ''}
+  // Dimensoes
+  html += '<div class="section-title">DIMENS&Otilde;ES SCALE</div>';
+  html += '<div class="dimensoes">' + dimensoesHTML + '</div>';
 
-    <!-- DIMENSÕES SCALE -->
-    <div class="section-title">DIMENSÕES SCALE</div>
-    <div class="dimensoes">${dimensoesHTML}</div>
+  // Dimensao critica destaque
+  if (dimCriticaKey && dimCriticaData) {
+    html += '<div class="dim-critica-block">';
+    html += '<div class="dim-critica-label">&#9888; DIMENS&Atilde;O MAIS CR&Iacute;TICA</div>';
+    html += '<div class="dim-critica-title">' + escapeHtml(DIM_NAMES_LOCAL[dimCriticaKey] || dimCriticaKey) + ' &middot; Score ' + dimCriticaData.score + '</div>';
+    if (dimCriticaData.status) {
+      html += '<div class="dim-critica-status">' + escapeHtml(dimCriticaData.status) + '</div>';
+    }
+    html += '</div>';
+  }
 
-    <!-- GARGALO CRÍTICO -->
-    ${data.gargalo_critico ? `
-    <div class="gargalo-block">
-      <div class="gargalo-label">⚠ Gargalo Crítico</div>
-      <div class="gargalo-text">${escapeHtml(data.gargalo_critico)}</div>
-    </div>` : ''}
+  // Gargalo critico
+  if (data.gargalo_critico) {
+    html += '<div class="gargalo-block gargalo-destaque">';
+    html += '<div class="gargalo-label">&#9888; GARGALO CR&Iacute;TICO</div>';
+    html += '<div class="gargalo-text">' + escapeHtml(data.gargalo_critico) + '</div>';
+    html += '</div>';
+  }
 
-    <!-- PRIORIDADES -->
-    ${priosHTML ? `
-    <div class="section-title">PRIORIDADES DE AÇÃO</div>
-    <div class="prioridades">${priosHTML}</div>` : ''}
+  // Plano de acao — gate
+  if (priosBlurHTML) {
+    html += '<div class="section-title">PLANO DE A&Ccedil;&Atilde;O</div>';
+    html += '<div class="prioridades prio-gate-wrap">';
+    html += priosBlurHTML;
+    html += '<div class="prio-gate-overlay">';
+    html += '<div class="prio-gate-icon">&#128274;</div>';
+    html += '<div class="prio-gate-title">Plano de a&ccedil;&atilde;o dispon&iacute;vel</div>';
+    html += '<div class="prio-gate-sub">Os 3 passos priorit&aacute;rios para sua opera&ccedil;&atilde;o est&atilde;o prontos.<br>Para acessar, fale com a ScaleCo.</div>';
+    html += '<a class="prio-gate-btn" href="' + ctaLink + '" target="_blank">QUERO ACESSAR MEU PLANO &#8594;</a>';
+    html += '</div></div>';
+  }
 
-    <!-- INTELLIGENCE BLOCK -->
-    ${intelligenceBlock}
+  // CTA
+  html += '<div class="cta-block">';
+  html += '<div class="cta-title">PR&Oacute;XIMO PASSO</div>';
+  html += '<div class="fabio-card">';
+  html += '<div class="fabio-name">F&aacute;bio Couto &middot; Founder &amp; CEO &mdash; ScaleCo.ai</div>';
+  html += '<div class="fabio-bio">Ex-VP Salesforce Brasil &middot; 25+ anos liderando vendas e construindo motores de receita em empresas globais de tecnologia.</div>';
+  html += '</div>';
+  html += '<div class="cta-sub">Seu diagn&oacute;stico est&aacute; pronto. O pr&oacute;ximo passo &eacute; uma conversa com F&aacute;bio para entender o plano de a&ccedil;&atilde;o.</div>';
+  html += '<a class="cta-btn" href="' + ctaLink + '" target="_blank">FALAR COM A SCALECO</a>';
+  html += '</div>';
 
-    <!-- CTA -->
-    <div class="cta-block">
-      <img src="archie.jpeg" class="cta-archie" alt="Archie">
-      <div class="cta-title">PRÓXIMO PASSO</div>
-      <div class="fabio-card">
-        <div class="fabio-name">Fábio Couto · Founder & CEO — ScaleCo.ai</div>
-        <div class="fabio-bio">Ex-VP Salesforce Brasil · 25+ anos liderando vendas e construindo motores de receita em empresas globais de tecnologia.</div>
-      </div>
-      <div class="cta-sub">${sub}</div>
-      <a class="cta-btn" href="${ctaLink}" target="_blank">${cta}</a>
-    </div>
+  html += '<div class="email-note">&#128233; Relat&oacute;rio enviado para ' + escapeHtml(data.email || '') + '</div>';
 
-    <!-- LEAD INFO -->
-    <div style="margin-top:24px;padding:16px 20px;background:var(--black2);border:1px solid var(--gray-light);border-radius:10px;font-size:12px;line-height:1.8;color:#666">
-      <strong style="color:#888">Lead:</strong> ${escapeHtml(data.nome || 'null')} · <a href="mailto:${escapeHtml(data.email || '')}" style="color:var(--blue)">${escapeHtml(data.email || '')}</a><br>
-      <strong style="color:#888">WhatsApp:</strong> <a href="tel:${escapeHtml(data.whatsapp || '')}" style="color:var(--blue)">${escapeHtml(data.whatsapp || '')}</a><br>
-      <strong style="color:#888">Faturamento:</strong> ${escapeHtml(data.faturamento || formData.faturamento || '')}<br>
-      ${(data.localizacao || formData.localizacao) ? `<strong style="color:#888">Localização:</strong> ${escapeHtml(data.localizacao || formData.localizacao)}<br>` : ''}
-      <strong style="color:#888">Empresa:</strong> ${escapeHtml(data.empresa || '')}
-    </div>
-
-    <div class="email-note">📩 Relatório enviado para ${escapeHtml(data.email || '')}</div>
-  `;
-
+  rs.innerHTML = html;
   window.scrollTo({ top: 0, behavior: 'smooth' });
   animateScore(data.score_geral);
 }
