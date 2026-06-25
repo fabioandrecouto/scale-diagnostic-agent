@@ -27,12 +27,8 @@
   --warning: #F59E0B;
   --danger: #EF4444;
   --yellow: #2D5BE3;
-  --yellow-dim: #C99703;
-  --site-canvas:
-    radial-gradient(circle at 16% 10%, rgba(251, 190, 10, 0.16), transparent 30%),
-    radial-gradient(circle at 88% 16%, rgba(201, 151, 3, 0.12), transparent 28%),
-    radial-gradient(circle at 50% 96%, rgba(251, 190, 10, 0.08), transparent 36%),
-    var(--black);
+  --yellow-dim: #1e4acc;
+  --site-canvas: var(--black);
 }
  
 html {
@@ -74,7 +70,7 @@ body::before {
   height: 320px;
   left: -120px;
   top: 14vh;
-  background: rgba(251, 190, 10, 0.30);
+  background: rgba(45, 91, 227, 0.18);
 }
 
 body::after {
@@ -82,7 +78,7 @@ body::after {
   height: 380px;
   right: -150px;
   bottom: 6vh;
-  background: rgba(201, 151, 3, 0.22);
+  background: rgba(45, 91, 227, 0.12);
   animation-delay: -3.5s;
 }
 
@@ -1166,7 +1162,7 @@ textarea.form-input {
 /* ScaleCo intelligence block */
 .intelligence-block {
   background:
-    radial-gradient(circle at top left, rgba(251,190,10,0.14), transparent 42%),
+    radial-gradient(circle at top left, rgba(45,91,227,0.10), transparent 42%),
     linear-gradient(135deg, rgba(255,255,255,0.045), rgba(255,255,255,0.01)),
     var(--black2);
   border: 1px solid rgba(251,190,10,0.22);
@@ -1850,6 +1846,7 @@ textarea.form-input {
   position: absolute;
   inset: 0;
   background: linear-gradient(to bottom, rgba(10,10,10,0.2) 0%, transparent 45%, #0A0A0A 100%);
+  pointer-events: none;
 }
 
 .intro-photo-badge {
@@ -1880,6 +1877,8 @@ textarea.form-input {
 }
 
 .intro-content {
+  position: relative;
+  z-index: 2;
   padding: 2rem 1.5rem 3.5rem;
   display: flex;
   flex-direction: column;
@@ -1979,7 +1978,7 @@ textarea.form-input {
   -webkit-tap-highlight-color: transparent;
   margin-bottom: 16px;
 }
-.intro-cta:hover { background: #C99703; }
+.intro-cta:hover { background: #1e4acc; }
 .intro-cta:active { transform: scale(0.98); }
 
 .intro-credibility {
