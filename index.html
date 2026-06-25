@@ -2134,10 +2134,14 @@ textarea.form-input {
       Entenda o que está travando sua escala antes de contratar mais pessoas, investir mais em marketing ou acelerar uma estrutura quebrada.
     </p>
 
-    <button class="intro-cta" onclick="showForm()">
+    <button class="intro-cta" id="btn-diagnosticar">
       DIAGNOSTICAR MINHA ESCALA
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
+    <script>
+      document.getElementById('btn-diagnosticar').addEventListener('click', function() { showForm(); });
+      document.getElementById('btn-diagnosticar').addEventListener('touchend', function(e) { e.preventDefault(); showForm(); });
+    </script>
 
     <p class="intro-credibility">Baseado em 25+ anos construindo operações de crescimento em:</p>
     <div class="intro-logos">
