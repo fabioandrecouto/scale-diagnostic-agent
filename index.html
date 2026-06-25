@@ -2206,30 +2206,29 @@ textarea.form-input {
 
     <div class="form-progress" id="form-progress" aria-hidden="true"></div>
 
+    <!-- ETAPA 1: Contato -->
     <section class="form-step is-active" data-step="0">
-      <div class="form-kicker">Candidatura ScaleCo</div>
-      <h2 class="form-card-title">Olá, qual é o seu e-mail profissional?</h2>
-      <p class="form-card-sub">Vamos começar pelo contato principal para priorizar sua aplicação.</p>
-      <div class="form-field">
-        <label class="form-label" for="f-email">E-mail profissional</label>
-        <input type="email" id="f-email" name="email" class="form-input" placeholder="voce@empresa.com" autocomplete="email" required>
-      </div>
-    </section>
-
-    <section class="form-step" data-step="1">
-      <div class="form-kicker">Para priorizar sua aplicação</div>
-      <h2 class="form-card-title">Conte quem é você.</h2>
-      <p class="form-card-sub">Essas informações ajudam a equipe ScaleCo a entender seu contexto antes do diagnóstico com o Archie.</p>
+      <div class="form-kicker">Scale Diagnostic™</div>
+      <h2 class="form-card-title">Vamos começar.</h2>
+      <p class="form-card-sub">Preencha seus dados para iniciar o diagnóstico com o Archie.</p>
       <div class="form-grid">
         <div class="form-field is-wide">
-          <label class="form-label" for="f-nome">1. Qual o seu nome completo?</label>
+          <label class="form-label" for="f-empresa-step0">Nome da empresa</label>
+          <input type="text" id="f-empresa-step0" name="empresa_step0" class="form-input" placeholder="Ex: ScaleCo" autocomplete="organization" required>
+        </div>
+        <div class="form-field is-wide">
+          <label class="form-label" for="f-nome">Seu nome completo</label>
           <input type="text" id="f-nome" name="nome" class="form-input" placeholder="Seu nome completo" autocomplete="name" required>
         </div>
         <div class="form-field is-wide">
-          <label class="form-label">2. E o seu WhatsApp?</label>
+          <label class="form-label" for="f-email">E-mail profissional</label>
+          <input type="email" id="f-email" name="email" class="form-input" placeholder="voce@empresa.com" autocomplete="email" required>
+        </div>
+        <div class="form-field is-wide">
+          <label class="form-label">WhatsApp</label>
           <div class="form-phone-row">
             <div class="form-select-wrap">
-              <select id="f-codigo-pais" name="codigo_pais" class="form-input" aria-label="Região / código do país">
+              <select id="f-codigo-pais" name="codigo_pais" class="form-input" aria-label="Código do país">
                 <option value="+55" selected>+55 · Brasil</option>
                 <option value="+1">+1 · EUA / Canadá</option>
                 <option value="+351">+351 · Portugal</option>
@@ -2244,64 +2243,46 @@ textarea.form-input {
             <input type="tel" id="f-whatsapp" name="whatsapp" class="form-input" placeholder="11 9 0000-0000" oninput="maskPhone(event)" autocomplete="tel-national" required>
           </div>
         </div>
-        <div class="form-field">
-          <label class="form-label" for="f-empresa">3. Qual o nome da sua empresa?</label>
-          <input type="text" id="f-empresa" name="empresa" class="form-input" placeholder="Ex: ScaleCo" autocomplete="organization" required>
-        </div>
-        <div class="form-field">
-          <label class="form-label" for="f-website">4. Site da empresa</label>
-          <input type="url" id="f-website" name="website" class="form-input" placeholder="https://suaempresa.com.br" autocomplete="url">
-        </div>
       </div>
     </section>
 
+    <!-- ETAPA 2: Empresa e Faturamento -->
+    <section class="form-step" data-step="1">
+      <div class="form-kicker">Sua empresa</div>
+      <h2 class="form-card-title">Qual o porte da operação?</h2>
+      <div class="form-label" style="margin-bottom:12px;">Faturamento anual</div>
+      <div class="form-option-grid" data-required-radio="faturamento">
+        <label class="form-option"><input type="radio" name="faturamento" value="Até R$1M/ano"><span>Até R$1M/ano</span></label>
+        <label class="form-option"><input type="radio" name="faturamento" value="R$1M–R$5M/ano"><span>R$1M – R$5M/ano</span></label>
+        <label class="form-option"><input type="radio" name="faturamento" value="R$5M–R$20M/ano"><span>R$5M – R$20M/ano</span></label>
+        <label class="form-option"><input type="radio" name="faturamento" value="R$20M–R$40M/ano"><span>R$20M – R$40M/ano</span></label>
+        <label class="form-option"><input type="radio" name="faturamento" value="R$40M–R$80M/ano"><span>R$40M – R$80M/ano</span></label>
+        <label class="form-option"><input type="radio" name="faturamento" value="Acima de R$80M/ano"><span>Acima de R$80M/ano</span></label>
+      </div>
+    </section>
+
+    <!-- ETAPA 3: Cargo + Colaboradores -->
     <section class="form-step" data-step="2">
       <div class="form-kicker">Perfil executivo</div>
-      <h2 class="form-card-title">4. Qual o seu cargo na empresa?</h2>
-      <div class="form-option-grid is-two" data-required-radio="cargo">
-        <label class="form-option"><input type="radio" name="cargo" value="Sócio ou Fundador" checked><span>Sócio ou Fundador</span></label>
+      <h2 class="form-card-title">Qual o seu perfil?</h2>
+      <div class="form-label" style="margin-bottom:12px;">Cargo na empresa</div>
+      <div class="form-option-grid is-two" data-required-radio="cargo" style="margin-bottom:24px;">
+        <label class="form-option"><input type="radio" name="cargo" value="Sócio ou Fundador"><span>Sócio ou Fundador</span></label>
         <label class="form-option"><input type="radio" name="cargo" value="Presidente ou CEO"><span>Presidente ou CEO</span></label>
-        <label class="form-option"><input type="radio" name="cargo" value="Vice-presidente ou C-Level"><span>Vice-presidente ou C-Level</span></label>
+        <label class="form-option"><input type="radio" name="cargo" value="Vice-presidente ou C-Level"><span>VP ou C-Level</span></label>
         <label class="form-option"><input type="radio" name="cargo" value="Diretor"><span>Diretor</span></label>
         <label class="form-option"><input type="radio" name="cargo" value="Gerente"><span>Gerente</span></label>
-        <label class="form-option"><input type="radio" name="cargo" value="Coordenador"><span>Coordenador</span></label>
-        <label class="form-option"><input type="radio" name="cargo" value="Supervisor"><span>Supervisor</span></label>
-        <label class="form-option"><input type="radio" name="cargo" value="Analista"><span>Analista</span></label>
+        <label class="form-option"><input type="radio" name="cargo" value="Outro"><span>Outro</span></label>
       </div>
-    </section>
-
-    <section class="form-step" data-step="3">
-      <div class="form-kicker">Porte da operação</div>
-      <h2 class="form-card-title">5. Qual o faturamento anual da sua empresa?</h2>
-      <div class="form-option-grid" data-required-radio="faturamento">
-        <label class="form-option"><input type="radio" name="faturamento" value="Ainda não faturamos"><span>Ainda não faturamos</span></label>
-        <label class="form-option"><input type="radio" name="faturamento" value="Até R$250 mil ao ano"><span>Até R$250 mil ao ano</span></label>
-        <label class="form-option"><input type="radio" name="faturamento" value="De R$250 mil a R$500 mil ao ano"><span>De R$250 mil a R$500 mil ao ano</span></label>
-        <label class="form-option"><input type="radio" name="faturamento" value="De R$500 mil a R$1 milhão ao ano"><span>De R$500 mil a R$1 milhão ao ano</span></label>
-        <label class="form-option"><input type="radio" name="faturamento" value="De R$1 milhão a R$5 milhões ao ano"><span>De R$1 milhão a R$5 milhões ao ano</span></label>
-        <label class="form-option"><input type="radio" name="faturamento" value="De R$5 a R$10 milhões ao ano"><span>De R$5 a R$10 milhões ao ano</span></label>
-        <label class="form-option"><input type="radio" name="faturamento" value="De R$10 a R$50 milhões ao ano"><span>De R$10 a R$50 milhões ao ano</span></label>
-        <label class="form-option"><input type="radio" name="faturamento" value="De R$50 a R$500 milhões ao ano"><span>De R$50 a R$500 milhões ao ano</span></label>
-        <label class="form-option"><input type="radio" name="faturamento" value="Acima de R$500 milhões"><span>Acima de R$500 milhões</span></label>
+      <div class="form-label" style="margin-bottom:12px;">Colaboradores</div>
+      <div class="form-option-grid is-two" data-required-radio="colaboradores">
+        <label class="form-option"><input type="radio" name="colaboradores" value="Até 10"><span>Até 10</span></label>
+        <label class="form-option"><input type="radio" name="colaboradores" value="10 a 50"><span>10 a 50</span></label>
+        <label class="form-option"><input type="radio" name="colaboradores" value="51 a 200"><span>51 a 200</span></label>
+        <label class="form-option"><input type="radio" name="colaboradores" value="201 a 1.000"><span>201 a 1.000</span></label>
+        <label class="form-option"><input type="radio" name="colaboradores" value="Acima de 1.000"><span>Acima de 1.000</span></label>
       </div>
-    </section>
-
-    <section class="form-step" data-step="4">
-      <div class="form-kicker">Time</div>
-      <h2 class="form-card-title">6. Quantos colaboradores sua empresa possui?</h2>
-      <div class="form-option-grid" data-required-radio="colaboradores">
-        <label class="form-option"><input type="radio" name="colaboradores" value="Acima de 1.000 colaboradores"><span>Acima de 1.000 colaboradores</span></label>
-        <label class="form-option"><input type="radio" name="colaboradores" value="De 101 a 1.000 colaboradores"><span>De 101 a 1.000 colaboradores</span></label>
-        <label class="form-option"><input type="radio" name="colaboradores" value="De 51 a 100 colaboradores"><span>De 51 a 100 colaboradores</span></label>
-        <label class="form-option"><input type="radio" name="colaboradores" value="De 10 a 50 colaboradores"><span>De 10 a 50 colaboradores</span></label>
-        <label class="form-option"><input type="radio" name="colaboradores" value="Até 10 colaboradores"><span>Até 10 colaboradores</span></label>
-      </div>
-      <div class="form-field is-wide is-consent">
-        <label class="form-check">
-          <input type="checkbox" id="f-lgpd" name="lgpd" required>
-          <span>Concordo com a <a href="/politica-de-privacidade/" target="_blank" rel="noopener">Política de Privacidade</a> e autorizo o contato da equipe ScaleCo.</span>
-        </label>
-      </div>
+      <input type="hidden" id="f-lgpd-hidden" value="1">
     </section>
 
     <div class="form-error" id="form-error" role="alert" aria-live="polite"></div>
@@ -2310,7 +2291,7 @@ textarea.form-input {
       <button type="button" class="form-back" id="form-back-btn" onclick="prevFormStep()">Voltar</button>
       <button type="button" class="form-submit" id="form-next-btn" onclick="nextFormStep()">Continuar</button>
     </div>
-    <div class="form-privacy">Candidatura direta. Seus dados são usados para priorização e contato da equipe ScaleCo.</div>
+    <div class="form-privacy">Ao iniciar o diagnóstico, você concorda com nossa <a href="/politica-de-privacidade/" target="_blank" style="color:#2D5BE3;">Política de Privacidade</a> e autoriza o contato da equipe ScaleCo.</div>
     <div style="margin-top:20px;padding-top:16px;border-top:1px solid #1e1e1e;font-size:11px;color:#333;text-align:center;letter-spacing:0.04em;">Ecossistema ScaleCo × metodologia ScaleCo.</div>
   </form>
 </div>
@@ -2379,7 +2360,7 @@ let isLoading = false;
 let msgCount = 0;
 let formData = {};
 let currentFormStep = 0;
-const FORM_TOTAL_STEPS = 5;
+const FORM_TOTAL_STEPS = 3;
 const CANDIDATURA_STORAGE_KEY = 'scaleco_diagnostic_form';
 const MAX_MSGS = 14;
 let demoChatMode = false;
@@ -2650,7 +2631,7 @@ function renderFormStep() {
   const backBtn = document.getElementById('form-back-btn');
   const nextBtn = document.getElementById('form-next-btn');
   if (backBtn) backBtn.disabled = currentFormStep === 0;
-  if (nextBtn) nextBtn.textContent = currentFormStep === FORM_TOTAL_STEPS - 1 ? 'Enviar candidatura' : 'Continuar';
+  if (nextBtn) nextBtn.textContent = currentFormStep === FORM_TOTAL_STEPS - 1 ? 'Iniciar Diagnóstico' : 'Continuar';
   clearFormError();
   scrollFormToTop();
 }
@@ -2694,52 +2675,38 @@ function normalizeWebsiteInput(value) {
 
 function validateCurrentFormStep() {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const website = getFieldValue('f-website');
 
   if (currentFormStep === 0) {
-    const email = getFieldValue('f-email');
-    if (!emailRegex.test(email)) {
-      return showFormError('Por favor, insira um email profissional válido.', '#f-email');
+    if (!getFieldValue('f-empresa-step0')) {
+      return showFormError('Por favor, informe o nome da empresa.', '#f-empresa-step0');
     }
-  }
-
-  if (currentFormStep === 1) {
     if (!getFieldValue('f-nome')) {
       return showFormError('Por favor, informe seu nome completo.', '#f-nome');
     }
-    if (!getFieldValue('f-empresa')) {
-      return showFormError('Por favor, informe o nome da empresa.', '#f-empresa');
+    const email = getFieldValue('f-email');
+    if (!emailRegex.test(email)) {
+      return showFormError('Por favor, insira um email válido.', '#f-email');
     }
     const phoneDigits = getFieldValue('f-whatsapp').replace(/\D/g, '');
     const minPhoneDigits = getFieldValue('f-codigo-pais') === '+55' ? 10 : 6;
     if (phoneDigits.length < minPhoneDigits) {
       return showFormError('Por favor, insira um WhatsApp válido.', '#f-whatsapp');
     }
-    if (website) {
-      try {
-        new URL(normalizeWebsiteInput(website));
-      } catch (e) {
-        return showFormError('Por favor, informe um site válido. Exemplo: suaempresa.com.br', '#f-website');
-      }
+  }
+
+  if (currentFormStep === 1) {
+    if (!getRadioValue('faturamento')) {
+      return showFormError('Por favor, selecione o faturamento anual.', 'input[name="faturamento"]');
     }
   }
 
-  if (currentFormStep === 2 && !getRadioValue('cargo')) {
-    return showFormError('Por favor, selecione seu cargo.', 'input[name="cargo"]');
-  }
-
-  if (currentFormStep === 3 && !getRadioValue('faturamento')) {
-    return showFormError('Por favor, selecione o faturamento anual.', 'input[name="faturamento"]');
-  }
-
-  if (currentFormStep === 4 && !getRadioValue('colaboradores')) {
-    return showFormError('Por favor, selecione a quantidade de colaboradores.', 'input[name="colaboradores"]');
-  }
-
-  if (currentFormStep === 4) {
+  if (currentFormStep === 2) {
     if (getFieldValue('f-gotcha')) return false;
-    if (!document.getElementById('f-lgpd')?.checked) {
-      return showFormError('Para continuar, aceite a Política de Privacidade.', '#f-lgpd');
+    if (!getRadioValue('cargo')) {
+      return showFormError('Por favor, selecione seu cargo.', 'input[name="cargo"]');
+    }
+    if (!getRadioValue('colaboradores')) {
+      return showFormError('Por favor, selecione a quantidade de colaboradores.', 'input[name="colaboradores"]');
     }
   }
 
@@ -2778,12 +2745,12 @@ function buildCandidaturaData(leadId) {
     codigo_pais: codigoPais,
     whatsapp,
     telefone,
-    empresa: getFieldValue('f-empresa'),
+    empresa: getFieldValue('f-empresa-step0') || getFieldValue('f-empresa'),
     website: normalizeWebsiteInput(getFieldValue('f-website')),
     cargo: getRadioValue('cargo'),
     faturamento: getRadioValue('faturamento'),
     colaboradores: getRadioValue('colaboradores'),
-    lgpd: Boolean(document.getElementById('f-lgpd')?.checked),
+    lgpd: true, // consentimento implícito no botão Iniciar Diagnóstico
     localizacao: '',
   };
 }
